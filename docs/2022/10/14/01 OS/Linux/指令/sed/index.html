@@ -466,21 +466,26 @@ var _hmt = _hmt || [];
 After deletion:</li>
 </ol>
 <p>3 RHEL<br>4 Red Hat<br>5 Fedora<br>6 Arch Linux<br>7 CentOS<br>8 Debian<br>9 Ubuntu<br>10 openSUSE<br>不仅如此，我们还可以加上一下逻辑条件，比方说下面的命令：</p>
-<h1 id="sed-‘-x2F-System-Linux-x2F-d’-sed-demo-txt"><a href="#sed-‘-x2F-System-Linux-x2F-d’-sed-demo-txt" class="headerlink" title="sed ‘&#x2F;System|Linux&#x2F;d’ sed-demo.txt"></a>sed ‘&#x2F;System|Linux&#x2F;d’ sed-demo.txt</h1><p>After deletion:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed &#x27;/System\|Linux/d&#x27; sed-demo.txt</span><br></pre></td></tr></table></figure>
+<p>After deletion:</p>
 <p>3 RHEL<br>4 Red Hat<br>5 Fedora<br>7 CentOS<br>8 Debian<br>9 Ubuntu<br>10 openSUSE<br>反斜杠 \ 代表逻辑或，上述命令的意思是文本中有 System 或 Linux 的行都要进行删除。</p>
 <ol start="5">
 <li>删除特定字符开头的行</li>
 </ol>
 <p>首先，我们创建另一个示例文件 sed-demo-1.txt 进行更好地演示，其内容如下：</p>
-<h1 id="cat-sed-demo-1-txt"><a href="#cat-sed-demo-1-txt" class="headerlink" title="cat sed-demo-1.txt"></a>cat sed-demo-1.txt</h1><p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>RHEL<br>Red Hat<br>Fedora<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>上面也已经提到过，$ 号可以理解为结尾，那么有没有字符可以代表开头呢？答案是有的，这里我们可以用 ^ 号代表开头。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># cat sed-demo-1.txt</span><br></pre></td></tr></table></figure>
+<p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>RHEL<br>Red Hat<br>Fedora<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>上面也已经提到过，$ 号可以理解为结尾，那么有没有字符可以代表开头呢？答案是有的，这里我们可以用 ^ 号代表开头。</p>
 <p>那么，我们想要删除以某一个字符开头的行时，比如说删除以 R 开头的行，可以使用如下命令：</p>
-<h1 id="sed-‘-x2F-R-x2F-d’-sed-demo-1-txt"><a href="#sed-‘-x2F-R-x2F-d’-sed-demo-1-txt" class="headerlink" title="sed ‘&#x2F;^R&#x2F;d’ sed-demo-1.txt"></a>sed ‘&#x2F;^R&#x2F;d’ sed-demo-1.txt</h1><p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>Fedora<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>那么问题来了，比如我想删除以 R 或者 F 开头的行，那我是不是要执行两次命令呢？如果是有更多岂不是要执行多次命令？这里它有一个简单的写法，你只要把这些字符写在一对中括号 [] 里就可以了：</p>
-<h1 id="sed-‘-x2F-RF-x2F-d’-sed-demo-1-txt"><a href="#sed-‘-x2F-RF-x2F-d’-sed-demo-1-txt" class="headerlink" title="sed ‘&#x2F;^[RF]&#x2F;d’ sed-demo-1.txt"></a>sed ‘&#x2F;^[RF]&#x2F;d’ sed-demo-1.txt</h1><p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>上面命令的作用是 删除以 R 或者 F 开头的行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed &#x27;/^R/d&#x27; sed-demo-1.txt</span><br></pre></td></tr></table></figure>
+<p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>Fedora<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>那么问题来了，比如我想删除以 R 或者 F 开头的行，那我是不是要执行两次命令呢？如果是有更多岂不是要执行多次命令？这里它有一个简单的写法，你只要把这些字符写在一对中括号 [] 里就可以了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed &#x27;/^[RF]/d&#x27; sed-demo-1.txt</span><br></pre></td></tr></table></figure>
+<p>After deletion:<br>Linux Operating System<br>Unix Operating System<br>debian<br>ubuntu<br>Arch Linux - 1<br>2 - Manjaro<br>3 4 5 6<br>上面命令的作用是 删除以 R 或者 F 开头的行。</p>
 <ol start="6">
 <li>删除特定字符结尾的行</li>
 </ol>
 <p>同上面一个道理，删除以某一个字符结尾的行，比方说删除以 m 结尾的行，我们可以这样做：</p>
-<h1 id="sed-‘-x2F-m-x2F-d’-sed-demo-txt"><a href="#sed-‘-x2F-m-x2F-d’-sed-demo-txt" class="headerlink" title="sed ‘&#x2F;m$&#x2F;d’ sed-demo.txt"></a>sed ‘&#x2F;m$&#x2F;d’ sed-demo.txt</h1><p>After deletion:<br>3 RHEL<br>4 Red Hat<br>5 Fedora<br>6 Arch Linux<br>7 CentOS<br>8 Debian<br>9 Ubuntu<br>10 openSUSE<br>删除以 x 或 m 结尾的行可以这样写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed &#x27;/m$/d&#x27; sed-demo.txt</span><br></pre></td></tr></table></figure>
+<p>After deletion:<br>3 RHEL<br>4 Red Hat<br>5 Fedora<br>6 Arch Linux<br>7 CentOS<br>8 Debian<br>9 Ubuntu<br>10 openSUSE<br>删除以 x 或 m 结尾的行可以这样写：</p>
 <h1 id="sed-‘-x2F-xm-x2F-d’-sed-demo-txt"><a href="#sed-‘-x2F-xm-x2F-d’-sed-demo-txt" class="headerlink" title="sed ‘&#x2F;[xm]$&#x2F;d’ sed-demo.txt"></a>sed ‘&#x2F;[xm]$&#x2F;d’ sed-demo.txt</h1><p>After deletion:</p>
 <p>3 RHEL<br>4 Red Hat<br>5 Fedora<br>7 CentOS<br>8 Debian<br>9 Ubuntu<br>10 openSUSE<br>7. 删除以大写字母开头的行</p>
 <p>这里问题又来了，我想要删除所有以大写字母开头的行呢？按照上面的做法是不是要将 A 到 Z 这 26 个字母都写进 [ ] 里呢？ 其实我们大可不必这样做，在 A 和 Z 中间加个 - 就可以了：</p>

@@ -191,9 +191,9 @@ After deletion:
 9 Ubuntu
 10 openSUSE
 不仅如此，我们还可以加上一下逻辑条件，比方说下面的命令：
-
+```
 # sed '/System\|Linux/d' sed-demo.txt
-
+```
 After deletion:
 
 3 RHEL
@@ -208,9 +208,9 @@ After deletion:
 5. 删除特定字符开头的行
 
 首先，我们创建另一个示例文件 sed-demo-1.txt 进行更好地演示，其内容如下：
-
+```
 # cat sed-demo-1.txt
-
+```
 After deletion:
 Linux Operating System
 Unix Operating System
@@ -225,9 +225,9 @@ Arch Linux - 1
 上面也已经提到过，$ 号可以理解为结尾，那么有没有字符可以代表开头呢？答案是有的，这里我们可以用 ^ 号代表开头。
 
 那么，我们想要删除以某一个字符开头的行时，比如说删除以 R 开头的行，可以使用如下命令：
-
+```
 # sed '/^R/d' sed-demo-1.txt
-
+```
 After deletion:
 Linux Operating System
 Unix Operating System
@@ -238,9 +238,9 @@ Arch Linux - 1
 2 - Manjaro
 3 4 5 6
 那么问题来了，比如我想删除以 R 或者 F 开头的行，那我是不是要执行两次命令呢？如果是有更多岂不是要执行多次命令？这里它有一个简单的写法，你只要把这些字符写在一对中括号 [] 里就可以了：
-
+```
 # sed '/^[RF]/d' sed-demo-1.txt
-
+```
 After deletion:
 Linux Operating System
 Unix Operating System
@@ -254,9 +254,9 @@ Arch Linux - 1
 6. 删除特定字符结尾的行
 
 同上面一个道理，删除以某一个字符结尾的行，比方说删除以 m 结尾的行，我们可以这样做：
-
+```
 # sed '/m$/d' sed-demo.txt
-
+```
 After deletion:
 3 RHEL
 4 Red Hat
