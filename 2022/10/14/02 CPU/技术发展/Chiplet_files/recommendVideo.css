@@ -1,0 +1,126 @@
+.recommend-video {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e5e5e5;
+    /*box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.1);*/
+    border: 1px solid #ededed;
+}
+
+.recommend-video .the-title {
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+.recommend-video .the-title a {
+    color: #333;
+}
+
+.recommend-video .the-title:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 2px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #2b7acd, rgba(43, 122, 205, 0) 100%);
+}
+
+.video-con {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+.video-con .thePicbg {
+    width: 100%;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.video-con .thePic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.5s;
+    background-color: #000;
+}
+.video-con .thePicbg:hover .thePic{
+    transform: scale(1.1);
+}
+
+.video-con .video-title {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(0deg, #000000, rgba(0, 0, 0, 0) 100%);
+    z-index: 99;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    padding: 25px 15px 0px 15px
+;
+}
+
+.video-con .video-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.recommend-video .the-link {
+    position: absolute;
+    top: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.video-con .video-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.video-con .video-btn img {
+    display: block;
+    width: 50px;
+    animation: scaleDraw 1s infinite ease-in-out;
+    -webkit-animation: scaleDraw 1s infinite ease-in-out; /*Safari and Chrome*/
+}
+
+
+@keyframes scaleDraw {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+}
