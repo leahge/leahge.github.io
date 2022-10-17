@@ -1,299 +1,58 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="360doc" name="classification" /><link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/478627_644666448.html"/><meta content="Linux下编译、链接和装载" name=keywords><meta content="Linux下编译、链接和装载" name=description><meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/478627_644666448.html"/><meta content="链接器在链接静态库的时候是以目标文件为单位的，只有引用了静态库中某个目标文件中定义的符号，才会把改目标文件链进来。为了表示动态链接模块之间的符号导入导出关系，ELF专门有一个叫做动态符号表（Dynamic Symbol Table）的段来保存这些信息，这个段通常叫做.dynsym，它只保存了与动态链接相关的符号，静态链接符号表.syntab保存了所有的符号，一般动态链接模块同时拥有两个符号表。" name=360docabstract><meta content="www.360doc.com" name="author" /><meta name="Referrer" content="origin" /><title>
+<!-- saved from url=(0063)http://www.360doc.com/content/17/0411/14/478627_644666448.shtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta content="360doc" name="classification"><link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/478627_644666448.html"><meta content="Linux下编译、链接和装载" name="keywords"><meta content="Linux下编译、链接和装载" name="description"><meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/478627_644666448.html"><meta content="链接器在链接静态库的时候是以目标文件为单位的，只有引用了静态库中某个目标文件中定义的符号，才会把改目标文件链进来。为了表示动态链接模块之间的符号导入导出关系，ELF专门有一个叫做动态符号表（Dynamic Symbol Table）的段来保存这些信息，这个段通常叫做.dynsym，它只保存了与动态链接相关的符号，静态链接符号表.syntab保存了所有的符号，一般动态链接模块同时拥有两个符号表。" name="360docabstract"><meta content="www.360doc.com" name="author"><meta name="Referrer" content="origin"><title>
 Linux下编译、链接和装载
 </title>
-<script src="/js/360query18.js?t=2020091001" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-     function setDragEnd() { };
-     function NewHighlight() { };
-     function delAllDiv() { };
-     if (window.location.toString().indexOf("shtml?") > 0) {
-         self.location = window.location.toString().replace(window.location.search.toString(), "");
-     }
-     function doccheckart(json) {
-         if (json[0].result == "1") {
-             if ( 644666448 !=  644666448) {
-                 if (getCookie("360doc1") != null) {
-                     $.ajax({
-                         url: "http://www.360doc.com/ajax/getuserid.ashx",
-                         async: false,
-                         cache: false,
-                         dataType: "json",
-                         success: function (result) {
 
-                             if (478627 != result.userid) {
-                                 self.location = "http://www.360doc.com/noarticle.aspx";
-                             }
-                         },
-                         error:function(){
-                            self.location = "http://www.360doc.com/noarticle.aspx";
-                        }
-                     });
-                 }
-                 else {
-                     self.location = "http://www.360doc.com/noarticle.aspx";
-                 }
-             }
-             else {
-                 self.location = "http://www.360doc.com/noarticle.aspx";
-             }
-         }
-     }
+<link rel="stylesheet" type="text/css" href="./Linux下编译、链接和装载_files/newArticle20160509.css"><link href="./Linux下编译、链接和装载_files/newheader2022.css" rel="stylesheet" type="text/css">
 
-     function doccheckarts(json) {
-         if (json[0].result == "1") {
-             var artidlist = json[0].artid;
-             if (artidlist != "") {
-                 if (artidlist.indexOf(',') > -1) {
-                     artidlist = artidlist.split(',');
-                 } else {
-                     artidlist = [artidlist];
-                 }
-                 $.each(artidlist, function (index, value) {
-                     $('#artid_' + value).remove();
-                 });
-             }
-         }
-         //console.log(json[0]);
-     }
- </script>
-<script src="/js/Statistics/addStatistics.js?t=2020062301" type="text/javascript"></script>
-<script type="text/javascript">
-        function getCookie(name) //获取cookie值
-        {
-            var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-            if (arr != null)
-                return unescape(arr[2]);
-            return null;
-        }
-        var patt1 = new RegExp("[0-9]*_[0-9]*");
-        var url = patt1.exec(location.href);
-        if (navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1) {
-            window.location.href = "http://www.360doc6.net/wxarticlenew/" + url.toString().split("_")[1] + ".html";
-
-        }
-        else if (navigator.userAgent.indexOf("iPhone") > 0 || navigator.userAgent.indexOf("Android") > 0 || navigator.userAgent.indexOf("iPod") > 0) {  //手机端跳转
-
-            if (url != "") {
-                self.location = "http://www.360doc.cn/article/" + url + ".html";
-            }
-        }
-
-        if ( 644666448 !=  644666448) {
-            if (getCookie("360doc1") != null) {
-                $.ajax({
-                    url: "http://www.360doc.com/ajax/getuserid.ashx",
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    success: function (result) {
-
-                        if (478627 != result.userid) {
-
-                            self.location = "http://www.360doc.com/content/17/0411/14/478627_644666448.shtml";
-                        }
-                    }
-                });
-            }
-            else {
-                self.location = "http://www.360doc.com/content/17/0411/14/478627_644666448.shtml";
-            }
-        }
-
-
-        if ( 0 !=  644666448&&"0" != "" &&"0" != "0" &&"0" != 1) {
-            $.ajax({
-                url: "http://www.360doc.com/ajax/getuserid.ashx",
-                cache: false,
-                dataType: "json",
-                success: function (result) {
-                    if (result.userid != 478627) {
-                        location = "";
-                    }
-                }
-            });
-        }
-    </script>
-<script src="/js/showarticlefollow20160329.js?t=2022072801" type="text/javascript" charset="utf-8"></script>
-<script src="/js/jQuery.md5.min.js?t=2016041501" type="text/javascript" charset="utf-8"></script>
-<script src="/js/common/docgjio.js?t=2018012801" type="text/javascript" charset="utf-8"></script>
-<script src="/js/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?d86954201130d615136257dde062a503";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-<link rel="stylesheet" type="text/css" href="//css.360doc.com/newArticle20160509.css?t=2022090902" /><link href="//css.360doc.com/index7/newheader2022.css?t=2022090101" rel="stylesheet" type="text/css" />
-<script src="/js/article/report.js?t=2022091401" type="text/javascript" charset="utf-8"></script>
-</head>
-<body onmouseup="setDragEnd()" onclick="delAllDiv(event)">
-<div id="LayerLogin"></div>
-<div style="position: absolute; width: 100%; z-index: 1000;">
-<div class="header" style="background-color:#ffffff;">
 <div class="header_1">
-<a href="http://www.360doc.com/index.html"><img src="http://pubimage.360doc.com/index7/nlogo.jpg" class="f_left" /></a>
-<div class="headsearch">
-<div class="zcomdiv">
-<input type="text" class="headsearch_inp f_left" value="搜文章 找馆友" />
-<span class="headsearch_btn f_right" id="searchlinkid">搜索</span>
-</div>
-</div>
-<div class="mylibrary">
-<a id="userInfoUrl" href="http://www.360doc.com/my360doc.aspx" class="a1">
-<div class="h_user"><img id="divuserinfonew" src="http://pubimage.360doc.com/index7/dingtu.gif" /></div>我的图书馆
-</a>
-</div>
-<div class="headmail f_left" style="display: none;">
-<p class="h_icon1" id="newMsg"></p>
-<span class="h_border"></span>
-<ul class="hm_list" id="msgtips">
-<li id="msgicon"><a href="/mymsg.aspx?app=2">查看信箱</a></li>
-<li id="sysmsgicon"><a href="/mymsg.aspx?app=9">系统消息</a></li>
-<li id="sysicon"><a href="/mymsg.aspx?app=4">官方通知</a></li>
-<li class="hm_color2" style="background-color:#f4f4f4"><a href="/mymsg.aspx?app=6">设置</a></li>
-</ul>
-</div>
-<div class="headtalker f_left" style="display: none;">
-<p class="h_icon1" id="newDialog"></p>
-<span class="h_border"></span>
-<ul class="hm_list">
-<li id="li1chat"><a href="javascript:void(0)" onclick="initchatnew()">开始对话</a></li>
-<li id="li2chat" style="display:none;"><a href="javascript:void(0)" style="color:#141414;">有<span>11</span>人和你对话，<span onclick="initchatnew()" style="color:#4578b4">查看</span>&nbsp;<span onclick="clearinfochat()" style="color:#4578b4">忽略</span></a></li>
-<li><a href="http://www.360doc.com/mycontacts.aspx?app=8">历史对话记录</a></li>
-<li class="hm_color2" style="background-color:#f4f4f4"><a href="http://www.360doc.com/mycontacts.aspx?app=7">通知设置</a></li>
-</ul>
-</div>
-<span class="head_bd f_left"></span>
-<div class="head_pbox f_left">
-<i class="indexallbg"></i><p>文具盒</p>
-<div class="d1">
-<div class="d1">
-<p>发文工具</p>
-<div>
-<a href="/edit/writeartnew.aspx" target="_blank" class="a1" onclick="imgLog(1, 'code=43-14-1-2')"><i class="indexallbg"></i><p>撰写</p></a>
-<a href="/helpnew.html" target="_blank" class="a2" onclick="imgLog(1, 'code=43-14-1-3')"><i class="indexallbg"></i><p>网文摘手</p></a>
-<a href="/edit/docupload.aspx" target="_blank" class="a3" onclick="imgLog(1, 'code=43-14-1-4')"><i class="indexallbg"></i><p>文档</p></a>
-<a href="/eeg/index.aspx" target="_blank" class="a4" onclick="imgLog(1, 'code=43-14-1-5')"><i class="indexallbg"></i><p>思维导图</p></a>
-<a href="/myfiles.aspx?app=18" target="_blank" class="a5" onclick="imgLog(1, 'code=43-14-1-6')"><i class="indexallbg"></i><p>随笔</p></a>
-<a href="/writephoto2.aspx" target="_blank" class="a6" onclick="imgLog(1, 'code=43-14-1-7')"><i class="indexallbg"></i><p>相册</p></a>
-<a href="/myoriginal.aspx?app=3" target="_blank" class="a7" onclick="imgLog(1, 'code=43-14-1-8')"><i class="indexallbg"></i><p>原创同步助手</p></a>
-<div class="clearb"></div>
-</div>
-</div>
-<div class="d1">
-<p>其他工具</p>
-<div>
-<a href="/edit/ocrindex.html" target="_blank" class="a8" onclick="ocrImgLog();"><i class="indexallbg"></i><p>图片转文字</p><b></b></a>
-<a href="/myfiles.aspx?app=21" target="_blank" class="a9" onclick="imgLog(1, 'code=43-14-1-9')"><i class="indexallbg"></i><p>文件清理</p><b></b></a>
-<div class="clearb"></div>
-</div>
-</div>
-</div>
-</div>
-<a href="http://www.360doc.com/advice.html" target="_blank" class="head_talk f_left" onclick="imgLog(1, 'code=43-14-1-10')"><i class="indexallbg"></i><p>留言交流</p></a>
-</div>
-</div>
-<div class="arti_type_shadow"></div>
-</div>
-<div class="atfixednav">
-<div class="anbg"></div>
-<div class="d1" onclick="$('#contextmenudivmouseup').hide();">
-<a class="fxlogo_ atnavicons" href="/"></a>
-<div class="fxsearch_" id="fxinput">
-<div><input type="text" value="Linux下编译、链接和装载"/></div><a href="javascript:void(0);">搜索</a>
-</div>
-<span class="s1 ic5" id="fixedShareArt" title="分享"><a href="javascript:void(0)" onclick="artStatistics('20-8-2')" class="atnavicons"><b>分享</b></a>
-<div class="sharelist_new bdsharebuttonbox" id="fenxiangLayer3">
-<a class="slbg1" href="javascript:void(0);" data-cmd="qzone" onclick="shareStatic.addStatic('qzone');artStatistics('20-8-6')">QQ空间</a>
-<a class="slbg2" href="javascript:void(0);" data-cmd="sqq" onclick="shareStatic.addStatic('qq');artStatistics('20-8-7')">QQ好友</a>
-<a class="slbg3" href="javascript:void(0);" data-cmd="tsina" onclick="shareStatic.addStatic('sina');artStatistics('20-8-8')">新浪微博</a>
-<a class="slbg0" href="javascript:void(0);" onclick="shareWeixin()" id="fixed_weixin">微信</a>
-<iframe width="95" height="95" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" class="qr" rel="644666448" style="display:none;"></iframe>
-</div>
-</span>
-<span class="s1 ic1" id="fixedLongPic" style="display:none" title="生成长图"><a href="javascript:void(0)" onclick="ArticleLongImgClick(2)" class="atnavicons"><b>生成长图</b></a></span>
-<span class="s1 ic10" id="fixedWord" style="display:none" title="转Word"><a href="javascript:void(0)" onclick="WordObj.init();addStatisticsNew('20-37-3-131');" class="atnavicons"><b>转Word</b></a></span>
-<span class="s1 ic7" id="fixedPrint" style="display:none" title="打印"><a href="javascript:void(0)" onclick="PrintObj.init();addStatisticsNew('20-31-1-121');" class="atnavicons"><b>打印</b></a></span>
-<span class="s1 ic4" id="fixedArtReading" style="display:none" title="朗读"><a href="javascript:void(0)" onclick="ArticleReadingClick(4);" class="atnavicons"><b>朗读</b></a></span>
-<span class="s1 ic8" id="fixedFullScreen" style="display:none" title="全屏"><a href="javascript:void(0)" onclick="FullScreenObj.init();addStatisticsNew('20-30-1-119');" class="atnavicons"><b>全屏</b></a></span>
-<span class="s1 ic6" id="fixedEditArt" style="display:none" title="修改"><a href="javascript:void(0)" onclick="document.getElementById('updateartbtnlink').click();artStatistics('20-26-15');" class="atnavicons"><b>修改</b></a></span>
-<span class="s1 ic2" id="fixedResaveArt" style="display:none" title="转藏"><a href="javascript:void(0)" onclick="SaveArt();artStatistics('20-26-6');" class="atnavicons"><b id="resavenum_bar">转藏</b></a><i id="incresave" style="display:none;">+1</i></span>
-</div>
-</div>
-<div style="height: 68px; _height: 0px; width: 100%;"></div>
-<div class="clear360doc"></div>
-<div class="doc360article_content">
-<div style="height: 100px; padding-top: 13px;display:none;" id="arttopbdad">
-</div>
-<p class="clearboth"></p>
-<div class="a_left">
-<div id="bgchange">
-<div id="printArticle">
-<h2 id="titiletext"><span id="GLTitile">Linux下编译、链接和装载</span><i id="ArticleReadingBtn" title="朗读" class="sound" onclick="ArticleReadingClick(1)" style="display: none;"><span></span><span></span><span></span><span></span></i></h2>
-<audio id="audioId" width="100" height="100" ontimeupdate="AudioTimeUpdate()"></audio>
-<div class="art_topdata">
-<span class="a_username" id="topnickname">&nbsp;<a href="http://www.360doc.com/userhome/478627" id="savernickname" target="_blank" onclick="artStatistics(&#39;20-7-1&#39;);">心不留意外尘</a>
-</span>
-2017-04-11
-<span id="articleinfo">
-<span id="territory"></span><span id="docsource" class="a_from" style="display: none;"></span><span id="360doc_Readnum"></span><span onclick="ShowSaverUser();artStatistics('20-13');" id="360docResaveCount" class="rc__" style="display:none;cursor:pointer;">&nbsp;&nbsp;|&nbsp;&nbsp;<span id="360doc_saverNum" style="color:#62a242;"></span>转藏
-<span id="360doc_saverUser">
-<div id="sameArtOuter">
-<div onclick="event.cancelBubble=true;" style="overflow-y: auto; height: 300px; overflow-x: hidden; z-index: 100; right: 0px; margin-top: -10px;" id="sameArt">
-</div>
-</div>
-</span>
-</span>
-</span>
-</div>
+
+
+<h2 id="titiletext"><span id="GLTitile">Linux下编译、链接和装载</span></h2>
+
+
 <div class="bdsharebuttonbox article_data_right">
-<div class="fontsize_bgcolor_controler" id="color_div" style="display:none;">
+<div class="fontsize_bgcolor_controler" id="color_div" style="">
 <div class="a_bgcolor">
-<img src="http://pubimage.360doc.com/NewArticle/bgcolor.jpg" />
+<img src="./Linux下编译、链接和装载_files/bgcolor.jpg">
 <div class="a_colorlist">
-<span class="a_color1" onclick="artStatistics('20-11-1');addStatisticsFullScreen(1,null,6)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
-<span class="a_color2" onclick="artStatistics('20-11-2');addStatisticsFullScreen(1,null,5)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
-<span class="a_color3" onclick="artStatistics('20-11-3');addStatisticsFullScreen(1,null,4)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
-<span class="a_color4" onclick="artStatistics('20-11-4');addStatisticsFullScreen(1,null,3)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
-<span class="a_color5" onclick="artStatistics('20-11-5');addStatisticsFullScreen(1,null,2)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
-<span class="a_color6 cur" onclick="artStatistics('20-11-6');addStatisticsFullScreen(1,null,1)">
-<img src="http://pubimage.360doc.com/NewArticle/yes.gif" /></span>
+<span class="a_color1" onclick="artStatistics(&#39;20-11-1&#39;);addStatisticsFullScreen(1,null,6)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
+<span class="a_color2" onclick="artStatistics(&#39;20-11-2&#39;);addStatisticsFullScreen(1,null,5)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
+<span class="a_color3" onclick="artStatistics(&#39;20-11-3&#39;);addStatisticsFullScreen(1,null,4)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
+<span class="a_color4" onclick="artStatistics(&#39;20-11-4&#39;);addStatisticsFullScreen(1,null,3)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
+<span class="a_color5" onclick="artStatistics(&#39;20-11-5&#39;);addStatisticsFullScreen(1,null,2)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
+<span class="a_color6 cur" onclick="artStatistics(&#39;20-11-6&#39;);addStatisticsFullScreen(1,null,1)">
+<img src="./Linux下编译、链接和装载_files/yes.gif"></span>
 </div>
 </div>
 <div class="a_fontsize">
-<img src="http://pubimage.360doc.com/NewArticle/fontSize.jpg" />
+<img src="./Linux下编译、链接和装载_files/fontSize.jpg">
 <div class="fschange">
 <label>
-<input type="radio" name="font_Size" id="" value="18" onclick="artStatistics('20-10-1'); addStatisticsFullScreen(1, 1, null)" />大
+<input type="radio" name="font_Size" id="" value="18" onclick="artStatistics(&#39;20-10-1&#39;); addStatisticsFullScreen(1, 1, null)">大
 </label>
 &nbsp;
 <label>
-<input type="radio" name="font_Size" id="" value="16" onclick="artStatistics('20-10-2'); addStatisticsFullScreen(1, 2, null)" />中
+<input type="radio" name="font_Size" id="" value="16" onclick="artStatistics(&#39;20-10-2&#39;); addStatisticsFullScreen(1, 2, null)" checked="checked">中
 </label>
 &nbsp;
 <label>
-<input type="radio" name="font_Size" id="" value="14" onclick="artStatistics('20-10-3'); addStatisticsFullScreen(1, 3, null)" />小
+<input type="radio" name="font_Size" id="" value="14" onclick="artStatistics(&#39;20-10-3&#39;); addStatisticsFullScreen(1, 3, null)">小
 </label>
 </div>
 </div>
 </div>
-<div id="resavelayer1"></div>
-</div>
+
 <div id="articlecontent" class="article_container" onmousedown="newhighlight = true;" onmouseup="NewHighlight(event);">
 <div class="article_showall">
 <div>
-<a href="javascript:void(0);" onclick="$('body').removeClass('articleMaxH')" datatype="360doczkqw">展开全文</a>
+<a href="javascript:void(0);" onclick="$(&#39;body&#39;).removeClass(&#39;articleMaxH&#39;)" datatype="360doczkqw">展开全文</a>
 </div>
 </div>
 <table style="width: 656px;">
@@ -301,11 +60,10 @@ Linux下编译、链接和装载
 <tr>
 <td id="artContent" style="max-width: 656px">
 <div style="width: 656px; margin: 0; padding: 0; height: 0;"></div>
-<p style="text-align: right;">http://www.cnblogs.com/glacierh/p/4678229.html</p><p style="text-align: right;">2015&nbsp;</p>
-<p style="text-align: right;"><span style="font-size: 16pt;"><strong>——《程序员的自我修养》读书笔记 </strong></span></p>
+
 <h2>编译过程</h2>
 <p>在Linux下使用GCC将源码编译成可执行文件的过程可以分解为4个步骤，分别是预处理（Prepressing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。一个简单的hello word程序编译过程如下：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_1.jpg' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img src="./Linux下编译、链接和装载_files/96384451_1.jpg" alt=""></p>
 <p>1. 预处理</p>
 <p>首先源代码文件（.c/.cpp）和相关头文件（.h/.hpp）被预处理器cpp预编译成.i文件（C++为.ii）。预处理命令为：</p>
 <p>gcc –E hello.c –o hello.i</p>
@@ -335,9 +93,9 @@ Linux下编译、链接和装载
 <p>实际上gcc只是一些其它程序的包装，它会根据不同参数去调用预编译编译程序cc1、汇编器as、链接器ld。</p>
 <h2>目标文件</h2>
 <p>Linux下的可执行文件格式为ELF（Executalbe Linkable Format），包括可执行文件、可重定位文件（目标文件.o、静态库.a）、共享目标文件（动态库.so）、核心转储文件（core dump）。ELF目标文件的结构如下：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_2.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img src="./Linux下编译、链接和装载_files/96384451_2.png" alt=""></p>
 <p>其中ELF文件中与段有关的重要结构就是段表（Section Header Table），该表描述了ELF文件包含的所有段的信息，比如每个段的名称、长度、在文件中的偏移、读写权限及段的其他属性。我们可以通过readelf工具来查看ELF文件的段：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_3.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img src="./Linux下编译、链接和装载_files/96384451_3.png" alt=""></p>
 <p>几个比较重要的段如下：</p>
 <div>
 <table style="border-collapse: collapse;" border="0"><colgroup><col style="width: 102px;"><col style="width: 466px;"></colgroup>
@@ -402,10 +160,10 @@ Linux下编译、链接和装载
 </table>
 </div>
 <p>链接过程的本质就是要把多个不同目标文件粘合成一个整体，目标文件之间相互拼合实际上是目标文件之间对地址的引用，即对函数和变量的地址的引用。在链接中，我们将函数和变量统称为符号（Symbol），函数名和变量名就是符号名（Symbol Name），我们可以将符号看做是链接中的粘合剂，整个链接过程正是基于符号才能够正确完成。每个目标文件都会有一个符号表（Symbol Table），即上图的.symtab段，这个表里记录了目标文件所用到的所有符号。每个定义的符号有一个对应的值，叫做符号值（Symbol Value），对于变量和函数来说，符号值就是它们的地址。我们可以通过readelf工具来查看符号表中所有的符号信息：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_4.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img  src="./Linux下编译、链接和装载_files/96384451_4.png" alt=""></p>
 <h2>静态链接</h2>
 <p>链接器链接的过程，就是将几个输入的目标文件加工后合并成一个输出文件。合并的方法简单来说，就是将相同性质的段合并到一起，比如将输入文件的.text段合并到.text段，接着是.data段、.bss段等，如下图所示：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_5.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img src="./Linux下编译、链接和装载_files/96384451_5.png" alt=""></p>
 <p>链接器一般采用一种叫做两步链接的方法：</p>
 <ol>
 <li><span style="font-size: 10pt;">空间与地址分配。链接器扫描所有的输入目标文件，将它们的段进行合并，计算出输出文件中各个段合并后的长度和位置，建立映射关系；并且将输入目标文件的符号表中的所有符号定义和符号引用收集起来，统一放到一个全局的符号表。 </span></li>
@@ -413,10 +171,10 @@ Linux下编译、链接和装载
 </ol>
 <p>在链接之前，目标文件中所有段的虚拟地址都是0，因为虚拟空间还没有被分配。链接之后，输出文件的各个段都被分配到了相应的虚拟地址。同样的，链接器将输入文件中段进行合并后，就能计算出符号表中的符号在所在段的新的偏移量，通过符号所在段的虚拟地址和符号在段中的偏移量，就可以计算出符号最终的虚拟的地址。</p>
 <p>重定位是连接符号引用和符号定义的过程。在目标文件中，有一个叫重定位表（Relocation Table）的结构专门用来保存与重定位相关的信息，对于每个要被重定位的ELF段都有一个对应的重定位表，而一个重定位表往往就是ELF文件中的一个段。比如.text段和.data段都有被重定位的地方，那么就会有相应的重定位表.rel.text段和.rel.data段。每个要被重定位的地方叫做一个重定位入口（Relocation Entry），重定位入口的偏移表示该入口在要被重定位的段中的位置。重定位的过程中，每个重定位入口都是对一个符号的引用，那么当链接器需要对某个符号的引用进行重定位时，它就要确定这个符号的目标地址，这时候链接器就会去查找由所有输入目标文件的符号表组成的全局符号表，找到相应的符号进行重定位。我们看下面的符号表：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_6.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img src="./Linux下编译、链接和装载_files/96384451_6.png" alt=""></p>
 <p>类型为GLOBAL的符号shared和swap都是UND，这种未定义的符号是因为该目标文件中有关于它们的重定位项。所以在链接器扫描完所有的输入目标文件之后，所有这些未定义的符号都应该能在全局符号表中找到，否则链接器就报符号未定义错误。</p>
 <p>在静态链接中，除了链接源代码生成的目标文件，还需要链接其它静态库，如C语言静态库libc。其实静态库可以简单地看成是一组目标文件的集合，即很多目标文件经过压缩打包后形成的一个文件。我们可以使用ar工具来查看静态库中包含了那些目标文件：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_7.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img  src="./Linux下编译、链接和装载_files/96384451_7.png" alt=""></p>
 <p>链接器在链接静态库的时候是以目标文件为单位的，只有引用了静态库中某个目标文件中定义的符号，才会把改目标文件链进来。</p>
 <h2>装载</h2>
 <p>可执行文件只有被装载到内存以后才能被CPU执行。操作系统创建一个进程，然后装载相应的可执行文件并且执行，这个过程最开始只需要做3件事情：</p>
@@ -433,10 +191,10 @@ Linux下编译、链接和装载
 </ol>
 <p>进程虚拟空间中的一个段叫做虚拟内存区域（VMA，Virtual Memory Area），一个VMA按照一个Segment来映射可执行文件，在ELF文件中把权限相同的Section合并成一个Segment，系统正式按照Segment而非Section来映射可执行文件的。从Section的角度来看ELF文件就是连接视图（Linking View），从Segment的角度来看就是执行视图（Executiong View）。当我们在谈到ELF装载时，段专门指Segment；而在其他情况下，段指的是Section。</p>
 <p>ELF文件的Segment信息保存在可执行文件头（Program Header Table），它描述了ELF文件如何被操作系统映射到进程的虚拟空间，可以通过readelf工具查看Segment：</p>
-<p>&nbsp;<img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_8.png' src="http://pubimage.360doc.com/wz/default.gif" alt="" style="max-width: 650px;"></p>
+<p>&nbsp;<img src="./Linux下编译、链接和装载_files/96384451_8.png" alt="" style="max-width: 650px;"></p>
 <p>在上图中，类型为LOAD的两个Segment是需要被映射的，我们还可以看到哪些Section被合并到了这两个Segment中。</p>
 <p>VMA除了被用来映射可执行文件中的各个Segment，进程在执行时用到的堆、栈等空间也是以VMA的形式存在的。我们可以查看进程虚拟空间的分布：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_9.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img  src="./Linux下编译、链接和装载_files/96384451_9.png" alt=""></p>
 <p>操作系统通过给进程空间划分出一个个VMA来管理进程的虚拟空间，基本原则是将相同权限属性的、有相同映像文件的映射成一个VMA。一个进程基本上可以分为如下几种VMA区域：</p>
 <ul>
 <li>
@@ -453,18 +211,18 @@ Linux下编译、链接和装载
 </li>
 </ul>
 <p>一个常见进程的虚拟空间如下图所示：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_10.jpg' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img  src="./Linux下编译、链接和装载_files/96384451_10.jpg" alt=""></p>
 <h2>动态链接</h2>
 <p>动态链接的基本思想是把程序按照模块拆分成相对独立的部分，在程序运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有的程序模块都连接成一个单独的可执行文件。ELF动态链接文件被称为动态共享对象（DSO，Dynamic Shared Object），简称共享对象，它们一般都是.so为扩展名的文件。相比静态链接，动态链接有两个优势，一是共享对象在磁盘和内存只有一份，节省了空间；二是升级某个共享模块时，只需要将目标文件替换，而无须将所有的程序重新链接。</p>
 <p>共享对象的最终装载地址在编译时是不确定的，而是在装载时，装载器根据当前地址空间的空闲情况，动态分配一块足够大小的虚拟地址空间给相应的共享对象。为了能够使共享对象在任意地址装载，在连接时对所有绝对地址的引用不作重定位，而把这一步推迟到装载时再完成，即装载时重定位。同时为了实现共享模块的指令部分在多个进程间共享，共享的指令部分就不能因为装载地址的改变而改变，解决方法就是把指令中那些需要被修改的部分分离出来，和数据部分放在一起，这样指令部分就可以保持不变，而数据部分可以在每个进程中拥有一个副本，这种方案就是地址无关代码（PIC，Position-independent Code）的技术，我们在GCC中使用-fPIC参数来生成地址无关代码。对于模块内部的符号引用使用的是相对地址，所以这种指令是不需要重定位的；而对于模块外部的符号引用，做法是在数据段建立一个全局偏移表（GOT，Global Offset Table），代码通过GOT中相对应的项进行间接引用，对GOT的引用同样使用相对地址，基本机制如下：</p>
-<p style="text-align: center;"><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_11.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p style="text-align: center;"><img  src="./Linux下编译、链接和装载_files/96384451_11.png" alt=""></p>
 <p>在动态链接情况下，操作系统在映射完可执行文件之后，会启动一个动态链接器（Dynamic Linker），动态链接器ld.so实际上也是一个共享对象，操作系统同样通过映射的方式将它加载到进程的地址空间中，并将控制权交给动态链接器的入口地址，动态链接器开始执行一系列自身的初始化操作，然后根据当前的环境参数，开始对可执行文件进行动态链接工作，当所有动态链接工作完成以后，动态链接器会将控制权转交到可执行文件的入口地址，程序开始正式执行。</p>
 <p>动态链接ELF中最重要的结构是.dynamic段，这个段里面保存了动态链接器所需要的基本信息，如依赖于哪些共享对象、动态链接符号的位置、动态链接重定位表的位置、共享对象初始化代码的地址等。使用readelf工具可以查看.dynamic段的内容：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_12.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img  src="./Linux下编译、链接和装载_files/96384451_12.png" alt=""></p>
 <p>另外还可以通过ldd工具来查看一个程序或共享库依赖哪些共享库：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_13.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img  src="./Linux下编译、链接和装载_files/96384451_13.png" alt=""></p>
 <p>为了表示动态链接模块之间的符号导入导出关系，ELF专门有一个叫做动态符号表（Dynamic Symbol Table）的段来保存这些信息，这个段通常叫做.dynsym，它只保存了与动态链接相关的符号，静态链接符号表.syntab保存了所有的符号，一般动态链接模块同时拥有两个符号表。可以使用readelf工具来查看ELF文件的动态符号表：</p>
-<p><img doc360img-src='http://image105.360doc.com/DownloadImg/2017/04/1114/96384451_14.png' src="http://pubimage.360doc.com/wz/default.gif" alt=""></p>
+<p><img  src="./Linux下编译、链接和装载_files/96384451_14.png" alt=""></p>
 <p>动态链接基本上分为3步：</p>
 <ol>
 <li><span style="font-size: 10pt;">动态链接器自举。当操作系统将进程控制权交给动态链接器时，动态链接器的自举代码开始执行。自举代码获得动态链接器本身的重定位表和符号表，将它们重定位后，才可以使用自己的全局变量和静态变量。 </span></li>
@@ -495,275 +253,6 @@ Linux下编译、链接和装载
 <p class="clearboth"></p>
 <div id="oranuserinfo" style="display: none;  border: 0;padding: 0; margin: 0;overflow: visible;" class="yc_user zcomdiv new_yc_user">
 </div>
-<div id="divtort"><div style="color:#999;text-align:left;line-height:22px;background:#f7f7f7;padding: 10px 20px;margin-bottom: -7px;margin-top:10px;">本站是提供个人知识管理的网络存储空间，所有内容均由用户发布，不代表本站观点。请注意甄别内容中的联系方式、诱导购买等信息，谨防诈骗。如发现有害或侵权内容，请点击<span style="color:#155d9a;cursor:pointer;white-space: nowrap;" onclick="reportLayer.isLogin();artStatistics('20-18');">一键举报。</span></div></div>
-<div class="bottombtn2" id="bottombtn2">
-<span class="newbtn_forward" onclick="SaveArt();artStatistics('20-3-2');" id="bt_resave"><i></i><b>转藏</b></span>
-<span class="newbtn_fullscreen" onclick="FullScreenObj.init();addStatisticsNew('20-30-1-34');"><i></i><b>全屏</b></span>
-<span class="newbtn_listen" onclick="ArticleReadingClick(5);" style="display:none"><i><span></span><span></span><span></span><span></span></i><b>朗读</b></span>
-<span class="newbtn_print" onclick="PrintObj.init();addStatisticsNew('20-31-1-70');" id="down_newbtn_print"><i></i><b>打印</b></span>
-<span class="newbtn_word" onclick="WordObj.init();addStatisticsNew('20-37-3-130')" id="bt_word" style="display:none"><i></i><b>转Word</b></span>
-<span class="newbtn_longpic" onclick="ArticleLongImgClick(3);" id="bt_longpic" style="display:none"><i></i><b>生成长图</b></span>
-<span class="newbtn_share">
-<i></i><b>分享</b>
-<a href="javascript:void(0);" onclick="artStatistics('20-8-3');shareclickfun(this)"></a>
-<div class="sharelist_new bdsharebuttonbox" id="fenxiangLayer2">
-<a class="slbg1" href="javascript:void(0);" data-cmd="qzone" onclick="artStatistics('20-8-6');shareStatic.addStatic('qzone');">QQ空间</a>
-<a class="slbg2" href="javascript:void(0);" data-cmd="sqq" onclick="artStatistics('20-8-7');shareStatic.addStatic('qq');">QQ好友</a>
-<a class="slbg3" href="javascript:void(0);" data-cmd="tsina" onclick="artStatistics('20-8-8');shareStatic.addStatic('sina');">新浪微博</a>
-<a class="slbg0" href="javascript:void(0);" onclick="shareWeixin()" id="bottom_weixin">微信</a>
-<iframe width="95" height="95" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" class="qr" rel="644666448" style="display:none;"></iframe>
-</div>
-</span>
-<span id="flowimg3" class="newbtn_hua" onclick="Showflowerlayer('sendedLayer1');"><i></i><b>献花（<span id="articleflowernum">0</span>）
-<span id="flowernumadd" style="display: none;">+1</span></b></span>
-</div>
-<div class="bottom_controler">
-<p class="bottom_cleft">
-来自：
-<span class="a_username" style="width: auto;">
-<a href="http://www.360doc.com/userhome/478627" id="savernickname2" target="_blank" onclick="artStatistics(&#39;20-7-2&#39;);">心不留意外尘</a>
-</span>
-&gt;
-<span id="cname" class="a_from"><a href='http://www.360doc.com/userhome.aspx?userid=478627&cid=191' target='_blank' onclick='artStatistics("20-6");'>《linux dev》</a></span>
-</p>
-<div class="bottom_cright">
-<span>
-<a href="javascript:void(0);" class="a2 a3" onclick="reportLayer.isLogin();artStatistics('20-18');">举报/认领</a>
-</span>
-</div>
-</div>
-<div class="prev_next">
-<p class="p1" style="display: block;"><span style="color: #E6352B;">推<span style="visibility: hidden;">一</span>荐</span>：<a href="http://www.360doc.com/pages/Wallet/bonus.html" target="_blank">发原创得奖金，“原创奖励计划”来了！</a>
-</p>
-</div>
-<div class="prev_next">
-<p id="lastart" class="p1">
-</p>
-<p id="nextart" class="p2">
-</p>
-</div>
-</div>
-<p class="clearboth"></p>
-<div style="width: 676px; float: left;">
-<a href="javascript:void(0)" id="topref" style="height: 0px;"></a>
-<div class="str_border" style="border: none; position: relative; z-index: 2;display:none;" id="divyoulikeadtitle">
-<strong>猜你喜欢</strong>
-</div>
-<ul class="youlike" style="margin-top: -18px; position: relative; z-index: 1;display:none;" id="divyoulikeadbody">
-<div style="width: 676px; height: 280px; border: 0;" id="divyoulikead">
-</div>
-</ul>
-<script type="text/javascript">
 
-</script>
-<div class="clearboth"></div>
-<div class="new_plbox zcomdiv">
-<p class="p1 f_left"><span id="refNumSpan">0</span>条评论</p>
-<div class="new_huifubt f_left">
-<textarea name="SendRefTB" id="SendRefTB" value="写评论...">写评论...</textarea>
-<p>
-<a id="ImgSendPL" href="javascript:void(0);" onclick="SubmitReflection();">发表</a>
-</p>
 </div>
 </div>
-<p style="margin: 0; text-align: right;padding: 7px 19px 0 0;color: #999;">请遵守用户&nbsp;<a href="http://www.360doc.com/pages/agreement.html" target="_blank">评论公约</a></p>
-<ul class="replylist" id="reflectionListUL">
-</ul>
-<div class="reply_pager" id="pageBarDIV">
-</div>
-<a href="javascript:void(0)" class="reply_more" onclick="setSpread()" style="display: none;">查看更多评论
-<img src="http://pubimage.360doc.com/NewArticle/reply_btn.gif" /></a>
-<div class="str_border" style="border: none; margin-top: 20px;">
-<strong>类似文章</strong>
-<a href=http://www.360doc.com/relevant/644666448_more.shtml target='_blank' class='a_more f_right' onclick='artStatistics("20-9-8");'>更多</a>
-</div>
-<ul class="ul-similar">
-<li id="artid_709908406"> <span class="similar-pic f_left"><a href="http://www.360doc.com/content/17/1204/19/7377734_709908406.shtml" target='_blank' onclick='artStatistics("20-9-7");'><img src="http://thumbnail1.360doc.com/DownloadImg/2017/12/0407/i109/709908406_1.jpg"></a></span> <div class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/17/1204/19/7377734_709908406.shtml">ELF文件装载链接过程及hook原理 | FelixZhang&#39;&#39;&#39;&#39;s Blog</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/17/1204/19/7377734_709908406.shtml">符号所在段(st_shndx)如果符号定义在本目标文件中，那么这个成员表示符号所在段在段表中的下表，但是如果符号不是定义在本目标文件中，...</a></p> </div> </li><li id="artid_667438488"> <span class="similar-pic f_left"><a href="http://www.360doc.com/content/17/0629/12/17673261_667438488.shtml" target='_blank' onclick='artStatistics("20-9-7");'><img src="http://thumbnail1.360doc.com/DownloadImg/2017/06/2912/i107/667438488_1.jpg"></a></span> <div class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/17/0629/12/17673261_667438488.shtml">ELF文件格式与程序的编译链接</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/17/0629/12/17673261_667438488.shtml">第二步：符号解析与重定位(符号解析指将每个符号引用刚好和一个符号定义联系起来。3.3、关于符号解析过程中链接器对于全局符号的处理(符...</a></p> </div> </li><li id="artid_209330714"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/12/0507/20/4186481_209330714.shtml">（转载）GCC_ELF：程序的启动阶段动态链接器 都干了些什么？</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/12/0507/20/4186481_209330714.shtml">读它的文件头，进而找到程序头，再找到.dynamic节所在的DYNAMIC段，然后通过.dynamic节，把库中的符号表加到全局符号表链中，如果这个库还依赖其它的库，就再加载其他的库。PLT0就是那个调用动态链接器...</a></p> </div> </li><li name="liadfeed" style="display:none;"></li><li id="artid_406438267"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/14/0902/09/19184777_406438267.shtml">DSO(dynamic shared object)动态共享对象的原理</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/14/0902/09/19184777_406438267.shtml">DSO(dynamic shared object)动态共享对象的原理。另外一种是动态链接，这种模式下，链接阶段只是链接一部分目标文件，动态链接库（DSO）在装载的时刻才会映射到进程地址空间。如果是的话，那么各个进程...</a></p> </div> </li><li id="artid_66208047"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/10/1103/11/158286_66208047.shtml">ELF的GOT和PLT以及PIC | Zhiwei.Li</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/10/1103/11/158286_66208047.shtml">全局偏移表(GOT)和过程链接表(PLT)对于本模块内的静态变量和静态函数，用 GOT 表的首地址作为一个基准，用相对于该基准的偏移量来引用，因为不论程序被加载到何种地址空间，模块内的静态变量和静态函数...</a></p> </div> </li><li id="artid_446859212"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/15/0207/10/9183209_446859212.shtml">符号重定位理解</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/15/0207/10/9183209_446859212.shtml">即在这个节区0x0b处会引用符号foo2，所以这里要填充该符号的地址，但是在未链接时并不知道该符号的绝对地址，所以这里先是填充该符号的临时地址00 00 00 00 替代，到这里真正链接时再进行重定位，此时...</a></p> </div> </li><li name="liadfeed" style="display:none;"></li><li id="artid_517054705"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/15/1130/23/29429450_517054705.shtml">可执行文件（ELF）格式的理解</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/15/1130/23/29429450_517054705.shtml">一个单独的 segment 通常会包含几个不同的 sections，比方一个可被加载的、只读的segment 通常就会包括可执行代码section .text、只读的数据section .rodata以及给动态链接器使用的符号section .dymsym...</a></p> </div> </li><li id="artid_360494725"> <div style='width:100%;margin:0;' class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/14/0314/11/11948835_360494725.shtml">elf文件格式</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/14/0314/11/11948835_360494725.shtml">[参阅 第一部分中的 &quot;ELF 头&quot;]+ Figure 2-1: Program Header typedef struct { Elf32_Word p_type; Elf32_Off p_offset; Elf32_Addr p_vaddr; Elf32_Addr p_paddr; ...</a></p> </div> </li><li id="artid_335332443"> <span class="similar-pic f_left"><a href="http://www.360doc.com/content/13/1207/22/9200790_335332443.shtml" target='_blank' onclick='artStatistics("20-9-7");'><img src="http://thumbnail1.360doc.com/DownloadImg/2013/12/0722/i67/335332443_1.jpg"></a></span> <div class="similar-info  f_left"> <p class="similar-title"><a target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/13/1207/22/9200790_335332443.shtml">原创 C++应用程序在Windows下的编译、链接（四）动态链接</a></p> <p class="similar-text"><a onclick="artStatistics('20-9-7');" target='_blank' onclick="artStatistics('20-9-7');" href="http://www.360doc.com/content/13/1207/22/9200790_335332443.shtml">在静态链接阶段，链接器为PE文件生成了导入表，导出表，符号表，并调整了Call指令后面的操作数，在程序调用的时候，能够直接地或者间接...</a></p> </div> </li><li name="liadfeed" style="display:none;"></li>
-</ul>
-</div>
-</div>
-<div class="a_right">
-<div id="rightfixed" style="width: 300px;">
-<div class="user_info">
-<div class="user_photo_new f_left">
-<a href="http://www.360doc.com/userhome/478627" id="userphotourl" target="_blank" onclick="artStatistics(&#39;20-7-4&#39;);">
-<img src="http://userimage6.360doc.com/15/0926/15/478627_201509261516050137_main.jpg" id="userphoto" width="58" height="58" />
-</a>
-</div>
-<div class="user_data f_right">
-<div class="user_data_name">
-<a href="http://www.360doc.com/userhome/478627" id="nickname" target="_blank" onclick="artStatistics(&#39;20-7-3&#39;);">心不留意外尘</a><i id="VerificationTips" style="display:none" class="aut" title="已通过个人认证"><a href="https://pay.360doc.com/pages/myaccount.aspx?app=23" target="_blank" onclick="artStatistics('25-13-3-27');"></a></i>
-</div>
-<p id="userdegree" style="display:none"><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar1.gif' /><img src='http://pubimage.360doc.com/NewArticle/userstar2.gif' /></p>
-<p class="p1 wordnobreak_" style="display:none" id="oVerification"></p>
-<p class="p1 wordnobreak_" style="display:none" id="iVerification"></p>
-<div class="user_data_num" id="follow_talk">
-<a class="user_data_gz" href="javascript:void(0);" id="spanfollowstatusnew">关注</a>
-<a class="user_data_dh" href="javascript:void(0);" onclick="this.blur();docTalk();artStatistics('20-15');">对话</a>
-</div>
-</div>
-</div>
-<div class="his_her"><ul class='his_her_type'><li class='f_left curone'><a href="http://www.360doc.com/userhome/478627" style="color:#000;" target="_blank" onclick="artStatistics('20-9-10');">TA的最新馆藏</a></li></ul><div class='his_her_div' style="height:190px;"><ul class='his_her_list'><li><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a title="一文包你学会网络数据抓包" href=http://www.360doc.com/content/21/0425/09/74768826_974020930.shtml target=_blank onclick="artStatistics('20-9-11');">一文包你学会网络数据抓包</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a title="如何搞定恒流电源电路设计，看懂六个提示！" href=http://www.360doc.com/content/16/0204/21/14325963_532757703.shtml target=_blank onclick="artStatistics('20-9-11');">如何搞定恒流电源电路设计，看懂六个提示！</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a title="Zigbee RF4CE" href=http://www.360doc.com/content/16/0304/13/496343_539338070.shtml target=_blank onclick="artStatistics('20-9-11');">Zigbee RF4CE</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a title="提醒同志们不要加班过头了(加班赶工，得不偿失——历史给你上六课)" href=http://www.360doc.com/content/12/0223/16/6295074_189047165.shtml target=_blank onclick="artStatistics('20-9-11');">提醒同志们不要加班过头了(加班赶工，得不偿失——历史给你上六课)</a></div><div><span style="color:#b0b0b0;">[转]&nbsp;</span><a title="寅时 凌晨3：00～5：00-五更时候醒来是怎么回事" href=http://www.360doc.com/content/15/0520/12/7131890_471925858.shtml target=_blank onclick="artStatistics('20-9-11');">寅时 凌晨3：00～5：00-五更时候醒来是怎么回事</a></div><div><span></span><a title="C语言中，static的作用" href=http://www.360doc.com/content/18/1222/06/478627_803505274.shtml target=_blank onclick="artStatistics('20-9-11');">C语言中，static的作用</a></div></li></ul></div></div>
-<div class="clear360doc" style="padding-top: 10px; height: 260px;display:none;" id="outerdivifartad1">
-<div id="divifartad1">
-</div>
-<div style="height: 10px;">
-</div>
-</div>
-<div class="his_her" id="recommendArt" style="margin-top: 5px;">
-<div class="str_border" style="margin: 0;">
-<span style="font-size: 14px; float: left;">喜欢该文的人也喜欢</span>
-<a style="float: right;" class="a_more" onclick="artStatistics('20-28-4');" href="http://www.360doc.com/readroom.html" target="_blank">更多</a>
-</div>
-<div class='his_her_div'">
-        <ul class='his_her_list hh2_'>
-            <li id="recommendArtLists"></li>
-        </ul>
-    </div>
-</div>
-
-
-
-<div class="clear360doc" style="padding-top: 10px;" id="divifartad2">
-</div>
-<br />
-
-
-
-
-<div class="clear360doc" id="divad5" style="padding-top: 11px; zoom: 1; width: 300px;display:none;">
-    <div id="divad4" style="display: none;">
-        <div id="divifartad">
-        </div>
-        <div class="ggwz">
-            <a href="javascript:void(0);" onclick="closead(2);">关闭</a>
-        </div>
-        <div style="height: 13px;">
-        </div>
-    </div>
-    <div style="clear: both; display: none;" id="divad6">
-        <div id="adfloatbaidu">
-        </div>
-       <div class="ggwz">
-            <a href="javascript:void(0);" onclick="closead(3);">关闭</a>
-        </div>
-        <div style="height: 13px;">
-        </div>
-    </div>
-    <div style="height: 75px;">
-    </div>
-</div>
-
-        	</div>
-        </div>
-    </div>
-   
-   
-    <p class="clearboth"></p>
-    <input type="hidden" id="artid" value="644666448" />
-    <input type="hidden" id="docarttitle" value="Linux%e4%b8%8b%e7%bc%96%e8%af%91%e3%80%81%e9%93%be%e6%8e%a5%e5%92%8c%e8%a3%85%e8%bd%bd" />
-    <input type="hidden" id="firstartid" value="644666448" />
-    <input type="hidden" id="firstuid" value="478627" />
-    <input type="hidden" id="myuid" value="-1" />
-    <input type="hidden" id="firstarturl" value="http://www.360doc.com/content/17/0411/14/478627_644666448.shtml" />
-    <input type="hidden" id="oranfirstarturl" value="" />
-    <input type="hidden" id="subclassid" value="0" />
-    <input type="hidden" id="recommendart1" value="220868306" />
-    <input type="hidden" id="recommendart2" value="-1" />
-    <input type="hidden" id="isowner" value="False" />
-
-    <input type="hidden" id="isowner2" value="0" />
-    <input type="hidden" id="original" value="0" />
-    <input type="hidden" id="showrewardlist" value="0" />
-    <input type="hidden" id="saveruserid" value="478627" />
-    <input type="hidden" id="sourceurl" value="" />
-    <input type="hidden" id="deschidden" value="发菩提心：普救一切众生，等佑一切世间，令一切众生灭诸苦，令一切众生离恶法，有怖畏者咸守护，舍离一切诸障碍，一切法界咸遍满，等虚空界无不往，悉见一切诸如来，于三世法智无违，普入一切智慧海。" />
-    <input type="hidden" id="firstkeywords" value="" />
-    <input type="hidden" id="firsttagwords" value="" />
-    <input type="hidden" id="firstsubclassid" value="0" />
-    <input type="hidden" id="hidisneweditor" value="0" />
-    <input type="hidden" id="hidreadroomclassid" value="0" />
-     <input type="hidden" id="hidsubclassid" value="-1" />
-    <input type="hidden" id="articleTime" value="2017-04-11T14:16:24" />
-    <input name="acinfo" type="hidden" id="acinfo" />
-     <input type="hidden" id="activityimg" value="http://ebookimage.360doc.com/banner/banner_1590142105143.jpeg" />
-     <input type="hidden" id="activityurl" value="http://www.360doc.com/member/index.html" />
-      <input type="hidden" id="isblackartid" value="2" />
-    <input type="hidden" id="isIllegalArt" value="2" />
-    <input type="hidden" id="hidappid" value="" />
-    <input type="hidden" id="userstatus" value="1" />
-    <input type="hidden" id="isshowimg" value="1" />
-
-
-    <input type="hidden" id="artreadroomid" value="0" />
-   
-    <div class="contextmenu" id="contextmenudiv" style="display:none;">
-    <ul>
-        <li><a href="javascript:void(0)" onclick="document.execCommand('Copy');addStatisticsNew('20-29-1-2');">复制</a></li>
-        <li><a href="javascript:void(0)" onclick="PrintObj.init();addStatisticsNew('20-31-1-72');">打印文章</a> </li>
-        <li class="sendtophone"><a href="javascript:void(0)" onclick="addStatisticsNew('20-41-1-147');">发送到手机</a>
-        <div class="qr" id="mobileQr"><p>微信扫码，在手机上查看选中内容</p><div id="sendtophone_qr"></div></div>
-        </li>
-        <li><a href="javascript:void(0)" onclick="FullScreenObj.init();addStatisticsNew('20-30-1-118');">全屏阅读</a> </li>
-        
-        <li id="ArticleReadingLiBtn1" style="display: none;"><a id="ArticleReadingBtn1" href="javascript:void(0)" onclick="ArticleReadingClick(2);">朗读全文<b></b></a></li>
-        
-        <li id="share_li">
-        	<a href="javascript:void(0)" class="tri">分享文章</a>
-        	<div class="sharelist_new ctxshare bdsharebuttonbox" id="ctxshare">
-        		<a class="slbg1" href="javascript:void(0);" data-cmd="qzone" onclick="artStatistics('20-8-6');shareStatic.addStatic('qzone');">QQ空间</a>
-        		<a class="slbg2" href="javascript:void(0);" data-cmd="sqq" onclick="shareStatic.addStatic('qq');artStatistics('20-8-7');">QQ好友</a>
-        		<a class="slbg3" href="javascript:void(0);" data-cmd="tsina" onclick="shareStatic.addStatic('sina');artStatistics('20-8-8');">新浪微博</a>
-        		<a class="slbg0" href="javascript:void(0);" onclick="shareWeixin()" id="ctx_weixin">微信</a>
-                <iframe width="95" height="95" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" class="qr"  rel="644666448" style="display:none;"></iframe>
-        	</div>
-        </li>
-    </ul>
-</div>
-    <div class="contextmenu unlogin" id="contextmenudivmouseup" style="display:none;">
-    <ul>
-        <li><a class="a1" href="javascript:void(0)" onclick="document.execCommand('Copy');$('#contextmenudivmouseup').hide();addStatisticsNew('20-29-1-2');">复制</a></li>
-        <li id="print_li_mouseup"><a href="javascript:void(0)" onclick="PrintObj.init();$('#contextmenudivmouseup').hide();addStatisticsNew('20-31-1-71');">打印文章</a> </li>
-        <li class="sendtophone" style="display:none"><a href="javascript:void(0)" onclick="addStatisticsNew('20-41-1-146');">发送到手机</a>
-        <div class="qr"><p>微信扫码，在手机上查看选中内容</p><div></div></div>
-        </li>
-         <li><a href="javascript:void(0)" onclick="FullScreenObj.init();$('#contextmenudivmouseup').hide();addStatisticsNew('20-30-1-117');">全屏阅读</a> </li>
-         
-        <li id="ArticleReadingLiBtn2" style="display: none;"><a id="ArticleReadingBtn2" href="javascript:void(0)" onclick="ArticleReadingClick(3);$('#contextmenudivmouseup').hide();">朗读全文</a> </li>
-        
-    </ul>
-</div>
-
-<script src="/js/Statistics/sha1.js?t=2017092101" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/index7/newheader2022.js"></script>
-    <script src="/js/showarticle.js?t=2022101102" type="text/javascript" charset="utf-8"></script>
-    <script>GerLookingUserInfo(1,478627,1,0,'','',10,0);OutputLastNextArt('GDB使用技巧','http://www.360doc.com/content/17/0411/11/478627_644625526.shtml',0);OutputLastNextArt('Linux的 标准GPIO及中断API函数','http://www.360doc.com/content/17/0516/06/478627_654294696.shtml',1);</script>
-    
-    <script src="//blockart.360doc.com/ajax/getstatusv2.ashx?aid=644666448" type="text/javascript" charset="utf-8" async="async"></script>
-    <script src="//blockart.360doc.com/ajax/getartstatus.ashx?aid=709908406,667438488,209330714,406438267,66208047,446859212,517054705,360494725,335332443&callbackparam=doccheckarts" type="text/javascript" charset="utf-8" async="async"></script>
-    
-    
-    <script type="text/javascript">
-        var baiduImagePlus = {
-            noLogo: true,
-            unionId: 'u2617463',
-            maxMiniAdCount: 0,
-            formList: [{ formId: 10 }]
-        };
-        //imgLogPcPage(1, 'code=69-2');
-    </script>
-    <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/i.js"></script>
-    
-    
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
-        "@id": "http://www.360doc.com/content/17/0411/14/478627_644666448.shtml",
-        "title": "Linux下编译、链接和装载",
-        "pubDate": "2017-04-11T14:16:24"
-    }
-    </script>
-    
-</body>
-</html>
