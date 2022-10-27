@@ -1,3 +1,8 @@
+---
+title: 服务器BMC与IPMI基础知识
+date: 2022-10-13 20:18:51
+tags:
+---
 # 服务器BMC与IPMI基础知识
 
 初识BMC与IPMI
@@ -16,12 +21,13 @@ BMC系统一般依赖于BMC芯片，目前常用的是ASPEED公司生产的AST25
 
 > AST2500是ASPEED公司生产的BMC芯片，用于服务器的远程管理，一般还兼用作服务器的显示芯片，输出VGA信号，显示功能很基础，但对于服务器而言足够了。
 >
-> 
+>
 > 目前所知晓的绝大部分厂商（DELL、HP、联想、浪潮、曙光等）所使用的BMC芯片都是该公司所生产的，型号包括但不限于AST2050/2300/2400/2520，华为以前也使用该公司的BMC，为了保证信息安全，现在已逐步切换为自研BMC芯片。
 
 BMC是实现IPMI通用接口规范的核心控制器。
 在支持IPMI v1.5典型接口时，配置上需要有32K的RAM[内存](https://so.csdn.net/so/search?q=内存&spm=1001.2101.3001.7020)和128K的flash memory。当然，配置越高它的性能越强大。
-那么BMC在系统中是怎么起到其作用的呢？下面是2001年Intel发布的IPMI v1.5的[架构](https://so.csdn.net/so/search?q=架构&spm=1001.2101.3001.7020)图：![Picuture from:Intel INC.](https://img-blog.csdnimg.cn/20190907000328488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQwNTEwMw==,size_16,color_FFFFFF,t_70)
+那么BMC在系统中是怎么起到其作用的呢？下面是2001年Intel发布的IPMI v1.5的[架构](https://so.csdn.net/so/search?q=架构&spm=1001.2101.3001.7020)图：
+<img src="./20190907000328488.png">
 从图中我们可以看到BMC对外通过System Interface连接系统总线，对内通过IPMB：Intelligent platform management Bus连接其他的component。
 特别地说，BMC连接了两个网卡，一条本地连接，一条可提供远程连接网口。
 这也就提供了远程使用ipmitool工具管理的可能。
@@ -59,8 +65,8 @@ User可以通过三种方式使用IPMI查询：
 同时平台管理还负责记录各种硬件的信息和日志记录，用于提示用户和后续问题的定位。
 
 下图是平台管理涉及到的功能概述：
+<img src="./20200510114843136.png">
 
-![img](https://img-blog.csdnimg.cn/20200510114843136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
 
 以上的这些功能可以集成到一个控制器上来实现，这个控制器被称为基板管理控制器（Baseboard Manager Controller，简称**BMC**）。
 
@@ -77,8 +83,7 @@ User可以通过三种方式使用IPMI查询：
 不过这里既然叫做BMC，那么总的来说重点还是在平台管理，所以本文主要说的是服务器中的BMC。
 
 BMC在系统中的位置大致如下图所示：
-
-![img](https://img-blog.csdn.net/20170729231045492)
+<img src="./20170729231045492">
 
 BMC通过不同的接口与系统中的其它组件连接。
 
@@ -91,14 +96,14 @@ IPMI的全称是Intelligent Platform Management Interface，智能平台管理�
 看了名字也不需要特别介绍它用来干什么的了，关于它的详细介绍可以参看https://www.intel.com/content/www/us/en/servers/ipmi/ipmi-home.html，这里只做简单的说明。
 
 IPMI就是对“平台管理”这个概念的具体的规范定义，该规范定义了“平台管理”的软硬件架构，交互指令，事件格式，数据记录，能力集等。而BMC是IPMI中的一个核心部分，属于IPMI硬件架构。下图灰色部分就是IPMI涉及的范围：
+<img src="./20200510131422340.png">
 
-![img](https://img-blog.csdnimg.cn/20200510131422340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
 
 可以看到BMC在硬件的最底层，而上层白色部分是系统中的管理软件。
 
 由于本文是介绍BMC的，所以这里只介绍BMC相关的IPMI硬件模块。
 
- 
+
 
 ## IPMI硬件模块
 
@@ -109,18 +114,19 @@ IPMB全称Intelligent Platform Management Bus，是一种基于I2C的串行总�
 对于相对简单的系统来说，BMC已经能够满足要求，但是当系统比较复杂，由多个子系统构成时，那么通过IPMB和“卫星”控制器，就能够更好地管理复杂系统。
 
 下面的图描述了与IPMI有关的各个硬件模块：
+<img src="./20170729231924660">
 
-![img](https://img-blog.csdn.net/20170729231924660)
 
 下面简单的介绍各个部分。
 
- 
+
 
 ### MOTHERBOARD
 
 首先是图中的左下角部分，名称写着Mother Board。
+<img src="./20190713202735974.png">
 
-![img](https://img-blog.csdnimg.cn/20190713202735974.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
+
 
 通常，在服务器中，这一部分是主角，它包含了CPU，PCH等主要的部件。
 
@@ -134,27 +140,27 @@ IPMI总线：这是BMC与服务器通信并进行控制的主体，当然少不�
 
 PCI总线：这个部分的作用跟串口很像。服务器除了输出串口信息，当然还需要输出图形界面之类的东西。从服务器端来看，它通过PCI连接的就是一个显卡，通过它来输出显示。
 
- 
+
 
 ### IPMB
 
 再来到图中的右上角，其中描述的是通过IPMB连接的设备。
+<img src="./2019071320275388.png">
 
-![img](https://img-blog.csdnimg.cn/2019071320275388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
 
 这些设备跟BMC类似，也是用来进行管理芯片。
 
 它们是对BMC的补充，从而扩展BMC的功能。
 
- 
+
 
 ### Non-volatile Storage
 
 我们知道BMC其实是一个独立的芯片，那么它肯定也需要运行系统。
 
 通过BMC里面运行的是一个类Unix系统，而该系统就存放再Non-volatile Storage中，通常就是SPI Flash里面。
+<img src="./20190713202929368.png">
 
-![img](https://img-blog.csdnimg.cn/20190713202929368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
 
 跟一般的存储介质没有本质的区别。
 
@@ -162,25 +168,25 @@ PCI总线：这个部分的作用跟串口很像。服务器除了输出串口�
 
 比如从服务器上面获取到的串口信息；系统本身的报警信息；FRU信息等。
 
- 
+
 
 ### Sensors & Control Circuitry
 
 这一部分虽然图中只占很小的一部分，但却是BMC最基本的功能：获取信息和控制环境。
 
-![img](https://img-blog.csdnimg.cn/20190713203216400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
+<img src="./20190713203216400.png">
 
 BMC会通过I2C/PECI等总线去获取设备的温度，然后根据预先设定的策略去调整温度。
 
 调整的方式两种，一种就是调整风扇，属于主动降温；另一种是调整供电，比如CPU的P状态，或者关闭多余的硬盘等，属于被动降温。
 
- 
+
 
 ### FRU
 
 FRU的全称是Field Replaceable Unit。
 
-![img](https://img-blog.csdnimg.cn/20190713203652204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5nd2VpMDUxMg==,size_16,color_FFFFFF,t_70)
+<img src="./20190713203652204.png">
 
 从图中也可以看出，类似内存条，CPU等就属于FRU，它们在服务器中通常是可以更换的。
 
