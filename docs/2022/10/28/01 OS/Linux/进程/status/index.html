@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Linux进程状态：S 和D状态 | 
+	 
+	LeahGe
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "leahge.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">LeahGe</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/leahge" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01 OS
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Kernel
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
+                     
+										    Kallsyms
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Perf
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+                     
+										    Perf-Report(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+                     
+										    Perf-Script(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-stat/">
+                     
+										    Perf-Stat(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/Perf/perf_event/">
+                     
+										    PMU计数器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware/">
+                     
+										    PERF EVENT 硬件篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware2/">
+                     
+										    PERF EVENT 硬件篇续篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_ipc/">
+                     
+										    Perf IPC以及CPU利用率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
+                     
+										    PERF EVENT 内核篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/Perf/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
+                     
+										    参考资料
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+                     
+										    Shell字符串截取
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										network
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                     
+										    网卡多队列配置和中断绑定
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/df/">
+                     
+										    Df(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/du/">
+                     
+										    Du(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ftrace/">
+                     
+										    Ftrace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ltrace/">
+                     
+										    Ltrace(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
+                     
+										    Linux指令后的数字代表什么
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mpstat/">
+                     
+										    Mpstat-Multiprocessor Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pidstat/">
+                     
+										    Pidstat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
+                     
+										    Sadc(8) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                     
+										    Sar
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sed/">
+                     
+										    Sed
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/strace/">
+                     
+										    Strace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/vmstat/">
+                     
+										    Vmstat-Report Virtual Memory Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系统调用
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
+                     
+										    Brk
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/exec/">
+                     
+										    Exec
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/futex/">
+                     
+										    Futex
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
+                     
+										    Getcpu系统调用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/gettimeofday/">
+                     
+										    Gettimeofday
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/ioctl/">
+                     
+										    Ioctl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
+                     
+										    Mmap
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										编译、链接和装载
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
+                     
+										    DSO(dynamic Shared Object)动态共享对象的原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+                     
+										    Linux下编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
+                     
+										    Elf文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
+                     
+										    编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2022/10/28/01%20OS/Linux/%E8%BF%9B%E7%A8%8B/status/">
+                     
+										    Linux进程状态：S 和D状态
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/%E6%9C%8D%E5%8A%A1%E5%99%A8BMC%E4%B8%8EIPMI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                     
+										    服务器BMC与IPMI基础知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02 CPU
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
+                     
+										    Socket/Node/Die/Core/Processor/Package
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+                     
+										    技术发展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										50 soft
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nodejs
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/50%20soft/Nodejs/npm/">
+                     
+										    Npm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										99 Other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/99%20Other/%E5%9B%BE%E7%81%B5%E6%9C%BA%E4%B8%8E%E5%9B%BE%E7%81%B5%E5%AE%8C%E5%A4%87/">
+                     
+										    图灵机与图灵完备
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/ebook/">
+                     
+										    99 Ebook
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	Linux进程状态：S 和D状态
+</h1>
+<div class="article-meta">
+	
+	<span>Leah Ge</span>
+	<span>2022-10-28 11:23:03</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="linux进程D状态-转"><a href="#linux进程D状态-转" class="headerlink" title="linux进程D状态_转"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/embedded-linux/p/7043569.html">linux进程D状态_转</a></h1><p><strong>Linux进程状态：S (TASK_INTERRUPTIBLE)，可中断的睡眠状态。</strong></p>
+<p>处于这个状态的进程因为等待某某事件的发生（比如等待socket连接、等待信号量），而被挂起。这些进程的task_struct结构被放入对应事件的等待队列中。当这些事件发生时（由外部中断触发、或由其他进程触发），对应的等待队列中的一个或多个进程将被唤醒。</p>
+<p>通过ps命令我们会看到，一般情况下，进程列表中的绝大多数进程都处于TASK_INTERRUPTIBLE状态（除非机器的负载很高）。毕竟CPU就这么一两个，进程动辄几十上百个，如果不是绝大多数进程都在睡眠，CPU又怎么响应得过来。</p>
+<p><strong>Linux进程状态：D (TASK_UNINTERRUPTIBLE)，不可中断的睡眠状态。</strong></p>
+<p>与TASK_INTERRUPTIBLE状态类似，进程处于睡眠状态，但是此刻进程是不可中断的。不可中断，指的并不是CPU不响应外部硬件的中断，而是指进程不响应异步信号。<br>绝大多数情况下，进程处在睡眠状态时，总是应该能够响应异步信号的。否则你将惊奇的发现，kill -9竟然杀不死一个正在睡眠的进程了！于是我们也很好理解，为什么ps命令看到的进程几乎不会出现TASK_UNINTERRUPTIBLE状态，而总是TASK_INTERRUPTIBLE状态。</p>
+<p>而TASK_UNINTERRUPTIBLE状态存在的意义就在于，内核的某些处理流程是不能被打断的。如果响应异步信号，程序的执行流程中就会被插入一段用于处理异步信号的流程（这个插入的流程可能只存在于内核态，也可能延伸到用户态），于是原有的流程就被中断了。（参见《linux内核异步中断浅析》）<br>在进程对某些硬件进行操作时（比如进程调用read系统调用对某个设备文件进行读操作，而read系统调用最终执行到对应设备驱动的代码，并与对应的物理设备进行交互），可能需要使用TASK_UNINTERRUPTIBLE状态对进程进行保护，以避免进程与设备交互的过程被打断，造成设备陷入不可控的状态。这种情况下的TASK_UNINTERRUPTIBLE状态总是非常短暂的，通过ps命令基本上不可能捕捉到。</p>
+<p>linux系统中也存在容易捕捉的TASK_UNINTERRUPTIBLE状态。执行vfork系统调用后，父进程将进入TASK_UNINTERRUPTIBLE状态，直到子进程调用exit或exec（参见《神奇的vfork》）。<br>通过下面的代码就能得到处于TASK_UNINTERRUPTIBLE状态的进程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include   </span><br><span class="line">void main() &#123;  </span><br><span class="line">if (!vfork()) sleep(100);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译运行，然后ps一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kouu@kouu-one:~/test$ ps -ax | grep a\.out  </span><br><span class="line">4371 pts/0    D+     0:00 ./a.out  </span><br><span class="line">4372 pts/0    S+     0:00 ./a.out  </span><br><span class="line">4374 pts/1    S+     0:00 grep a.out</span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以试验一下TASK_UNINTERRUPTIBLE状态的威力。不管kill还是kill -9，这个TASK_UNINTERRUPTIBLE状态的父进程依然屹立不倒。</p>
+<p><strong>进程为什么会被置于uninterruptible sleep状态呢？</strong>处于uninterruptiblesleep状态的进程通常是在等待IO，比如磁盘IO，网络IO，其他外设IO，如果进程正在等待的IO在较长的时间内都没有响应，那么就很会不幸地被ps看到了，同时也就意味着很有可能有IO出了问题，可能是外设本身出了故障，也可能是比如挂载的远程文件系统已经不可访问了（由down掉的NFS服务器引起的D状态）。</p>
+<p>正是因为得不到IO的相应，进程才进入了uninterruptible sleep状态，所以要想使进程从uninterruptiblesleep状态恢复，就得使进程等待的IO恢复，比如如果是因为从远程挂载的NFS卷不可访问导致进程进入uninterruptiblesleep状态的，那么可以通过恢复该NFS卷的连接来使进程的IO请求得到满足。</p>
+<p><strong>D状态，往往是由于 I&#x2F;O 资源得不到满足，而引发等待</strong>，在内核源码 fs&#x2F;proc&#x2F;array.c 里，其文字定义为“ “D (disk sleep)”, &#x2F;* 2 *&#x2F; ”（由此可知 D 原是Disk的打头字母），对应着 include&#x2F;linux&#x2F;sched.h 里的“ #define TASK_UNINTERRUPTIBLE 2 ”。举个例子，当 NFS 服务端关闭之时，若未事先 umount 相关目录，在 NFS 客户端执行 df 就会挂住整个登录会话，按 Ctrl+C 、Ctrl+Z 都无济于事。断开连接再登录，执行 ps axf 则看到刚才的 df 进程状态位已变成了 D ，kill -9 无法杀灭。正确的处理方式，是马上恢复 NFS 服务端，再度提供服务，刚才挂起的 df 进程发现了其苦苦等待的资源，便完成任务，自动消亡。若 NFS 服务端无法恢复服务，在 reboot 之前也应将 &#x2F;etc&#x2F;mtab 里的相关 NFS mount 项删除，以免 reboot 过程例行调用 netfs stop 时再次发生等待资源，导致系统重启过程挂起。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2022/10/28/01%20OS/Linux/Perf/perf_event/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  PMU计数器
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                Sar
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Leah Ge</a> 
+	
+	
+	<br>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
