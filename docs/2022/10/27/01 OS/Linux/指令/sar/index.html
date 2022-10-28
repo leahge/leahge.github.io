@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		Sar | 
 	 
 	LeahGe
 	</title>
@@ -388,7 +390,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
                      
 										    Sar
@@ -702,207 +704,241 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	Sar
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
-				<h2 class="index-title">
-					Sar
-				</h2>
-				<div class="index-brief">
-					Linux sar命令详解：分析系统性能sar 命令很强大，是分析系统性能的重要工具之一，通过该命令可以全面地获取系统的 CPU、运行队列、磁盘读写（I&#x2F;O）、分区（交换区）、内存、CPU 中断和网络等性能数据。
-sar 命令的基本格式如下：
-[root@localhost ~]# sar
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/network/irq/">
-				<h2 class="index-title">
-					网卡多队列配置和中断绑定
-				</h2>
-				<div class="index-brief">
-					网卡多队列配置处理步骤以下步骤云服务器默认主网卡为 eth0，网卡队列个数为2。
+	<span>Leah Ge</span>
+	<span>2022-10-27 21:40:03</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
 
-执行以下命令，查看当前网卡队列个数。
-1ethtool -l eth0
+    
+		<span>Tags：</span>
+            
+    
+		</div>
 
-返回如下结果，表示当前队列个数设置小于最大网卡队列个数，设置不合理，需进行修复。
-1234567891011Channel parameter
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
-				<h2 class="index-title">
-					Shell字符串截取
-				</h2>
-				<div class="index-brief">
-					Shell 截取字符串通常有两种方式：从指定位置开始截取和从指定字符（子字符串）开始截取。
-从指定位置开始截取这种方式需要两个参数：除了指定起始位置，还需要截取长度，才能最终确定要截取的字符串。
-既然需要指定起始位置，那么就涉及到计数方向的问题，到底是从字符串左边开始计数，还是从字符串右边开始计数。
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
-				<h2 class="index-title">
-					Linux下编译、链接和装载
-				</h2>
-				<div class="index-brief">
-					Linux下编译、链接和装载编译过程在Linux下使用GCC将源码编译成可执行文件的过程可以分解为4个步骤，分别是预处理（Prepressing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。一个简单的hello word程序编译过程如下：1. 预处理首先源代码
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
-				<h2 class="index-title">
-					Getcpu系统调用
-				</h2>
-				<div class="index-brief">
-					getcpu系统调用名称：getcpu - 确定调用线程正在运行的CPU和NUMA节点
-概要：
-12345#include &lt;linux/getcpu.h&gt;int getcpu(unsigned *cpu, unsigned *node, struct getcpu_cache *tca
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/gettimeofday/">
-				<h2 class="index-title">
-					Gettimeofday
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
-				<h2 class="index-title">
-					Brk
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/exec/">
-				<h2 class="index-title">
-					Exec
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/ioctl/">
-				<h2 class="index-title">
-					Ioctl
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
-				<h2 class="index-title">
-					Mmap
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
-		
-	</div>
 </div>
+
+<div id="article-content">
+	<h1 id="Linux-sar命令详解：分析系统性能"><a href="#Linux-sar命令详解：分析系统性能" class="headerlink" title="Linux sar命令详解：分析系统性能"></a>Linux sar命令详解：分析系统性能</h1><p>sar 命令很强大，是分析系统性能的重要工具之一，通过该命令可以全面地获取系统的 CPU、运行队列、磁盘读写（I&#x2F;O）、分区（交换区）、内存、CPU 中断和网络等性能数据。</p>
+<p>sar 命令的基本格式如下：</p>
+<p>[root@localhost ~]# sar [options] [-o filename] interval [count]</p>
+<p>此命令格式中，各个参数的含义如下：</p>
+<ul>
+<li>-o filename：其中，filename 为文件名，此选项表示将命令结果以二进制格式存放在文件中；</li>
+<li>interval：表示采样间隔时间，该参数必须手动设置；</li>
+<li>count：表示采样次数，是可选参数，其默认值为 1；</li>
+<li>options：为命令行选项，由于 sar 命令提供的选项很多，这里不再一一介绍，仅列举出常用的一些选项及对应的功能，如表 1 所示。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>sar命令选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-A</td>
+<td>显示系统所有资源设备（CPU、内存、磁盘）的运行状况。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>显示系统所有 CPU 在采样时间内的负载状态。</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>显示当前系统中指定 CPU 的使用情况。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>显示系统所有硬盘设备在采样时间内的使用状态。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>显示系统内存在采样时间内的使用情况。</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>显示缓冲区在采样时间内的使用情况。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示 inode 节点、文件和其他内核表的统计信息。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>显示网络运行状态，此选项后可跟 DEV（显示网络接口信息）、EDEV（显示网络错误的统计数据）、SOCK（显示套接字信息）和 FULL（等同于使用 DEV、EDEV和SOCK）等，有关更多的选项，可通过执行 man sar 命令查看。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>显示运行列表中的进程数、进程大小、系统平均负载等。</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>显示进程在采样时的活动情况。</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>显示终端设备在采样时间的活动情况。</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>显示系统交换活动在采样时间内的状态。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>有关 sar 命令更多可用的选项及功能，可通过执行 man sar 命令查看。</p>
+</blockquote>
+<h2 id="1-CPU资源监控"><a href="#1-CPU资源监控" class="headerlink" title="1. CPU资源监控"></a>1. CPU资源监控</h2><p>例如，每10秒采样一次，连续采样3次，观察CPU 的使用情况，并将采样结果以二进制形式存入当前目录下的文件test中，需键入如下命令：</p>
+<p>sar -u -o test 10 3</p>
+<p>屏幕显示如下：</p>
+<p>17:06:16 CPU %user %nice %system %iowait %steal %idle</p>
+<p>17:06:26 all 0.00 0.00 0.20 0.00 0.00 99.80</p>
+<p>17:06:36 all 0.00 0.00 0.20 0.00 0.00 99.80</p>
+<p>17:06:46 all 0.00 0.00 0.10 0.00 0.00 99.90</p>
+<p>Average: all 0.00 0.00 0.17 0.00 0.00 99.83</p>
+<p>输出项说明：</p>
+<p>CPU：all 表示统计信息为所有 CPU 的平均值。</p>
+<p>%user：显示在用户级别(application)运行使用 CPU 总时间的百分比。</p>
+<p>%nice：显示在用户级别，用于nice操作，所占用 CPU 总时间的百分比。</p>
+<p>%system：在核心级别(kernel)运行所使用 CPU 总时间的百分比。</p>
+<p>%iowait：显示用于等待<a href="https://link.zhihu.com/?target=http://lovesoo.org/tag/io">I&#x2F;O</a>操作占用 CPU 总时间的百分比。</p>
+<p>%steal：管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟 CPU 的百分比。</p>
+<p>%idle：显示 CPU 空闲时间占用 CPU 总时间的百分比。</p>
+<p>\1. 若 %iowait 的值过高，表示硬盘存在I&#x2F;O瓶颈</p>
+<p>\2. 若 %idle 的值高但系统响应慢时，有可能是 CPU 等待分配内存，此时应加大内存容量</p>
+<p>\3. 若 %idle 的值持续低于1，则系统的 CPU 处理能力相对较低，表明系统中最需要解决的资源是 CPU 。</p>
+<p>如果要查看二进制文件test中的内容，需键入如下sar命令：</p>
+<p>sar -u -f test</p>
+<h2 id="2-inode、文件和其他内核表监控"><a href="#2-inode、文件和其他内核表监控" class="headerlink" title="2. inode、文件和其他内核表监控"></a>2. inode、文件和其他内核表监控</h2><p>例如，每10秒采样一次，连续采样3次，观察核心表的状态，需键入如下命令：</p>
+<p>sar -v 10 3</p>
+<p>屏幕显示如下：</p>
+<p>17:10:49 dentunusd file-nr inode-nr pty-nr</p>
+<p>17:10:59 6301 5664 12037 4</p>
+<p>17:11:09 6301 5664 12037 4</p>
+<p>17:11:19 6301 5664 12037 4</p>
+<p>Average: 6301 5664 12037 4</p>
+<p>输出项说明：</p>
+<p>dentunusd：目录高速缓存中未被使用的条目数量</p>
+<p>file-nr：文件句柄（file handle）的使用数量</p>
+<p>inode-nr：索引节点句柄（inode handle）的使用数量</p>
+<p>pty-nr：使用的pty数量</p>
+<h2 id="3-内存和交换空间监控"><a href="#3-内存和交换空间监控" class="headerlink" title="3. 内存和交换空间监控"></a>3. 内存和交换空间监控</h2><p>例如，每10秒采样一次，连续采样3次，监控内存分页：</p>
+<p>sar -r 10 3</p>
+<p>屏幕显示如下：</p>
+<p>输出项说明：</p>
+<p>kbmemfree：这个值和free命令中的free值基本一致,所以它不包括buffer和cache的空间.</p>
+<p>kbmemused：这个值和free命令中的used值基本一致,所以它包括buffer和cache的空间.</p>
+<p>%memused：这个值是kbmemused和内存总量(不包括swap)的一个百分比.</p>
+<p>kbbuffers和kbcached：这两个值就是free命令中的buffer和cache.</p>
+<p>kbcommit：保证当前系统所需要的内存,即为了确保不溢出而需要的内存(RAM+swap).</p>
+<p>%commit：这个值是kbcommit与内存总量(包括swap)的一个百分比.</p>
+<h2 id="4-内存分页监控"><a href="#4-内存分页监控" class="headerlink" title="4. 内存分页监控"></a>4. 内存分页监控</h2><p>例如，每10秒采样一次，连续采样3次，监控内存分页：</p>
+<p>sar -B 10 3</p>
+<p>屏幕显示如下：</p>
+<p>输出项说明：</p>
+<p>pgpgin&#x2F;s：表示每秒从<a href="https://link.zhihu.com/?target=http://lovesoo.org/tag/%E7%A3%81%E7%9B%98">磁盘</a>或SWAP置换到内存的字节数(KB)</p>
+<p>pgpgout&#x2F;s：表示每秒从内存置换到<a href="https://link.zhihu.com/?target=http://lovesoo.org/tag/%E7%A3%81%E7%9B%98">磁盘</a>或SWAP的字节数(KB)</p>
+<p>fault&#x2F;s：每秒钟系统产生的缺页数,即主缺页与次缺页之和(major + minor)</p>
+<p>majflt&#x2F;s：每秒钟产生的主缺页数.</p>
+<p>pgfree&#x2F;s：每秒被放入空闲队列中的页个数</p>
+<p>pgscank&#x2F;s：每秒被kswapd扫描的页个数</p>
+<p>pgscand&#x2F;s：每秒直接被扫描的页个数</p>
+<p>pgsteal&#x2F;s：每秒钟从cache中被清除来满足内存需要的页个数</p>
+<p>%vmeff：每秒清除的页(pgsteal)占总扫描页(pgscank+pgscand)的百分比</p>
+<h2 id="5-I-x2F-O和传送速率监控"><a href="#5-I-x2F-O和传送速率监控" class="headerlink" title="5. I&#x2F;O和传送速率监控"></a>5. I&#x2F;O和传送速率监控</h2><p>例如，每10秒采样一次，连续采样3次，报告缓冲区的使用情况，需键入如下命令：</p>
+<p>sar -b 10 3</p>
+<p>屏幕显示如下：</p>
+<p>18:51:05 tps rtps wtps bread&#x2F;s bwrtn&#x2F;s</p>
+<p>18:51:15 0.00 0.00 0.00 0.00 0.00</p>
+<p>18:51:25 1.92 0.00 1.92 0.00 22.65</p>
+<p>18:51:35 0.00 0.00 0.00 0.00 0.00</p>
+<p>Average: 0.64 0.00 0.64 0.00 7.59</p>
+<p>输出项说明：</p>
+<p>tps：每秒钟物理设备的 I&#x2F;O 传输总量</p>
+<p>rtps：每秒钟从物理设备读入的数据总量</p>
+<p>wtps：每秒钟向物理设备写入的数据总量</p>
+<p>bread&#x2F;s：每秒钟从物理设备读入的数据量，单位为 块&#x2F;s</p>
+<p>bwrtn&#x2F;s：每秒钟向物理设备写入的数据量，单位为 块&#x2F;s</p>
+<h2 id="6-进程队列长度和平均负载状态监控"><a href="#6-进程队列长度和平均负载状态监控" class="headerlink" title="6. 进程队列长度和平均负载状态监控"></a>6. 进程队列长度和平均负载状态监控</h2><p>例如，每10秒采样一次，连续采样3次，监控进程队列长度和平均负载状态：</p>
+<p>sar -q 10 3</p>
+<p>屏幕显示如下：</p>
+<p>19:25:50 runq-sz plist-sz ldavg-1 ldavg-5 ldavg-15</p>
+<p>19:26:00 0 259 0.00 0.00 0.00</p>
+<p>19:26:10 0 259 0.00 0.00 0.00</p>
+<p>19:26:20 0 259 0.00 0.00 0.00</p>
+<p>Average: 0 259 0.00 0.00 0.00</p>
+<p>输出项说明：</p>
+<p>runq-sz：运行队列的长度（等待运行的进程数）</p>
+<p>plist-sz：进程列表中进程（processes）和线程（threads）的数量</p>
+<p>ldavg-1：最后1分钟的系统平均负载（System load average）</p>
+<p>ldavg-5：过去5分钟的系统平均负载</p>
+<p>ldavg-15：过去15分钟的系统平均负载</p>
+<h2 id="7-系统交换活动信息监控"><a href="#7-系统交换活动信息监控" class="headerlink" title="7. 系统交换活动信息监控"></a>7. 系统交换活动信息监控</h2><p>例如，每10秒采样一次，连续采样3次，监控系统交换活动信息：</p>
+<p>sar - W 10 3</p>
+<p>屏幕显示如下：</p>
+<p>19:39:50 pswpin&#x2F;s pswpout&#x2F;s</p>
+<p>19:40:00 0.00 0.00</p>
+<p>19:40:10 0.00 0.00</p>
+<p>19:40:20 0.00 0.00</p>
+<p>Average: 0.00 0.00</p>
+<p>输出项说明：</p>
+<p>pswpin&#x2F;s：每秒系统换入的交换页面（swap page）数量</p>
+<p>pswpout&#x2F;s：每秒系统换出的交换页面（swap page）数量</p>
+<h2 id="8-设备使用情况监控"><a href="#8-设备使用情况监控" class="headerlink" title="8. 设备使用情况监控"></a>8. 设备使用情况监控</h2><p>例如，每10秒采样一次，连续采样3次，报告设备使用情况，需键入如下命令：</p>
+<p># sar -d 10 3 –p</p>
+<p>屏幕显示如下：</p>
+<p>17:45:54 DEV tps rd_sec&#x2F;s wr_sec&#x2F;s avgrq-sz avgqu-sz await svctm %util</p>
+<p>17:46:04 scd0 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00</p>
+<p>17:46:04 sda 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00</p>
+<p>17:46:04 vg_livedvd-lv_root 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00</p>
+<p>17:46:04 vg_livedvd-lv_swap 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00</p>
+<p>其中：</p>
+<p>参数-p可以打印出sda,hdc等磁盘设备名称,如果不用参数-p,设备节点则有可能是dev8-0,dev22-0</p>
+<p>tps:每秒从物理磁盘I&#x2F;O的次数.多个逻辑请求会被合并为一个I&#x2F;O磁盘请求,一次传输的大小是不确定的.</p>
+<p>rd_sec&#x2F;s:每秒读扇区的次数.</p>
+<p>wr_sec&#x2F;s:每秒写扇区的次数.</p>
+<p>avgrq-sz:平均每次设备I&#x2F;O操作的数据大小(扇区).</p>
+<p>avgqu-sz:磁盘请求队列的平均长度.</p>
+<p>await:从请求磁盘操作到系统完成处理,每次请求的平均消耗时间,包括请求队列等待时间,单位是毫秒(1秒&#x3D;1000毫秒).</p>
+<p>svctm:系统处理每次请求的平均时间,不包括在请求队列中消耗的时间.</p>
+<p>%util:I&#x2F;O请求占CPU的百分比,比率越大,说明越饱和.</p>
+<p>\1. avgqu-sz 的值较低时，设备的利用率较高。</p>
+<p>\2. 当%util的值接近 1% 时，表示设备带宽已经占满。</p>
+<h2 id="要判断系统瓶颈问题，有时需几个-sar-命令选项结合起来"><a href="#要判断系统瓶颈问题，有时需几个-sar-命令选项结合起来" class="headerlink" title="要判断系统瓶颈问题，有时需几个 sar 命令选项结合起来"></a>要判断系统瓶颈问题，有时需几个 sar 命令选项结合起来</h2><p>怀疑CPU存在瓶颈，可用 sar -u 和 sar -q 等来查看</p>
+<p>怀疑内存存在瓶颈，可用 sar -B、sar -r 和 sar -W 等来查看</p>
+<p>怀疑I&#x2F;O存在瓶颈，可用 sar -b、sar -u 和 sar -d 等来查看</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                网卡多队列配置和中断绑定
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
 
 	</div>
 	<div id="footer">

@@ -158,9 +158,31 @@ var _hmt = _hmt || [];
 									
 							<ul>
 								<li class="file">
-									<a href="/2022/10/21/01%20OS/Linux/Perf/perf-stat/">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
                      
-										    perf-stat
+										    Perf-Report(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+                     
+										    Perf-Script(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-stat/">
+                     
+										    Perf-Stat(1)
                      
 									</a>
 								</li>
@@ -216,6 +238,50 @@ var _hmt = _hmt || [];
 									<a href="/2022/10/14/01%20OS/Linux/Perf/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
                      
 										    参考资料
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+                     
+										    Shell字符串截取
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										network
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                     
+										    网卡多队列配置和中断绑定
                      
 									</a>
 								</li>
@@ -315,6 +381,17 @@ var _hmt = _hmt || [];
 									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
                      
 										    Sadc(8) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                     
+										    Sar
                      
 									</a>
 								</li>
@@ -458,6 +535,17 @@ var _hmt = _hmt || [];
 									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
                      
 										    DSO(dynamic Shared Object)动态共享对象的原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+                     
+										    Linux下编译、链接和装载
                      
 									</a>
 								</li>
@@ -617,18 +705,81 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2022/10/21/01%20OS/Linux/Perf/perf-stat/">
+			<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
 				<h2 class="index-title">
-					perf-stat
+					Sar
 				</h2>
 				<div class="index-brief">
-					perf-stat(1)NAMEperf-stat - Run a command and gather performance counter statistics
-SYNOPSIS[verse]‘perf stat’ [-e  | –event&#x3D;EVENT] [-a] ‘perf st
+					Linux sar命令详解：分析系统性能sar 命令很强大，是分析系统性能的重要工具之一，通过该命令可以全面地获取系统的 CPU、运行队列、磁盘读写（I&#x2F;O）、分区（交换区）、内存、CPU 中断和网络等性能数据。
+sar 命令的基本格式如下：
+[root@localhost ~]# sar
 					...
 				</div>
 			</a>
                 <div class="article-meta">
-				    <span>2022-10-21</span>
+				    <span>2022-10-27</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+				<h2 class="index-title">
+					网卡多队列配置和中断绑定
+				</h2>
+				<div class="index-brief">
+					网卡多队列配置处理步骤以下步骤云服务器默认主网卡为 eth0，网卡队列个数为2。
+
+执行以下命令，查看当前网卡队列个数。
+1ethtool -l eth0
+
+返回如下结果，表示当前队列个数设置小于最大网卡队列个数，设置不合理，需进行修复。
+1234567891011Channel parameter
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-27</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+				<h2 class="index-title">
+					Shell字符串截取
+				</h2>
+				<div class="index-brief">
+					Shell 截取字符串通常有两种方式：从指定位置开始截取和从指定字符（子字符串）开始截取。
+从指定位置开始截取这种方式需要两个参数：除了指定起始位置，还需要截取长度，才能最终确定要截取的字符串。
+既然需要指定起始位置，那么就涉及到计数方向的问题，到底是从字符串左边开始计数，还是从字符串右边开始计数。
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-27</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+				<h2 class="index-title">
+					Linux下编译、链接和装载
+				</h2>
+				<div class="index-brief">
+					Linux下编译、链接和装载编译过程在Linux下使用GCC将源码编译成可执行文件的过程可以分解为4个步骤，分别是预处理（Prepressing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。一个简单的hello word程序编译过程如下：1. 预处理首先源代码
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-27</span>
                     
                             
                     
@@ -734,62 +885,6 @@ SYNOPSIS[verse]‘perf stat’ [-e  | –event&#x3D;EVENT] [-a] ‘perf st
 				</h2>
 				<div class="index-brief">
 					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/futex/">
-				<h2 class="index-title">
-					Futex
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
-				<h2 class="index-title">
-					Kallsyms
-				</h2>
-				<div class="index-brief">
-					https://blog.csdn.net/cddchina/article/details/125501920https://blog.csdn.net/weixin_28716217/article/details/111950874
-kallsyms实现原理源码分析  https://blog
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
-				<h2 class="index-title">
-					DSO(dynamic Shared Object)动态共享对象的原理
-				</h2>
-				<div class="index-brief">
-					DSO(dynamic shared object)动态共享对象的原理
-摘要：可执行ELF文件的生成，如果从***c开始算起，需要经过编译、链接、装载几个步骤。在链接和装载这两个步骤中，有两种不同的实现方式，一种是静态链接，这样加载之前，已经形成可执行目标文件；另外一种是动态链接，这种模式下，链接阶
 					...
 				</div>
 			</a>
