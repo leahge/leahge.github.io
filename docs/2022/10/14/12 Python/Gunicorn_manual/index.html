@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Gunicorn的使用手册 | 
+	 
+	LeahGe
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "leahge.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">LeahGe</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/leahge" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01 OS
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Kernel
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
+                     
+										    Kallsyms
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/Kernel/kernel_config/">
+                     
+										    Linux Kernel 编译选项
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Perf
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+                     
+										    Perf-Report(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+                     
+										    Perf-Script(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-stat/">
+                     
+										    Perf-Stat(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/Perf/perf_event/">
+                     
+										    PMU计数器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware/">
+                     
+										    PERF EVENT 硬件篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware2/">
+                     
+										    PERF EVENT 硬件篇续篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_ipc/">
+                     
+										    Perf IPC以及CPU利用率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
+                     
+										    PERF EVENT 内核篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/Perf/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
+                     
+										    参考资料
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Shell/ctrlc/">
+                     
+										    Linux Shell中捕获CTRL+C
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+                     
+										    Shell字符串截取
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										network
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/gro/">
+                     
+										    Linux Kernel 网络协议栈之GRO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                     
+										    网卡多队列配置和中断绑定
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/napi/">
+                     
+										    Linux协议栈--NAPI机制
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/systemd/">
+                     
+										    Systemd
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/df/">
+                     
+										    Df(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/du/">
+                     
+										    Du(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ftrace/">
+                     
+										    Ftrace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ltrace/">
+                     
+										    Ltrace(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
+                     
+										    Linux指令后的数字代表什么
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mpstat/">
+                     
+										    Mpstat-Multiprocessor Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pidstat/">
+                     
+										    Pidstat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pushd/">
+                     
+										    Linux 中使用 Pushd 和 Popd 命令来进行高效的目录导航
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
+                     
+										    Sadc(8) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                     
+										    Sar
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sed/">
+                     
+										    Sed
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/strace/">
+                     
+										    Strace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/tee/">
+                     
+										    Tee
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/vmstat/">
+                     
+										    Vmstat-Report Virtual Memory Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系统调用
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
+                     
+										    Brk
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/exec/">
+                     
+										    Exec
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/futex/">
+                     
+										    Futex
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
+                     
+										    Getcpu系统调用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/gettimeofday/">
+                     
+										    Gettimeofday
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/ioctl/">
+                     
+										    Ioctl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
+                     
+										    Mmap
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										编译、链接和装载
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
+                     
+										    DSO(dynamic Shared Object)动态共享对象的原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+                     
+										    Linux下编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
+                     
+										    Elf文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
+                     
+										    剥离与导回符号表及调试信息
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
+                     
+										    编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/%E8%BF%9B%E7%A8%8B/status/">
+                     
+										    Linux进程状态：S 和D状态
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/%E6%9C%8D%E5%8A%A1%E5%99%A8BMC%E4%B8%8EIPMI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                     
+										    服务器BMC与IPMI基础知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02 CPU
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
+                     
+										    Socket/Node/Die/Core/Processor/Package
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+                     
+										    技术发展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12 Python
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2022/10/14/12%20Python/Gunicorn_manual/">
+                     
+										    Gunicorn的使用手册
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										50 soft
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nodejs
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/50%20soft/Nodejs/npm/">
+                     
+										    Npm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										99 Other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/99%20Other/%E5%9B%BE%E7%81%B5%E6%9C%BA%E4%B8%8E%E5%9B%BE%E7%81%B5%E5%AE%8C%E5%A4%87/">
+                     
+										    图灵机与图灵完备
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/ebook/">
+                     
+										    99 Ebook
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	Gunicorn的使用手册
+</h1>
+<div class="article-meta">
+	
+	<span>Leah Ge</span>
+	<span>2022-10-14 16:36:48</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="Gunicorn的使用手册"><a href="#Gunicorn的使用手册" class="headerlink" title="Gunicorn的使用手册"></a>Gunicorn的使用手册</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>目录Gunicorn是什么Gunicorn的安装安装查看Gunicorn的版本运行GunicornGunicorn的配置参数说明[OPTIONS]1.1 配置文件config1.2 Debugging1.3 Logging1.4 指定进程名称1.5 客户端地址（server socket）1.6 工作进程数（Worker Processes）1.7 工作模式（worker_class）1.8线程数(threads)1.9 工作线程连接数（worker_connections）1.10 最大请求数（max_requests）1.11 超时设置（timeout）1.12 连接的存活时间（keepalive）工作模式的补充说明使用gevent模式会出现一些兼容性问题。性能实践总结粉丝专属福利参考</p>
+<h2 id="Gunicorn是什么"><a href="#Gunicorn是什么" class="headerlink" title="Gunicorn是什么"></a>Gunicorn是什么</h2><p>Gunicorn 是一个 Python 的 WSGI HTTP 服务器。它所在的位置通常是在反向代理（如 Nginx）或者 负载均衡（如 AWS ELB）和一个 web 应用（比如 Django 或者 Flask）之间。它是一个移植自Ruby的Unicorn项目的pre-fork worker模型，即支持eventlet也支持greenlet。<br>如果对Flask框架还有不清楚的地方，可以查看本文<a target="_blank" rel="noopener" href="https://feige.blog.csdn.net/article/details/112263189">一分钟学会Flask框架的安装与快速使用</a><br>Gunicorn启动项目之后一定会有一个主进程Master和一个或者多个工作进程。工作进程的数量可以指定。工作进程是实际处理请求的进程。主进程是维护服务器的运行。<br><img src="./b96c26026d4c42dfbe680034012ee5fe.png"></p>
+<h2 id="Gunicorn的安装"><a href="#Gunicorn的安装" class="headerlink" title="Gunicorn的安装"></a>Gunicorn的安装</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本的gunicorn</span></span><br><span class="line">pip install gunicorn</span><br><span class="line"><span class="comment">#安装指定版本的gunicorn</span></span><br><span class="line">pip install gunicorn==19.9.0</span><br><span class="line"><span class="comment">#异步模式</span></span><br><span class="line">pip install gevent==1.4.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看Gunicorn的版本"><a href="#查看Gunicorn的版本" class="headerlink" title="查看Gunicorn的版本"></a>查看Gunicorn的版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip show gunicorn</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行Gunicorn"><a href="#运行Gunicorn" class="headerlink" title="运行Gunicorn"></a>运行Gunicorn</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn [OPTIONS] $(MODULE_NAME):$(VARIABLE_NAME)</span><br></pre></td></tr></table></figure>
+
+<p><code>$(MODULE_NAME):$(VARIABLE_NAME)</code> 表示要启动的WSGI_app。<br>其中<strong>MODULE_NAME</strong>对应的是python文件名，<strong>VARIABLE_NAME</strong>对应web应用实例。<br>举个🌰吧！！！这里定义一个名为manage.py 文件，在其内部创建Flask应用。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#manage.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    ....</span><br><span class="line">    <span class="keyword">return</span> app</span><br><span class="line">app = create_app()</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">5001</span>)</span><br></pre></td></tr></table></figure>
+
+<p>那么，用gunicorn启动该Flask应用的命令就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers=2 manage:app</span><br></pre></td></tr></table></figure>
+
+<p>其中workers用于指定工作进程数。<br>当然也可以通过直接调用create_app方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#manage.py</span></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_app</span>():</span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    ....</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>那么，用gunicorn命令直接调用create_app方法就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers=2 manage:create_app()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gunicorn的配置参数说明-OPTIONS"><a href="#Gunicorn的配置参数说明-OPTIONS" class="headerlink" title="Gunicorn的配置参数说明[OPTIONS]"></a>Gunicorn的配置参数说明[OPTIONS]</h2><p>在实际开发中一般情况下都会用一个单独的python配置文件来配置gunicorn的启动参数。gunicorn的参数有很多，这里就重点介绍一下在实际开发中经常需要用到的一些配置。</p>
+<h3 id="1-1-配置文件config"><a href="#1-1-配置文件config" class="headerlink" title="1.1 配置文件config"></a>1.1 配置文件config</h3><p><strong>命令是：<code>-c CONFIG</code> 或<code>--config=CONFIG</code></strong><br>这个命令是指定Gunicorn的配置文件，配置文件的作用就是将我们需要的配置写到该配置文件中。<br>默认的配置文件的名称是 <code>./gunicorn.conf.py</code>，一般是将该配置文件放在项目的根目录下。就像下面这样<br><img src="./2c9b0ed1c9194ff19e6206bda4a99271.png"><br>这里设置gunicorn绑定的IP地址和端口号，worker数量以及线程数。<br>启动该项目的命令是: <code>gunicorn -c gunicorn.conf.py manage:app</code>。<br><img src="./7ec43c85af384826928b268175b1f2bc.png"></p>
+<h3 id="1-2-Debugging"><a href="#1-2-Debugging" class="headerlink" title="1.2 Debugging"></a>1.2 Debugging</h3><p><strong>命令 <code>--reload=True</code></strong>,或者在gunicorn.conf.py 文件中加上<code>reload=True</code> 配置。<br>这样的话，当代码变动时gunicorn就可以重启了。</p>
+<h3 id="1-3-Logging"><a href="#1-3-Logging" class="headerlink" title="1.3 Logging"></a>1.3 Logging</h3><p>Logging的日志有两种，一种时业务日志info，一种是错误日志error。后面再补充。</p>
+<h3 id="1-4-指定进程名称"><a href="#1-4-指定进程名称" class="headerlink" title="1.4 指定进程名称"></a>1.4 指定进程名称</h3><p><strong>命令 <code>-n proc_name</code> 或者<code>--name=APP_NAME</code> 用于指定gunicorn进程的名称</strong><br>默认情况下通过 gunicorn 启动项目之后，进程的名称是<code>gunicorn</code>。需要注意的是这个进程的名称不同于应用的名称。<br>如下:<code>gunicorn -c gunicorn.conf.py --name=test_app manage:app</code> 指定进程的名称是 test_app。<br><img src="./d1a0c3a07a5f439691fe48496c8b5a83.png"></p>
+<h3 id="1-5-客户端地址（server-socket）"><a href="#1-5-客户端地址（server-socket）" class="headerlink" title="1.5 客户端地址（server socket）"></a>1.5 客户端地址（server socket）</h3><p><strong>命令行 <code>-b ADDRESS</code> 或者<code>--bind ADDRESS</code></strong><br>默认的IP和端口号是 127.0.0.1:8000<br>bind 配置主要用于指定应用绑定的IP和端口号。<br>格式是<code>HOST</code>,<code>HOST:PORT</code>,<code>unix:PATH</code>或者<code>fd://FD</code>, 需要注意的是IP地址必须是一个合法的IP地址<br>例如：<code>gunicorn -b 0.0.0.0:8111 manage:app</code>。指定端口号为8111。<br><img src="./21447c1a8bb74fd7945363743aa16fc9.png"></p>
+<h3 id="1-6-工作进程数（Worker-Processes）"><a href="#1-6-工作进程数（Worker-Processes）" class="headerlink" title="1.6 工作进程数（Worker Processes）"></a>1.6 工作进程数（Worker Processes）</h3><p>**命令行<code>-w INT</code> 或者<code>--workers INT</code>**。<br>默认的进程数是1。<br>这个配置用于指定处理请求的工作进程的数量，单核机器上这个数量一般在2-4个之间。你需要找到最适合该服务器的进程数。<br>例如：<code>gunicorn -w 5 manage:app</code>, 表示启动5个工作进程。每个工作进程都可以多线程执行任务。<br><img src="./8f4c2ea706354c95acd8f6cc0acb1ec1.png"></p>
+<h3 id="1-7-工作模式（worker-class）"><a href="#1-7-工作模式（worker-class）" class="headerlink" title="1.7 工作模式（worker_class）"></a>1.7 工作模式（worker_class）</h3><p><strong>命令行<code>-k STRING</code>或者<code>--worker-class STRING</code></strong><br>默认的工作模式是<code>sync</code>，即同步的工作模式。<br>一共有五种工作模式，分别是 <strong>sync, eventlet, gevent, tornado, gthread</strong> 。<br>下面就分别介绍下这些工作模式。</p>
+<ol>
+<li><strong>sync 模式(同步工作模式)</strong><br>这是最基本的工作模式，也是默认的工作模式，线程为native类型。即请求先来后到，排队模式。<img src="./8b0c24d1ae4f43bc969f1b542ffb8604.png"></li>
+<li><strong>eventlet 模式（协程异步）</strong><br>eventlet 工作模式是基于eventlet库，利用python协程实现的。<br>要使用该工作模式的话必须先安装eventlet库，并且版本要大于等于0.24.1<br>安装命令是：<code>pip install eventlet</code></li>
+<li><strong>gevent模式（协程异步）</strong><br>gevent是基于Greentlet库，利用python协程实现的。<br>安装命令是:<code>pip install gevent</code><br>Gunicorn允许通过设置对应的worker类来使用这些异步Python库。这里的设置适用于我们想要在单核机器上运行的gevent：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --worker-<span class="keyword">class</span>=gevent -w <span class="number">2</span>  manage:app</span><br></pre></td></tr></table></figure>
+
+<img src="./b2c804a5b6d14f9d9ff1bbb264e6b3b9.png">
+\5. **tornado模式**
+tornado利用python Tornado框架来实现。安装命令是：`pip install tornado` 安装的tornado库的版本要大于等于0.2。
+\6. **gthread模式**
+gthread采用的是线程工作模式，利用线程池管理连接，需要安装gthread库。
+安装命令是：`pip install gthread`。
+Gunicorn允许每个worker拥有多个线程。在这种场景下，Python应用程序每个worker都会加载一次，同一个worker生成的每个线程共享相同的内存空间。为了在 Gunicorn 中使用多线程。我们使用了 gthreads 模式，指定threads参数。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers=5 --threads=2 main:app</span><br></pre></td></tr></table></figure>
+
+<p>该命令等同于：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers=5 --threads=2 --worker-class=gthread main:app</span><br></pre></td></tr></table></figure>
+
+<p>该例中里面的最大并发请求数是 <code>worker*线程</code>，也就是10。指定threads参数的话则工作模式自动变成gthread模式。</p>
+<h3 id="1-8线程数-threads"><a href="#1-8线程数-threads" class="headerlink" title="1.8线程数(threads)"></a>1.8线程数(threads)</h3><p><strong>命令行<code>--threads INT</code></strong><br>默认每个worker一个线程执行。<br>表示每个工作进程处理请求的线程数。指定threads参数的话则工作模式自动变成gthread模式。</p>
+<h3 id="1-9-工作线程连接数（worker-connections）"><a href="#1-9-工作线程连接数（worker-connections）" class="headerlink" title="1.9 工作线程连接数（worker_connections）"></a>1.9 工作线程连接数（worker_connections）</h3><p><strong>命令行：<code>--worker-connections INT</code></strong><br>默认值是： 1000<br>该参数的含义是：每个工作线程同时存在的连接数，该参数仅在Eventlet和Gevent 两种工作模式下有效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --worker-class=gevent --worker-connections=1000 --workers=3 main:app</span><br></pre></td></tr></table></figure>
+
+<p>worker-connections 是对于 gevent worker 类的特殊设置。(2<em>CPU)+1 仍然是建议的workers 数量。因为我们仅有一核，我们将会使用 3 个worker。在这种情况下，最大的并发请求数量是3000。（3个worker</em>1000个连接&#x2F;worker）</p>
+<h3 id="1-10-最大请求数（max-requests）"><a href="#1-10-最大请求数（max-requests）" class="headerlink" title="1.10 最大请求数（max_requests）"></a>1.10 最大请求数（max_requests）</h3><p><strong>命令行<code>--max-requests INT</code></strong><br>默认值是0<br>该参数的含义是：在重启之前工作进程（worker）能处理的最大请求数，任何一个大于0的值都会限制工作进程（worker）在重启之前处理的请求数量，这是一种帮助限制内存泄漏的简单方法。<br>如果该值设置为0（默认值）那么工作进程的自动重启是被禁用</p>
+<h3 id="1-11-超时设置（timeout）"><a href="#1-11-超时设置（timeout）" class="headerlink" title="1.11 超时设置（timeout）"></a>1.11 超时设置（timeout）</h3><p><strong>命令行<code>-t INT</code> 或者<code>--timeout INT</code></strong><br>默认值是30秒。<br>工作进程在超过设置的超时时间内没有响应将会被杀死并重启。<br>当值为0就表示禁用超时设置。<br>通常，默认的30秒就够了，只有当确定对同步工作进程有影响时才会修改该值。对于非同步工作进程，这意味着工作进程仍在运行，不受处理单个请求所需的时间的限制。</p>
+<h3 id="1-12-连接的存活时间（keepalive）"><a href="#1-12-连接的存活时间（keepalive）" class="headerlink" title="1.12 连接的存活时间（keepalive）"></a>1.12 连接的存活时间（keepalive）</h3><p><strong>命令行<code>--keep-alive INT</code></strong><br>默认值是2<br>连接超时时间，通常设置在1-5秒范围内。</p>
+<h3 id="工作模式的补充说明"><a href="#工作模式的补充说明" class="headerlink" title="工作模式的补充说明"></a>工作模式的补充说明</h3><p>当worker指定为gevent或者evenlet类型时，线程变成基于Greentlet的task(伪线程)，这时候线程数量threads参数是无效的。</p>
+<h4 id="使用gevent模式会出现一些兼容性问题。"><a href="#使用gevent模式会出现一些兼容性问题。" class="headerlink" title="使用gevent模式会出现一些兼容性问题。"></a>使用gevent模式会出现一些兼容性问题。</h4><p>使用gevent时，系统会使用monkey patch。系统的部分函数会被修改，<br>有些库会兼容gevent的类型，<br>例如，任务调度的库apscheduler，web socket需要socketio的库等，需要专门选择gevent的函数。<br>而有些库则直接无法使用，例如多进程multiprocess。<br>例如，在一个api请求中，如果需要使用多核cpu资源，采用multiprocess进行多进程计算。则会出现卡死的问题。gevent中，不能使用multiprocess库。</p>
+<h2 id="性能实践"><a href="#性能实践" class="headerlink" title="性能实践"></a>性能实践</h2><ol>
+<li>如果这个应用是<strong>I&#x2F;O受限</strong>，通常可以通过使用<strong>“伪线程”（gevent或asyncio）的工作模式</strong>来得到最佳性能。正如我们了解到的，Gunicorn通过设置合适的worker类并将workers数量调整到<code>（2*CPU）+1</code>来支持这种编程范式。</li>
+<li>如果这个应用是<strong>CPU受限</strong>，那么应用程序处理多少并发请求就并不重要，唯一重要的是并行请求的数量。因为Python’s GIL，线程和’伪线程’并不能以并行模式执行，可以将worker的数量改成CPU的核数，理解到最大的并行请求数量其实就是核心数。<strong>这时候适合的工作模式是sync工作模式。</strong></li>
+<li>如果不确定应用程序的内存占用，使用多线程以及相应的gthread worker类会产生更好的性能，因为应用程序会在每个worker上都加载一次，并且在同一个worker上运行的每个线程都会共享一些内存，但这需要一些额外的CPU消耗。</li>
+<li>如果你不知道你自己应该选择什么就从最简单的配置开始，就只是 workers 数量设置为 (2*CPU)+1 并且不用考虑 多线程。从这个点开始，就是所有测试和错误的基准环境。如果瓶颈在内存上，就开始引入多线程。如果瓶颈在 I&#x2F;O 上，就考虑使用不同的 Python 编程范式。如果瓶颈在 CPU 上，就考虑添加更多内核并且调整 workers 数量。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文详细介绍了Gunicorn的安装使用以及各个配置参数的含义。希望对读者朋友们有所帮助。针对这些的学习还是看官方文档最好。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  技术发展
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2022/10/14/01%20OS/Linux/systemd/">
+                Systemd
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Leah Ge</a> 
+	
+	
+	<br>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
