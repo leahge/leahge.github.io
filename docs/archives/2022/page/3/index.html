@@ -4,14 +4,16 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
+	  
+<script src="/js/search.js"></script>
+
 	<!-- title -->
 	
 	<title>
-	 
+	
 	LeahGe
 	</title>
-	
+
 	<!-- keywords,description -->
 	 
 
@@ -46,7 +48,6 @@
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
@@ -58,6 +59,7 @@
 
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
 
 	
 <script src="/js/main.js"></script>
@@ -71,7 +73,17 @@
 
 	
 	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
 <meta name="generator" content="Hexo 6.3.0"></head>
+
 
 <body>
 	<script>
@@ -79,7 +91,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -100,7 +112,19 @@ var _hmt = _hmt || [];
 				<i class="fa fa-github fa-2x"></i>
 			</a>
 		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
 	</ul>
+
+
 </header>
 
 	
@@ -842,9 +866,9 @@ var _hmt = _hmt || [];
 		</div>
 	</div>
 </div>
-
 	<!-- 引入正文 -->
 	<div id="content">
+		<div id="local-search-result"></div>
 		<div id="index">
 	
 		<div class="index-li">
@@ -930,13 +954,13 @@ sed替换的基本语法为:
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
+			<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
 				<h2 class="index-title">
-					Socket/Node/Die/Core/Processor/Package
+					技术发展
 				</h2>
 				<div class="index-brief">
-					Socket&#x2F;Node&#x2F;Die&#x2F;Core&#x2F;Processor&#x2F; 针对CPU封装的精细区分CPU封装多种术语解释
-socket：在服务器上，一块主板可以拥有多个socket，即CPU的物理插槽。一般插槽上CPU的封装方式会分为BGA和LGA两种方式。B
+					揭秘Chiplet技术，摩尔定律拯救者，两大阵营、六个核心玩家
+
 					...
 				</div>
 			</a>
@@ -949,13 +973,13 @@ socket：在服务器上，一块主板可以拥有多个socket，即CPU的物�
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+			<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
 				<h2 class="index-title">
-					技术发展
+					Socket/Node/Die/Core/Processor/Package
 				</h2>
 				<div class="index-brief">
-					揭秘Chiplet技术，摩尔定律拯救者，两大阵营、六个核心玩家
-
+					Socket&#x2F;Node&#x2F;Die&#x2F;Core&#x2F;Processor&#x2F; 针对CPU封装的精细区分CPU封装多种术语解释
+socket：在服务器上，一块主板可以拥有多个socket，即CPU的物理插槽。一般插槽上CPU的封装方式会分为BGA和LGA两种方式。B
 					...
 				</div>
 			</a>

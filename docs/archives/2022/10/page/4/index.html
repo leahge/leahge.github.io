@@ -4,14 +4,16 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
+	  
+<script src="/js/search.js"></script>
+
 	<!-- title -->
 	
 	<title>
-	 
+	
 	LeahGe
 	</title>
-	
+
 	<!-- keywords,description -->
 	 
 
@@ -46,7 +48,6 @@
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
@@ -58,6 +59,7 @@
 
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
 
 	
 <script src="/js/main.js"></script>
@@ -71,7 +73,17 @@
 
 	
 	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
 <meta name="generator" content="Hexo 6.3.0"></head>
+
 
 <body>
 	<script>
@@ -79,7 +91,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -100,7 +112,19 @@ var _hmt = _hmt || [];
 				<i class="fa fa-github fa-2x"></i>
 			</a>
 		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
 	</ul>
+
+
 </header>
 
 	
@@ -345,17 +369,6 @@ var _hmt = _hmt || [];
 			
 								</li>
 								
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2022/10/14/01%20OS/Linux/systemd/">
-                     
-										    Systemd
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -755,28 +768,6 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
-										12 Python
-									</a>
-									
-							<ul>
-								<li class="file">
-									<a href="/2022/10/14/12%20Python/Gunicorn_manual/">
-                     
-										    Gunicorn的使用手册
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
 										50 soft
 									</a>
 									
@@ -842,21 +833,19 @@ var _hmt = _hmt || [];
 		</div>
 	</div>
 </div>
-
 	<!-- 引入正文 -->
 	<div id="content">
+		<div id="local-search-result"></div>
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ltrace/">
+			<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
 				<h2 class="index-title">
-					Ltrace(1) — Linux Manual Page
+					PERF EVENT 内核篇
 				</h2>
 				<div class="index-brief">
-					ltrace(1) — Linux manual page
-
-
-NAME | SYNOPSIS | DESCRIPTION | OPTIONS | FILTER SPECIFICATIONS | FILTER EXPRESSIONS | PROTOTYPE LIBRARY DISCOVERY | B
+					PERF EVENT 内核篇简介本文将以 X86 硬件事件为入手点，介绍 linux kernel 中 perf_event 子系统的部分实现，通过本文读者将初步了解到 perf_event 资源是如何在内核中呈现，运行，会依次如何对硬件进行操作，如何产生分时复用，以及在软件层面如何产生影响
+注：阅
 					...
 				</div>
 			</a>
@@ -869,12 +858,12 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | FILTER SPECIFICATIONS | FILTER EXPRESS
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/Perf/perf_ipc/">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/vmstat/">
 				<h2 class="index-title">
-					Perf IPC以及CPU利用率
+					Vmstat-Report Virtual Memory Statistics
 				</h2>
 				<div class="index-brief">
-					CPU 流水线工作原理https://plantegg.github.io/2020/05/31/Perf%20IPC%E4%BB%A5%E5%8F%8ACPU%E5%88%A9%E7%94%A8%E7%8E%87/cycles：CPU时钟周期。CPU从它的指令集(instruction set)中
+					https://man7.org/linux/man-pages/man8/vmstat.8.htmlvmstat命令是最常见的Linux&#x2F;Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。这个命令是我查看Linux
 					...
 				</div>
 			</a>
@@ -887,14 +876,12 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | FILTER SPECIFICATIONS | FILTER EXPRESS
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/%E6%9C%8D%E5%8A%A1%E5%99%A8BMC%E4%B8%8EIPMI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pidstat/">
 				<h2 class="index-title">
-					服务器BMC与IPMI基础知识
+					Pidstat
 				</h2>
 				<div class="index-brief">
-					服务器BMC与IPMI基础知识初识BMC与IPMI
-什么是BMC？BMC全名Baseboard management controller, 是一种嵌入式管理微控制器。
-BMC全称为基板管理控制器（Baseboard Manager Controller，简称BMC），它通过监控系统的电源、温度等来
+					https://man7.org/linux/man-pages/man1/pidstat.1.htmlpidstat是sysstat工具的一个命令，用于监控全部或指定进程的cpu、内存、线程、设备IO等系统资源的占用情况。pidstat首次运行时显示自系统启动开始的各项统计信息，之后运行pidst
 					...
 				</div>
 			</a>
@@ -907,24 +894,17 @@ BMC全称为基板管理控制器（Baseboard Manager Controller，简称BMC）�
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
 				<h2 class="index-title">
-					Perf-Report(1) — Linux Manual Page
+					Linux指令后的数字代表什么
 				</h2>
 				<div class="index-brief">
-					perf-report(1) — Linux manual page
+					小括号里的数字，就是一个man的分类号
+Sections of the manual pages
+  The manual Sections are traditionally defined as follows:       
 
-
-NAME | SYNOPSIS | DESCRIPTION | OPTIONS | OVERHEAD CALCULATION | SEE ALSO | COLOPHON
-
-
-
-
-
-
-
-
-1PERF-REPORT(1)     
+1 User commands (Programs)
+      
 					...
 				</div>
 			</a>
@@ -937,15 +917,76 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | OVERHEAD CALCULATION | SEE ALSO | COLO
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mpstat/">
 				<h2 class="index-title">
-					Perf-Script(1) — Linux Manual Page
+					Mpstat-Multiprocessor Statistics
 				</h2>
 				<div class="index-brief">
-					perf-script(1) — Linux manual page
+					mpstat是Multiprocessor Statistics的缩写，是实时监控工具，报告与cpu的一些统计信息这些信息都存在&#x2F;proc&#x2F;stat文件中，在多CPU系统里，其不但能查看所有的CPU的平均状况的信息，而且能够有查看特定的cpu信息，mpstat最大的特点是:可以查
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-13</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ftrace/">
+				<h2 class="index-title">
+					Ftrace
+				</h2>
+				<div class="index-brief">
+					Linux ftrace框架介绍及运用目录：
+1. ftrace背景
+2. 框架介绍
+3. 主要代码分析
+4. ftrace的配置和使用
+5. ftrace相关工具
+在日常工作中，经常会需要对内核进行Debug、或者进行优化工作。一些简单的问题，可以通过dmesg&#x2F;printk查看，优化借
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-13</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/strace/">
+				<h2 class="index-title">
+					Strace
+				</h2>
+				<div class="index-brief">
+					   strace是个功能强大的Linux调试分析诊断工具，可用于跟踪程序执行时进程系统调用(system call)和所接收的信号，尤其是针对源码不可读或源码无法再编译的程序。
+   在Linux系统中，用户程序运行在一个沙箱(sandbox)里，用户进程不能直接访问计算机硬件设备。当进程需要访问
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-13</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
+				<h2 class="index-title">
+					Sadc(8) — Linux Manual Page
+				</h2>
+				<div class="index-brief">
+					sadc(8) — Linux manual page
 
 
-NAME | SYNOPSIS | DESCRIPTION | OPTIONS | SEE ALSO | COLOPHON
+NAME | SYNOPSIS | DESCRIPTION | OPTIONS | ENVIRONMENT | EXAMPLES | BUGS | FILES | AUTHOR | SEE ALSO | COLOPHON
 
 
 
@@ -954,7 +995,7 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | SEE ALSO | COLOPHON
 
 
 
-1PERF-SCRIPT(1)                 perf Manual
+1
 					...
 				</div>
 			</a>
@@ -974,25 +1015,6 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | SEE ALSO | COLOPHON
 				<div class="index-brief">
 					perf-stat(1)NAMEperf-stat - Run a command and gather performance counter statistics
 SYNOPSIS[verse]‘perf stat’ [-e  | –event&#x3D;EVENT] [-a] ‘perf st
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
-				<h2 class="index-title">
-					PERF EVENT 内核篇
-				</h2>
-				<div class="index-brief">
-					PERF EVENT 内核篇简介本文将以 X86 硬件事件为入手点，介绍 linux kernel 中 perf_event 子系统的部分实现，通过本文读者将初步了解到 perf_event 资源是如何在内核中呈现，运行，会依次如何对硬件进行操作，如何产生分时复用，以及在软件层面如何产生影响
-注：阅
 					...
 				</div>
 			</a>
@@ -1034,63 +1056,10 @@ NAME | SYNOPSIS | DESCRIPTION | OPTIONS | AUTHOR | REPORTING BUGS | COPYRIGHT | 
                 </div>
 		</div>	
 	
-		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/du/">
-				<h2 class="index-title">
-					Du(1)
-				</h2>
-				<div class="index-brief">
-					du(1) — Linux manual page
-
-
-NAME | SYNOPSIS | DESCRIPTION | PATTERNS | AUTHOR | REPORTING BUGS | COPYRIGHT | SEE ALSO | COLOPHON
-
-
-
-
-
-
-
-
-1DU(1)       
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
-				<h2 class="index-title">
-					Linux指令后的数字代表什么
-				</h2>
-				<div class="index-brief">
-					小括号里的数字，就是一个man的分类号
-Sections of the manual pages
-  The manual Sections are traditionally defined as follows:       
-
-1 User commands (Programs)
-      
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
 	
 	<div id="index-paginator">
 		
-			<a class="extend prev" rel="prev" href="/archives/2022/10/page/3/">&lt;</a><a class="page-number" href="/archives/2022/10/">1</a><a class="page-number" href="/archives/2022/10/page/2/">2</a><a class="page-number" href="/archives/2022/10/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2022/10/page/5/">5</a><a class="page-number" href="/archives/2022/10/page/6/">6</a><a class="extend next" rel="next" href="/archives/2022/10/page/5/">&gt;</a>
+			<a class="extend prev" rel="prev" href="/archives/2022/10/page/3/">&lt;</a><a class="page-number" href="/archives/2022/10/">1</a><a class="page-number" href="/archives/2022/10/page/2/">2</a><a class="page-number" href="/archives/2022/10/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2022/10/page/5/">5</a><a class="extend next" rel="next" href="/archives/2022/10/page/5/">&gt;</a>
 		
 	</div>
 </div>

@@ -4,14 +4,16 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
+	  
+<script src="/js/search.js"></script>
+
 	<!-- title -->
 	
 	<title>
-	 
+	
 	LeahGe
 	</title>
-	
+
 	<!-- keywords,description -->
 	 
 
@@ -46,7 +48,6 @@
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
@@ -58,6 +59,7 @@
 
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
 
 	
 <script src="/js/main.js"></script>
@@ -71,7 +73,17 @@
 
 	
 	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
 <meta name="generator" content="Hexo 6.3.0"></head>
+
 
 <body>
 	<script>
@@ -79,7 +91,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -100,7 +112,19 @@ var _hmt = _hmt || [];
 				<i class="fa fa-github fa-2x"></i>
 			</a>
 		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
 	</ul>
+
+
 </header>
 
 	
@@ -842,9 +866,9 @@ var _hmt = _hmt || [];
 		</div>
 	</div>
 </div>
-
 	<!-- 引入正文 -->
 	<div id="content">
+		<div id="local-search-result"></div>
 		<div id="index">
 	
 		<div class="index-li">
@@ -867,13 +891,16 @@ New API（NAPI）用于支持高速网卡处理网络数据包的一种机制 - 
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/31/01%20OS/Linux/network/gro/">
+			<a href="/2022/10/31/01%20OS/Linux/Kernel/kernel_config/">
 				<h2 class="index-title">
-					Linux Kernel 网络协议栈之GRO
+					Linux Kernel 编译选项
 				</h2>
 				<div class="index-brief">
-					linux kernel 网络协议栈之GRO(Generic receive offload)GRO(Generic receive offload)在内核2.6.29之后合并进去的，作者是一个华裔Herbert Xu ,GRO的简介可以看这里：
-http://lwn.net/Articles/35
+					有时候我们需要查看Linux系统的内核是否在编译的时候的编译选项，从而确定某个模块是否已经加入到内核以及参数设置等等。
+方法有两种：
+123# zcat /proc/config.gz# cat /boot/config-$(uname -r)
+
+第一种方法要求在内核编译时增减相应的选项才会生成，很
 					...
 				</div>
 			</a>
@@ -886,16 +913,13 @@ http://lwn.net/Articles/35
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/31/01%20OS/Linux/Kernel/kernel_config/">
+			<a href="/2022/10/31/01%20OS/Linux/network/gro/">
 				<h2 class="index-title">
-					Linux Kernel 编译选项
+					Linux Kernel 网络协议栈之GRO
 				</h2>
 				<div class="index-brief">
-					有时候我们需要查看Linux系统的内核是否在编译的时候的编译选项，从而确定某个模块是否已经加入到内核以及参数设置等等。
-方法有两种：
-123# zcat /proc/config.gz# cat /boot/config-$(uname -r)
-
-第一种方法要求在内核编译时增减相应的选项才会生成，很
+					linux kernel 网络协议栈之GRO(Generic receive offload)GRO(Generic receive offload)在内核2.6.29之后合并进去的，作者是一个华裔Herbert Xu ,GRO的简介可以看这里：
+http://lwn.net/Articles/35
 					...
 				</div>
 			</a>
@@ -1029,12 +1053,14 @@ sar 命令的基本格式如下：
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
+			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
 				<h2 class="index-title">
-					Brk
+					Getcpu系统调用
 				</h2>
 				<div class="index-brief">
-					
+					getcpu系统调用名称：getcpu - 确定调用线程正在运行的CPU和NUMA节点
+概要：
+12345#include &lt;linux/getcpu.h&gt;int getcpu(unsigned *cpu, unsigned *node, struct getcpu_cache *tca
 					...
 				</div>
 			</a>

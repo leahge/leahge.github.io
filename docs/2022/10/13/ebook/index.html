@@ -4,16 +4,18 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
+	  
+<script src="/js/search.js"></script>
+
 	<!-- title -->
 	
 	<title>
 	
-		99 Ebook | 
-	 
+		99 Ebook |
+	
 	LeahGe
 	</title>
-	
+
 	<!-- keywords,description -->
 	 
 
@@ -48,7 +50,6 @@
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
-
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
@@ -60,6 +61,7 @@
 
 	
 <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
 
 	
 <script src="/js/main.js"></script>
@@ -73,7 +75,17 @@
 
 	
 	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
 <meta name="generator" content="Hexo 6.3.0"></head>
+
 
 <body>
 	<script>
@@ -81,7 +93,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -102,7 +114,19 @@ var _hmt = _hmt || [];
 				<i class="fa fa-github fa-2x"></i>
 			</a>
 		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
 	</ul>
+
+
 </header>
 
 	
@@ -347,17 +371,6 @@ var _hmt = _hmt || [];
 			
 								</li>
 								
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2022/10/14/01%20OS/Linux/systemd/">
-                     
-										    Systemd
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -757,28 +770,6 @@ var _hmt = _hmt || [];
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
-										12 Python
-									</a>
-									
-							<ul>
-								<li class="file">
-									<a href="/2022/10/14/12%20Python/Gunicorn_manual/">
-                     
-										    Gunicorn的使用手册
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
 										50 soft
 									</a>
 									
@@ -844,9 +835,9 @@ var _hmt = _hmt || [];
 		</div>
 	</div>
 </div>
-
 	<!-- 引入正文 -->
 	<div id="content">
+		<div id="local-search-result"></div>
 		<h1 id="article-title">
 	99 Ebook
 </h1>
@@ -879,9 +870,9 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2022/10/14/01%20OS/Linux/systemd/">
+              <a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Systemd
+                  Socket/Node/Die/Core/Processor/Package
               </a>
             
         </div>

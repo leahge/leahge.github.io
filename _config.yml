@@ -105,3 +105,8 @@ deploy:
   type: git
   repo: https://github.com/leahge/leahge.github.io
   branch: main
+
+search:
+  path: search.xml
+  field: post
+  placeholder: 搜索
