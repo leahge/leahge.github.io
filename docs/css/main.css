@@ -136,6 +136,10 @@ a {
 	color: #9cc7b8;
 	border-bottom: 1px solid #9cc7b8;
 }
+
+.search-keyword{
+	 color: red;
+}
 #site-toc {
 	height: calc( 100% - 5px );
 	padding-top: 5px;
@@ -234,6 +238,7 @@ a {
 	position: relative;
 	font-size: 24px;
 }
+
 
 
 #index-paginator {
