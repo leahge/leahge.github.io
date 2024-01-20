@@ -140,6 +140,24 @@ a {
 .search-keyword{
 	 color: red;
 }
+
+// 搜索结果
+.search-result .search-keyword{
+  color: red;
+}
+
+.search-result-title{
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tag-hover > a:hover,
+.tag-hover li > a:hover,
+.tag-hover > i:hover {
+  color: #0a58ca;
+}
+
 #site-toc {
 	height: calc( 100% - 5px );
 	padding-top: 5px;
