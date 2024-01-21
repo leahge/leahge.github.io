@@ -666,9 +666,9 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
-									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
                      
-										    剥离与导回符号表及调试信息
+										    Elf文件格式
                      
 									</a>
 								</li>
@@ -677,9 +677,9 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file">
-									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
                      
-										    Elf文件格式
+										    剥离与导回符号表及调试信息
                      
 									</a>
 								</li>
@@ -1046,6 +1046,28 @@ var _hmt = _hmt || [];
 								
 							</ul>
 			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03 磁盘IO
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/21/%E4%BC%98%E5%8C%96/03%20%E7%A3%81%E7%9B%98IO/01%20%E5%8E%9F%E7%90%86/">
+                     
+										    01 原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1057,6 +1079,24 @@ var _hmt = _hmt || [];
 	<div id="content">
 		<div id="local-search-result"></div>
 		<div id="index">
+	
+		<div class="index-li">
+			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
+				<h2 class="index-title">
+					Mmap
+				</h2>
+				<div class="index-brief">
+					
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2022-10-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
 	
 		<div class="index-li">
 			<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
@@ -1138,14 +1178,13 @@ perf file formathttps://blog.csdn.net/Rong_Toa/article/details/117040529
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
+			<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
 				<h2 class="index-title">
-					剥离与导回符号表及调试信息
+					编译、链接和装载
 				</h2>
 				<div class="index-brief">
-					使用strip, eu-strip, objcopy等剥离与导回符号表及调试信息 | 易学教程1.符号表信息和调试信息符号表信息（symbols）和调试信息（debug info）是由不同段区分的。使用 readelf -S binfile 可以查看ELF文件的所有段。
-调试信息相关的段：
-1234
+					Linux下编译、链接和装载各种火焰图 https://zhuanlan.zhihu.com/p/54276509?from=singlemessage&amp;utm_id=0
+这些tracepint的对应的sysfs节点在&#x2F;sys&#x2F;kernel&#x2F;debug&#x2F
 					...
 				</div>
 			</a>
@@ -1158,13 +1197,14 @@ perf file formathttps://blog.csdn.net/Rong_Toa/article/details/117040529
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
+			<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
 				<h2 class="index-title">
-					编译、链接和装载
+					剥离与导回符号表及调试信息
 				</h2>
 				<div class="index-brief">
-					Linux下编译、链接和装载各种火焰图 https://zhuanlan.zhihu.com/p/54276509?from=singlemessage&amp;utm_id=0
-这些tracepint的对应的sysfs节点在&#x2F;sys&#x2F;kernel&#x2F;debug&#x2F
+					使用strip, eu-strip, objcopy等剥离与导回符号表及调试信息 | 易学教程1.符号表信息和调试信息符号表信息（symbols）和调试信息（debug info）是由不同段区分的。使用 readelf -S binfile 可以查看ELF文件的所有段。
+调试信息相关的段：
+1234
 					...
 				</div>
 			</a>
@@ -1208,25 +1248,6 @@ sed替换的基本语法为:
 					npm设置和取消代理的方法设置代理12npm config set proxy=http://127.0.0.1:8087npm config set registry=http://registry.npmjs.org
 
 关于https经过上面设置使用了http开头的源，因此不需要设https_p
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-14</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
-				<h2 class="index-title">
-					Socket/Node/Die/Core/Processor/Package
-				</h2>
-				<div class="index-brief">
-					Socket&#x2F;Node&#x2F;Die&#x2F;Core&#x2F;Processor&#x2F; 针对CPU封装的精细区分CPU封装多种术语解释
-socket：在服务器上，一块主板可以拥有多个socket，即CPU的物理插槽。一般插槽上CPU的封装方式会分为BGA和LGA两种方式。B
 					...
 				</div>
 			</a>
