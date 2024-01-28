@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	  
+<script src="/js/search.js"></script>
+
+	<!-- title -->
+	
+	<title>
+	
+		Perf-Stat(1) |
+	
+	LeahGe
+	</title>
+
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "leahge.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">LeahGe</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/leahge" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
+	</ul>
+
+
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01 OS
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Kernel
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
+                     
+										    Kallsyms
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/Kernel/kernel_config/">
+                     
+										    Linux Kernel 编译选项
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Perf
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+                     
+										    Perf-Report(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+                     
+										    Perf-Script(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-stat/">
+                     
+										    Perf-Stat(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/Perf/perf_event/">
+                     
+										    PMU计数器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware/">
+                     
+										    PERF EVENT 硬件篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware2/">
+                     
+										    PERF EVENT 硬件篇续篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_ipc/">
+                     
+										    Perf IPC以及CPU利用率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
+                     
+										    PERF EVENT 内核篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/Perf/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
+                     
+										    参考资料
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Shell/ctrlc/">
+                     
+										    Linux Shell中捕获CTRL+C
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+                     
+										    Shell字符串截取
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										network
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/gro/">
+                     
+										    Linux Kernel 网络协议栈之GRO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                     
+										    网卡多队列配置和中断绑定
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/napi/">
+                     
+										    Linux协议栈--NAPI机制
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/systemd/">
+                     
+										    Systemd
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/df/">
+                     
+										    Df(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/du/">
+                     
+										    Du(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/fio/">
+                     
+										    Fio
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ftrace/">
+                     
+										    Ftrace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/grep/">
+                     
+										    Grep
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/hugeadm/">
+                     
+										    Hugeadm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/iostat/">
+                     
+										    Iostat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/last/">
+                     
+										    Last
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ln/">
+                     
+										    Ln
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/lsof/">
+                     
+										    Lsof
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ls/">
+                     
+										    Ls
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ltrace/">
+                     
+										    Ltrace(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
+                     
+										    Linux指令后的数字代表什么
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mount/">
+                     
+										    Mount
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mpstat/">
+                     
+										    Mpstat-Multiprocessor Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/nl/">
+                     
+										    Nl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/nmve%20cli/">
+                     
+										    Nvme Cli
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pidstat/">
+                     
+										    Pidstat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ps/">
+                     
+										    Ps
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pushd/">
+                     
+										    Linux 中使用 Pushd 和 Popd 命令来进行高效的目录导航
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
+                     
+										    Sadc(8) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                     
+										    Sar
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sed/">
+                     
+										    Sed
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/shutdown/">
+                     
+										    Shutdown
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/strace/">
+                     
+										    Strace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/taskset/">
+                     
+										    Taskset
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/tee/">
+                     
+										    Tee
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/vmstat/">
+                     
+										    Vmstat-Report Virtual Memory Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系统调用
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
+                     
+										    Brk
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/exec/">
+                     
+										    Exec
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/futex/">
+                     
+										    Futex
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
+                     
+										    Getcpu系统调用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/gettimeofday/">
+                     
+										    Gettimeofday
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/ioctl/">
+                     
+										    Ioctl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
+                     
+										    Mmap
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										编译、链接和装载
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
+                     
+										    DSO(dynamic Shared Object)动态共享对象的原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+                     
+										    Linux下编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
+                     
+										    Elf文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
+                     
+										    剥离与导回符号表及调试信息
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
+                     
+										    编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/%E8%BF%9B%E7%A8%8B/status/">
+                     
+										    Linux进程状态：S 和D状态
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/%E6%9C%8D%E5%8A%A1%E5%99%A8BMC%E4%B8%8EIPMI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                     
+										    服务器BMC与IPMI基础知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02 CPU
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
+                     
+										    Socket/Node/Die/Core/Processor/Package
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+                     
+										    技术发展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12 Python
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/12%20Python/Gunicorn_manual/">
+                     
+										    Gunicorn的使用手册
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										50 soft
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nodejs
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/50%20soft/Nodejs/npm/">
+                     
+										    Npm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										97 优化
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/CPU/">
+                     
+										    CPU
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98/">
+                     
+										    内存
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">
+                     
+										    应用程序
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%A3%81%E7%9B%98IO%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+                     
+										    磁盘IO和文件系统
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%BD%91%E7%BB%9CIO/">
+                     
+										    网络IO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										98 Other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/98%20Other/%E5%9B%BE%E7%81%B5%E6%9C%BA%E4%B8%8E%E5%9B%BE%E7%81%B5%E5%AE%8C%E5%A4%87/">
+                     
+										    图灵机与图灵完备
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										99 ebook
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux性能优化实战
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/00%20%E5%BC%80%E7%AF%87%E8%AF%8D/">
+                     
+										    开篇词
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/01%20%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/">
+                     
+										    如何学习
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/02%20%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%E2%80%9C%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD%E2%80%9D/">
+                     
+										    怎么理解“评价负载”
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/03%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/">
+                     
+										    上下文切换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/04%20%E6%9F%90%E4%B8%AA%E5%BA%94%E7%94%A8%E7%9A%84CPU%E4%BD%BF%E7%94%A8%E7%8E%87%E5%B1%85%E7%84%B6%E8%BE%BE%E5%88%B0%E7%99%BE%E5%88%86%E7%99%BE/">
+                     
+										    CPU利用率达到100%
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/05%20%E7%B3%BB%E7%BB%9F%E7%9A%84%20CPU%20%E4%BD%BF%E7%94%A8%E7%8E%87%E5%BE%88%E9%AB%98%EF%BC%8C%E4%BD%86%E4%B8%BA%E5%95%A5%E5%8D%B4%E6%89%BE%E4%B8%8D%E5%88%B0%E9%AB%98%20CPU%20%E7%9A%84%E5%BA%94%E7%94%A8/">
+                     
+										    找不到高CPU的应用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/06%20%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E4%B8%8D%E5%8F%AF%E4%B8%AD%E6%96%AD%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/">
+                     
+										    不可中断进程和僵尸进程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/07%20Linux%E8%BD%AF%E4%B8%AD%E6%96%AD/">
+                     
+										    Linux软中断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/08%20%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BD%AF%E4%B8%AD%E6%96%ADCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E5%8D%87%E9%AB%98/">
+                     
+										    软中断CPU使用率升高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/09%20%E8%BF%85%E9%80%9F%E5%88%86%E6%9E%90%E5%87%BA%E7%B3%BB%E7%BB%9FCPU%E7%9A%84%E7%93%B6%E9%A2%88/">
+                     
+										    系统CPU的瓶颈
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/10%20CPU%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%9D%E8%B7%AF/">
+                     
+										    CPU性能优化思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/11%20%E6%97%A0%E6%B3%95%E6%A8%A1%E6%8B%9F%E5%87%BA%20RES%20%E4%B8%AD%E6%96%AD/">
+                     
+										    无法模拟出RES中断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/12%20%E7%94%A8perf%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90Java%E7%A8%8B%E5%BA%8F/">
+                     
+										    用Perf分析java程序
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/13%20Linux%E5%86%85%E5%AD%98%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    内存工作原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/14%20%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84Buffer%E5%92%8CCache/">
+                     
+										    内存中的Buffer和Cache
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/15%20%E5%88%A9%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%BC%93%E5%AD%98%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87/">
+                     
+										    利用系统缓存优化程序的运行效率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/16%20%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">
+                     
+										    内存泄漏
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/17%20%E7%B3%BB%E7%BB%9F%E7%9A%84Swap%E5%8F%98%E9%AB%98/">
+                     
+										    系统的Swap变高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/18%20%E5%BF%AB%E5%87%86%E7%8B%A0%E6%89%BE%E5%88%B0%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%97%AE%E9%A2%98/">
+                     
+										    快准狠找到系统内存问题
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/19%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%A3%81%E7%9B%98%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                     
+										    文件系统与磁盘的区别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/20%20inux%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    文件系统怎么工作
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/21%20Linux%20%E7%A3%81%E7%9B%98IO%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    磁盘I/O是怎么工作的
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/22%20%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%8B%82%E6%89%93%E6%97%A5%E5%BF%97%E7%9A%84%E5%86%85%E9%AC%BC/">
+                     
+										    如何找出狂打日志的内鬼
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/23%20%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%9A%84%E7%A3%81%E7%9B%98IO%E5%BB%B6%E8%BF%9F%E5%BE%88%E9%AB%98/">
+                     
+										    磁盘IO延迟高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/24%20SQL%E6%9F%A5%E8%AF%A2%E6%85%A2/">
+                     
+										    SQL查询慢
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/25%20Redis%E5%93%8D%E5%BA%94%E4%B8%A5%E9%87%8D%E5%BB%B6%E8%BF%9F/">
+                     
+										    Redis响应严重延迟
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/26%20%E5%A6%82%E4%BD%95%E8%BF%85%E9%80%9F%E5%88%86%E6%9E%90%E5%87%BA%E7%B3%BB%E7%BB%9FIO%E7%9A%84%E7%93%B6%E9%A2%88/">
+                     
+										    快速分析系统IO瓶颈
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/27%20%E7%A3%81%E7%9B%98%20IO%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%9D%E8%B7%AF/">
+                     
+										    磁盘I/O性能优化思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/28%20%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E%20IO%20%E4%B8%8E%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%20IO%20%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E8%81%94%E7%B3%BB/">
+                     
+										    阻塞、非阻塞 I/O 与同步、异步 I/O 的区别和联系
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/29%20Linux%20%E7%BD%91%E7%BB%9C/">
+                     
+										    Linux网络
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/30%20C10K%20%E5%92%8C%20C1000K%20%E5%9B%9E%E9%A1%BE/">
+                     
+										    C10K和C1000K回顾
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/99%20ebook/books/">
+                     
+										    99 Ebook
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+	<!-- 引入正文 -->
+	<div id="content">
+		<div id="local-search-result"></div>
+		<h1 id="article-title">
+	Perf-Stat(1)
+</h1>
+<div class="article-meta">
+	
+	<span>Leah Ge</span>
+	<span>2022-10-13 20:18:51</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="perf-stat-1"><a href="#perf-stat-1" class="headerlink" title="perf-stat(1)"></a>perf-stat(1)</h1><h2 id="NAME"><a href="#NAME" class="headerlink" title="NAME"></a>NAME</h2><p>perf-stat - Run a command and gather performance counter statistics</p>
+<h2 id="SYNOPSIS"><a href="#SYNOPSIS" class="headerlink" title="SYNOPSIS"></a>SYNOPSIS</h2><p>[verse]<br>‘perf stat’ [-e <EVENT> | –event&#x3D;EVENT] [-a] <command><br>‘perf stat’ [-e <EVENT> | –event&#x3D;EVENT] [-a] -- <command> [<options>]<br>‘perf stat’ [-e <EVENT> | –event&#x3D;EVENT] [-a] record [-o file] -- <command> [<options>]<br>‘perf stat’ report [-i file]</p>
+<h2 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h2><p>This command runs a command and gathers performance counter statistics<br>from it.</p>
+<h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h2><p><command>…::<br>    Any command you can specify in a shell.</p>
+<p>record::<br>    See STAT RECORD.</p>
+<p>report::<br>    See STAT REPORT.</p>
+<p>-e::<br>–event&#x3D;::<br>    Select the PMU event. Selection can be:</p>
+<pre><code>- a symbolic event name (use &#39;perf list&#39; to list all events)
+
+- a raw PMU event in the form of rN where N is a hexadecimal value
+  that represents the raw register encoding with the layout of the
+  event control registers as described by entries in
+  /sys/bus/event_source/devices/cpu/format/*.
+
+    - a symbolic or raw PMU event followed by an optional colon
+  and a list of event modifiers, e.g., cpu-cycles:p.  See the
+  linkperf:perf-list[1] man page for details on event modifiers.
+
+- a symbolically formed event like &#39;pmu/param1=0x3,param2/&#39; where
+  param1 and param2 are defined as formats for the PMU in
+  /sys/bus/event_source/devices/&lt;pmu&gt;/format/*
+
+  &#39;percore&#39; is a event qualifier that sums up the event counts for both
+  hardware threads in a core. For example:
+  perf stat -A -a -e cpu/event,percore=1/,otherevent ...
+
+- a symbolically formed event like &#39;pmu/config=M,config1=N,config2=K/&#39;
+  where M, N, K are numbers (in decimal, hex, octal format).
+  Acceptable values for each of &#39;config&#39;, &#39;config1&#39; and &#39;config2&#39;
+  parameters are defined by corresponding entries in
+  /sys/bus/event_source/devices/&lt;pmu&gt;/format/*
+
+Note that the last two syntaxes support prefix and glob matching in
+the PMU name to simplify creation of events across multiple instances
+of the same type of PMU in large systems (e.g. memory controller PMUs).
+Multiple PMU instances are typical for uncore PMUs, so the prefix
+&#39;uncore_&#39; is also ignored when performing this match.
+</code></pre>
+<p>-i::<br>–no-inherit::<br>        child tasks do not inherit counters<br>-p::<br>–pid&#x3D;<pid>::<br>        stat events on existing process id (comma separated list)</p>
+<p>-t::<br>–tid&#x3D;<tid>::<br>        stat events on existing thread id (comma separated list)</p>
+<p>-b::<br>–bpf-prog::<br>        stat events on existing bpf program id (comma separated list),<br>        requiring root rights. bpftool-prog could be used to find program<br>        id all bpf programs in the system. For example:</p>
+<h1 id="bpftool-prog-head-n-1"><a href="#bpftool-prog-head-n-1" class="headerlink" title="bpftool prog | head -n 1"></a>bpftool prog | head -n 1</h1><p>  17247: tracepoint  name sys_enter  tag 192d548b9d754067  gpl</p>
+<h1 id="perf-stat-e-cycles-instructions-–bpf-prog-17247-–timeout-1000"><a href="#perf-stat-e-cycles-instructions-–bpf-prog-17247-–timeout-1000" class="headerlink" title="perf stat -e cycles,instructions –bpf-prog 17247 –timeout 1000"></a>perf stat -e cycles,instructions –bpf-prog 17247 –timeout 1000</h1><p>   Performance counter stats for ‘BPF program(s) 17247’:</p>
+<pre><code>         85,967      cycles
+         28,982      instructions              #    0.34  insn per cycle
+
+    1.102235068 seconds time elapsed
+</code></pre>
+<p>–bpf-counters::<br>    Use BPF programs to aggregate readings from perf_events.  This<br>    allows multiple perf-stat sessions that are counting the same metric (cycles,<br>    instructions, etc.) to share hardware counters.<br>    To use BPF programs on common events by default, use<br>    “perf config stat.bpf-counter-events&#x3D;<list_of_events>“.</p>
+<p>–bpf-attr-map::<br>    With option “–bpf-counters”, different perf-stat sessions share<br>    information about shared BPF programs and maps via a pinned hashmap.<br>    Use “–bpf-attr-map” to specify the path of this pinned hashmap.<br>    The default path is &#x2F;sys&#x2F;fs&#x2F;bpf&#x2F;perf_attr_map.</p>
+<p>ifdef::HAVE_LIBPFM[]<br>–pfm-events events::<br>Select a PMU event using libpfm4 syntax (see <a target="_blank" rel="noopener" href="http://perfmon2.sf.net/">http://perfmon2.sf.net</a>)<br>including support for event filters. For example ‘–pfm-events<br>inst_retired:any_p:u:c&#x3D;1:i’. More than one event can be passed to the<br>option using the comma separator. Hardware events and generic hardware<br>events cannot be mixed together. The latter must be used with the -e<br>option. The -e option and this one can be mixed and matched.  Events<br>can be grouped using the {} notation.<br>endif::HAVE_LIBPFM[]</p>
+<p>-a::<br>–all-cpus::<br>        system-wide collection from all CPUs (default if no target is specified)</p>
+<p>–no-scale::<br>    Don’t scale&#x2F;normalize counter values</p>
+<p>-d::<br>–detailed::<br>    print more detailed statistics, can be specified up to 3 times</p>
+<pre><code>   -d:          detailed events, L1 and LLC data cache
+    -d -d:     more detailed events, dTLB and iTLB events
+ -d -d -d:     very detailed events, adding prefetch events
+</code></pre>
+<p>-r::<br>–repeat&#x3D;<n>::<br>    repeat command and print average + stddev (max: 100). 0 means forever.</p>
+<p>-B::<br>–big-num::<br>        print large numbers with thousands’ separators according to locale.<br>    Enabled by default. Use “–no-big-num” to disable.<br>    Default setting can be changed with “perf config stat.big-num&#x3D;false”.</p>
+<p>-C::<br>–cpu&#x3D;::<br>Count only on the list of CPUs provided. Multiple CPUs can be provided as a<br>comma-separated list with no space: 0,1. Ranges of CPUs are specified with -: 0-2.<br>In per-thread mode, this option is ignored. The -a option is still necessary<br>to activate system-wide monitoring. Default is to count on all CPUs.</p>
+<p>-A::<br>–no-aggr::<br>Do not aggregate counts across all monitored CPUs.</p>
+<p>-n::<br>–null::<br>null run - Don’t start any counters.</p>
+<p>This can be useful to measure just elapsed wall-clock time - or to assess the<br>raw overhead of perf stat itself, without running any counters.</p>
+<p>-v::<br>–verbose::<br>        be more verbose (show counter open errors, etc)</p>
+<p>-x SEP::<br>–field-separator SEP::<br>print counts using a CSV-style output to make it easy to import directly into<br>spreadsheets. Columns are separated by the string specified in SEP.</p>
+<p>–table:: Display time for each run (-r option), in a table format, e.g.:</p>
+<p>  $ perf stat –null -r 5 –table perf bench sched pipe</p>
+<p>   Performance counter stats for ‘perf bench sched pipe’ (5 runs):</p>
+<pre><code>         # Table of individual measurements:
+         5.189 (-0.293) #
+         5.189 (-0.294) #
+         5.186 (-0.296) #
+         5.663 (+0.181) ##
+         6.186 (+0.703) ####
+
+         # Final result:
+         5.483 +- 0.198 seconds time elapsed  ( +-  3.62% )
+</code></pre>
+<p>-G name::<br>–cgroup name::<br>monitor only in the container (cgroup) called “name”. This option is available only<br>in per-cpu mode. The cgroup filesystem must be mounted. All threads belonging to<br>container “name” are monitored when they run on the monitored CPUs. Multiple cgroups<br>can be provided. Each cgroup is applied to the corresponding event, i.e., first cgroup<br>to first event, second cgroup to second event and so on. It is possible to provide<br>an empty cgroup (monitor all the time) using, e.g., -G foo,,bar. Cgroups must have<br>corresponding events, i.e., they always refer to events defined earlier on the command<br>line. If the user wants to track multiple events for a specific cgroup, the user can<br>use ‘-e e1 -e e2 -G foo,foo’ or just use ‘-e e1 -e e2 -G foo’.</p>
+<p>If wanting to monitor, say, ‘cycles’ for a cgroup and also for system wide, this<br>command line can be used: ‘perf stat -e cycles -G cgroup_name -a -e cycles’.</p>
+<p>–for-each-cgroup name::<br>Expand event list for each cgroup in “name” (allow multiple cgroups separated<br>by comma).  It also support regex patterns to match multiple groups.  This has same<br>effect that repeating -e option and -G option for each event x name.  This option<br>cannot be used with -G&#x2F;–cgroup option.</p>
+<p>-o file::<br>–output file::<br>Print the output into the designated file.</p>
+<p>–append::<br>Append to the output file designated with the -o option. Ignored if -o is not specified.</p>
+<p>–log-fd::</p>
+<p>Log output to fd, instead of stderr.  Complementary to –output, and mutually exclusive<br>with it.  –append may be used here.  Examples:<br>     3&gt;results  perf stat –log-fd 3          -- $cmd<br>     3&gt;&gt;results perf stat –log-fd 3 –append -- $cmd</p>
+<p>–control&#x3D;fifo:ctl-fifo[,ack-fifo]::<br>–control&#x3D;fd:ctl-fd[,ack-fd]::<br>ctl-fifo &#x2F; ack-fifo are opened and used as ctl-fd &#x2F; ack-fd as follows.<br>Listen on ctl-fd descriptor for command to control measurement (‘enable’: enable events,<br>‘disable’: disable events). Measurements can be started with events disabled using<br>–delay&#x3D;-1 option. Optionally send control command completion (‘ack\n’) to ack-fd descriptor<br>to synchronize with the controlling process. Example of bash shell script to enable and<br>disable events during measurements:</p>
+<p> #!&#x2F;bin&#x2F;bash</p>
+<p> ctl_dir&#x3D;&#x2F;tmp&#x2F;</p>
+<p> ctl_fifo&#x3D;${ctl_dir}perf_ctl.fifo<br> test -p ${ctl_fifo} &amp;&amp; unlink ${ctl_fifo}<br> mkfifo ${ctl_fifo}<br> exec {ctl_fd}&lt;&gt;${ctl_fifo}</p>
+<p> ctl_ack_fifo&#x3D;${ctl_dir}perf_ctl_ack.fifo<br> test -p ${ctl_ack_fifo} &amp;&amp; unlink ${ctl_ack_fifo}<br> mkfifo ${ctl_ack_fifo}<br> exec {ctl_fd_ack}&lt;&gt;${ctl_ack_fifo}</p>
+<p> perf stat -D -1 -e cpu-cycles -a -I 1000       <br>           –control fd:${ctl_fd},${ctl_fd_ack} <br>           -- sleep 30 &amp;<br> perf_pid&#x3D;$!</p>
+<p> sleep 5  &amp;&amp; echo ‘enable’ &gt;&amp;${ctl_fd} &amp;&amp; read -u ${ctl_fd_ack} e1 &amp;&amp; echo “enabled(${e1})”<br> sleep 10 &amp;&amp; echo ‘disable’ &gt;&amp;${ctl_fd} &amp;&amp; read -u ${ctl_fd_ack} d1 &amp;&amp; echo “disabled(${d1})”</p>
+<p> exec {ctl_fd_ack}&gt;&amp;-<br> unlink ${ctl_ack_fifo}</p>
+<p> exec {ctl_fd}&gt;&amp;-<br> unlink ${ctl_fifo}</p>
+<p> wait -n ${perf_pid}<br> exit $?</p>
+<p>–pre::<br>–post::<br>    Pre and post measurement hooks, e.g.:</p>
+<p>perf stat –repeat 10 –null –sync –pre ‘make -s O&#x3D;defconfig-build&#x2F;clean’ -- make -s -j64 O&#x3D;defconfig-build&#x2F; bzImage</p>
+<p>-I msecs::<br>–interval-print msecs::<br>Print count deltas every N milliseconds (minimum: 1ms)<br>The overhead percentage could be high in some cases, for instance with small, sub 100ms intervals.  Use with caution.<br>    example: ‘perf stat -I 1000 -e cycles -a sleep 5’</p>
+<p>If the metric exists, it is calculated by the counts generated in this interval and the metric is printed after #.</p>
+<p>–interval-count times::<br>Print count deltas for fixed number of times.<br>This option should be used together with “-I” option.<br>    example: ‘perf stat -I 1000 –interval-count 2 -e cycles -a’</p>
+<p>–interval-clear::<br>Clear the screen before next interval.</p>
+<p>–timeout msecs::<br>Stop the ‘perf stat’ session and print count deltas after N milliseconds (minimum: 10 ms).<br>This option is not supported with the “-I” option.<br>    example: ‘perf stat –time 2000 -e cycles -a’</p>
+<p>–metric-only::<br>Only print computed metrics. Print them in a single line.<br>Don’t show any raw values. Not supported with –per-thread.</p>
+<p>–per-socket::<br>Aggregate counts per processor socket for system-wide mode measurements.  This<br>is a useful mode to detect imbalance between sockets.  To enable this mode,<br>use –per-socket in addition to -a. (system-wide).  The output includes the<br>socket number and the number of online processors on that socket. This is<br>useful to gauge the amount of aggregation.</p>
+<p>–per-die::<br>Aggregate counts per processor die for system-wide mode measurements.  This<br>is a useful mode to detect imbalance between dies.  To enable this mode,<br>use –per-die in addition to -a. (system-wide).  The output includes the<br>die number and the number of online processors on that die. This is<br>useful to gauge the amount of aggregation.</p>
+<p>–per-core::<br>Aggregate counts per physical processor for system-wide mode measurements.  This<br>is a useful mode to detect imbalance between physical cores.  To enable this mode,<br>use –per-core in addition to -a. (system-wide).  The output includes the<br>core number and the number of online logical processors on that physical processor.</p>
+<p>–per-thread::<br>Aggregate counts per monitored threads, when monitoring threads (-t option)<br>or processes (-p option).</p>
+<p>–per-node::<br>Aggregate counts per NUMA nodes for system-wide mode measurements. This<br>is a useful mode to detect imbalance between NUMA nodes. To enable this<br>mode, use –per-node in addition to -a. (system-wide).</p>
+<p>-D msecs::<br>–delay msecs::<br>After starting the program, wait msecs before measuring (-1: start with events<br>disabled). This is useful to filter out the startup phase of the program,<br>which is often very different.</p>
+<p>-T::<br>–transaction::</p>
+<p>Print statistics of transactional execution if supported.</p>
+<p>–metric-no-group::<br>By default, events to compute a metric are placed in weak groups. The<br>group tries to enforce scheduling all or none of the events. The<br>–metric-no-group option places events outside of groups and may<br>increase the chance of the event being scheduled - leading to more<br>accuracy. However, as events may not be scheduled together accuracy<br>for metrics like instructions per cycle can be lower - as both metrics<br>may no longer be being measured at the same time.</p>
+<p>–metric-no-merge::<br>By default metric events in different weak groups can be shared if one<br>group contains all the events needed by another. In such cases one<br>group will be eliminated reducing event multiplexing and making it so<br>that certain groups of metrics sum to 100%. A downside to sharing a<br>group is that the group may require multiplexing and so accuracy for a<br>small group that need not have multiplexing is lowered. This option<br>forbids the event merging logic from sharing events between groups and<br>may be used to increase accuracy in this case.</p>
+<p>–quiet::<br>Don’t print output. This is useful with perf stat record below to only<br>write data to the perf.data file.</p>
+<h2 id="STAT-RECORD"><a href="#STAT-RECORD" class="headerlink" title="STAT RECORD"></a>STAT RECORD</h2><p>Stores stat data into perf data file.</p>
+<p>-o file::<br>–output file::<br>Output file name.</p>
+<h2 id="STAT-REPORT"><a href="#STAT-REPORT" class="headerlink" title="STAT REPORT"></a>STAT REPORT</h2><p>Reads and reports stat data from perf data file.</p>
+<p>-i file::<br>–input file::<br>Input file name.</p>
+<p>–per-socket::<br>Aggregate counts per processor socket for system-wide mode measurements.</p>
+<p>–per-die::<br>Aggregate counts per processor die for system-wide mode measurements.</p>
+<p>–per-core::<br>Aggregate counts per physical processor for system-wide mode measurements.</p>
+<p>-M::<br>–metrics::<br>Print metrics or metricgroups specified in a comma separated list.<br>For a group all metrics from the group are added.<br>The events from the metrics are automatically measured.<br>See perf list output for the possible metrics and metricgroups.</p>
+<p>-A::<br>–no-aggr::<br>Do not aggregate counts across all monitored CPUs.</p>
+<p>–topdown::<br>Print complete top-down metrics supported by the CPU. This allows to<br>determine bottle necks in the CPU pipeline for CPU bound workloads,<br>by breaking the cycles consumed down into frontend bound, backend bound,<br>bad speculation and retiring.</p>
+<p>Frontend bound means that the CPU cannot fetch and decode instructions fast<br>enough. Backend bound means that computation or memory access is the bottle<br>neck. Bad Speculation means that the CPU wasted cycles due to branch<br>mispredictions and similar issues. Retiring means that the CPU computed without<br>an apparently bottleneck. The bottleneck is only the real bottleneck<br>if the workload is actually bound by the CPU and not by something else.</p>
+<p>For best results it is usually a good idea to use it with interval<br>mode like -I 1000, as the bottleneck of workloads can change often.</p>
+<p>This enables –metric-only, unless overridden with –no-metric-only.</p>
+<p>The following restrictions only apply to older Intel CPUs and Atom,<br>on newer CPUs (IceLake and later) TopDown can be collected for any thread:</p>
+<p>The top down metrics are collected per core instead of per<br>CPU thread. Per core mode is automatically enabled<br>and -a (global monitoring) is needed, requiring root rights or<br>perf.perf_event_paranoid&#x3D;-1.</p>
+<p>Topdown uses the full Performance Monitoring Unit, and needs<br>disabling of the NMI watchdog (as root):<br>echo 0 &gt; &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;nmi_watchdog<br>for best results. Otherwise the bottlenecks may be inconsistent<br>on workload with changing phases.</p>
+<p>To interpret the results it is usually needed to know on which<br>CPUs the workload runs on. If needed the CPUs can be forced using<br>taskset.</p>
+<p>–td-level::<br>Print the top-down statistics that equal to or lower than the input level.<br>It allows users to print the interested top-down metrics level instead of<br>the complete top-down metrics.</p>
+<p>The availability of the top-down metrics level depends on the hardware. For<br>example, Ice Lake only supports L1 top-down metrics. The Sapphire Rapids<br>supports both L1 and L2 top-down metrics.</p>
+<p>Default: 0 means the max level that the current hardware support.<br>Error out if the input is higher than the supported max level.</p>
+<p>–no-merge::<br>Do not merge results from same PMUs.</p>
+<p>When multiple events are created from a single event specification,<br>stat will, by default, aggregate the event counts and show the result<br>in a single row. This option disables that behavior and shows<br>the individual events and counts.</p>
+<p>Multiple events are created from a single event specification when:</p>
+<ol>
+<li>Prefix or glob matching is used for the PMU name.</li>
+<li>Aliases, which are listed immediately after the Kernel PMU events<br>by perf list, are used.</li>
+</ol>
+<p>–hybrid-merge::<br>Merge the hybrid event counts from all PMUs.</p>
+<p>For hybrid events, by default, the stat aggregates and reports the event<br>counts per PMU. But sometimes, it’s also useful to aggregate event counts<br>from all PMUs. This option enables that behavior and reports the counts<br>without PMUs.</p>
+<p>For non-hybrid events, it should be no effect.</p>
+<p>–smi-cost::<br>Measure SMI cost if msr&#x2F;aperf&#x2F; and msr&#x2F;smi&#x2F; events are supported.</p>
+<p>During the measurement, the &#x2F;sys&#x2F;device&#x2F;cpu&#x2F;freeze_on_smi will be set to<br>freeze core counters on SMI.<br>The aperf counter will not be effected by the setting.<br>The cost of SMI can be measured by (aperf - unhalted core cycles).</p>
+<p>In practice, the percentages of SMI cycles is very useful for performance<br>oriented analysis. –metric_only will be applied by default.<br>The output is SMI cycles%, equals to (aperf - unhalted core cycles) &#x2F; aperf</p>
+<p>Users who wants to get the actual value can apply –no-metric-only.</p>
+<p>–all-kernel::<br>Configure all used events to run in kernel space.</p>
+<p>–all-user::<br>Configure all used events to run in user space.</p>
+<p>–percore-show-thread::<br>The event modifier “percore” has supported to sum up the event counts<br>for all hardware threads in a core and show the counts per core.</p>
+<p>This option with event modifier “percore” enabled also sums up the event<br>counts for all hardware threads in a core but show the sum counts per<br>hardware thread. This is essentially a replacement for the any bit and<br>convenient for post processing.</p>
+<p>–summary::<br>Print summary for interval mode (-I).</p>
+<p>–no-csv-summary::<br>Don’t print ‘summary’ at the first column for CVS summary output.<br>This option must be used with -x and –summary.</p>
+<p>This option can be enabled in perf config by setting the variable<br>‘stat.no-csv-summary’.</p>
+<p>$ perf config stat.no-csv-summary&#x3D;true</p>
+<p>–cputype::<br>Only enable events on applying cpu with this type for hybrid platform<br>(e.g. core or atom)”</p>
+<h2 id="EXAMPLES"><a href="#EXAMPLES" class="headerlink" title="EXAMPLES"></a>EXAMPLES</h2><p>$ perf stat -- make</p>
+<p>   Performance counter stats for ‘make’:</p>
+<pre><code>    83723.452481      task-clock:u (msec)       #    1.004 CPUs utilized
+               0      context-switches:u        #    0.000 K/sec
+               0      cpu-migrations:u          #    0.000 K/sec
+       3,228,188      page-faults:u             #    0.039 M/sec
+ 229,570,665,834      cycles:u                  #    2.742 GHz
+ 313,163,853,778      instructions:u            #    1.36  insn per cycle
+  69,704,684,856      branches:u                #  832.559 M/sec
+   2,078,861,393      branch-misses:u           #    2.98% of all branches
+
+    83.409183620 seconds time elapsed
+
+    74.684747000 seconds user
+     8.739217000 seconds sys
+</code></pre>
+<h2 id="TIMINGS"><a href="#TIMINGS" class="headerlink" title="TIMINGS"></a>TIMINGS</h2><p>As displayed in the example above we can display 3 types of timings.<br>We always display the time the counters were enabled&#x2F;alive:</p>
+<pre><code>    83.409183620 seconds time elapsed
+</code></pre>
+<p>For workload sessions we also display time the workloads spent in<br>user&#x2F;system lands:</p>
+<pre><code>    74.684747000 seconds user
+     8.739217000 seconds sys
+</code></pre>
+<p>Those times are the very same as displayed by the ‘time’ tool.</p>
+<h2 id="CSV-FORMAT"><a href="#CSV-FORMAT" class="headerlink" title="CSV FORMAT"></a>CSV FORMAT</h2><p>With -x, perf stat is able to output a not-quite-CSV format output<br>Commas in the output are not put into “”. To make it easy to parse<br>it is recommended to use a different character like -x ;</p>
+<p>The fields are in this order:</p>
+<pre><code>- optional usec time stamp in fractions of second (with -I xxx)
+- optional CPU, core, or socket identifier
+- optional number of logical CPUs aggregated
+- counter value
+- unit of the counter value or empty
+- event name
+- run time of counter
+- percentage of measurement time the counter was running
+- optional variance if multiple values are collected with -r
+- optional metric value
+- optional unit of metric
+</code></pre>
+<p>Additional metrics may be printed with all earlier fields being empty.</p>
+<p>include::intel-hybrid.txt[]</p>
+<h2 id="JSON-FORMAT"><a href="#JSON-FORMAT" class="headerlink" title="JSON FORMAT"></a>JSON FORMAT</h2><p>With -j, perf stat is able to print out a JSON format output<br>that can be used for parsing.</p>
+<ul>
+<li>timestamp : optional usec time stamp in fractions of second (with -I)</li>
+<li>optional aggregate options:<br>  - core : core identifier (with –per-core)<br>  - die : die identifier (with –per-die)<br>  - socket : socket identifier (with –per-socket)<br>  - node : node identifier (with –per-node)<br>  - thread : thread identifier (with –per-thread)</li>
+<li>counter-value : counter value</li>
+<li>unit : unit of the counter value or empty</li>
+<li>event : event name</li>
+<li>variance : optional variance if multiple values are collected (with -r)</li>
+<li>runtime : run time of counter</li>
+<li>metric-value : optional metric value</li>
+<li>metric-unit : optional unit of metric</li>
+</ul>
+<h2 id="SEE-ALSO"><a href="#SEE-ALSO" class="headerlink" title="SEE ALSO"></a>SEE ALSO</h2><p>linkperf:perf-top[1], linkperf:perf-list[1]</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Perf-Report(1) — Linux Manual Page
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
+                PERF EVENT 内核篇
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Leah Ge</a> 
+	
+	
+	<br>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -110,3 +110,9 @@ search:
   path: search.xml
   field: post
   placeholder: 搜索
+
+ # hexo-admin authentification
+admin:
+  username: Leah
+  password_hash: $2a$10$OUqssK7BFnHXY6kvZEcFJ.UHBX9VFb9ToZD63X8HTyodI2pj7JY4O
+  secret: Leah 
