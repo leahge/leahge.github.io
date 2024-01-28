@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	  
+<script src="/js/search.js"></script>
+
+	<!-- title -->
+	
+	<title>
+	
+		Gem5源代码文件架构作用介绍 |
+	
+	LeahGe
+	</title>
+
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "leahge.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+	<script type="text/javascript">
+
+		var search_path = "/search.xml";
+		if (search_path.length == 0) {
+			search_path = "search.xml";
+		}
+		var path = search_path;
+		searchFunc(path, 'local-search-input', 'local-search-result');
+	</script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">LeahGe</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/leahge" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+		<li class="menu-item">
+			<form class="">
+				<button class="btn text-muted fa fa-search d-none d-md-block d-lg-block" style="background-color: transparent;"
+					disabled></button>
+				<input id="local-search-input" class="form-control me-2 pe-4" type="search" aria-label="Search">
+				<div id="local-search-result"
+					style="position:absolute; padding-top: 8px; max-height: 960px; width: 480px;overflow-y: scroll; z-index: 1050;">
+				</div>
+			</form>
+		</li>
+	</ul>
+
+
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01 OS
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Kernel
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/Kernel/kallsyms/">
+                     
+										    Kallsyms
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/Kernel/kernel_config/">
+                     
+										    Linux Kernel 编译选项
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Perf
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-report/">
+                     
+										    Perf-Report(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-script/">
+                     
+										    Perf-Script(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf-stat/">
+                     
+										    Perf-Stat(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/Perf/perf_event/">
+                     
+										    PMU计数器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware/">
+                     
+										    PERF EVENT 硬件篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_hardware2/">
+                     
+										    PERF EVENT 硬件篇续篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_ipc/">
+                     
+										    Perf IPC以及CPU利用率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Perf/perf_kernel/">
+                     
+										    PERF EVENT 内核篇
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/Perf/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
+                     
+										    参考资料
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Shell
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/Shell/ctrlc/">
+                     
+										    Linux Shell中捕获CTRL+C
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
+                     
+										    Shell字符串截取
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										network
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/gro/">
+                     
+										    Linux Kernel 网络协议栈之GRO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/network/irq/">
+                     
+										    网卡多队列配置和中断绑定
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/31/01%20OS/Linux/network/napi/">
+                     
+										    Linux协议栈--NAPI机制
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/systemd/">
+                     
+										    Systemd
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/df/">
+                     
+										    Df(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/du/">
+                     
+										    Du(1)
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/fio/">
+                     
+										    Fio
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ftrace/">
+                     
+										    Ftrace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/grep/">
+                     
+										    Grep
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/hugeadm/">
+                     
+										    Hugeadm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/iostat/">
+                     
+										    Iostat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/last/">
+                     
+										    Last
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ln/">
+                     
+										    Ln
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/lsof/">
+                     
+										    Lsof
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ls/">
+                     
+										    Ls
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ltrace/">
+                     
+										    Ltrace(1) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/man_class/">
+                     
+										    Linux指令后的数字代表什么
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mount/">
+                     
+										    Mount
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/mpstat/">
+                     
+										    Mpstat-Multiprocessor Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/nl/">
+                     
+										    Nl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/nmve%20cli/">
+                     
+										    Nvme Cli
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pidstat/">
+                     
+										    Pidstat
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/ps/">
+                     
+										    Ps
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/pushd/">
+                     
+										    Linux 中使用 Pushd 和 Popd 命令来进行高效的目录导航
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sadc/">
+                     
+										    Sadc(8) — Linux Manual Page
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
+                     
+										    Sar
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sed/">
+                     
+										    Sed
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/shutdown/">
+                     
+										    Shutdown
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/strace/">
+                     
+										    Strace
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/taskset/">
+                     
+										    Taskset
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/tee/">
+                     
+										    Tee
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/Linux/%E6%8C%87%E4%BB%A4/vmstat/">
+                     
+										    Vmstat-Report Virtual Memory Statistics
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										系统调用
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
+                     
+										    Brk
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/exec/">
+                     
+										    Exec
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/futex/">
+                     
+										    Futex
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/getcpu/">
+                     
+										    Getcpu系统调用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/gettimeofday/">
+                     
+										    Gettimeofday
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/ioctl/">
+                     
+										    Ioctl
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/mmap/">
+                     
+										    Mmap
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										编译、链接和装载
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/DSO/">
+                     
+										    DSO(dynamic Shared Object)动态共享对象的原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
+                     
+										    Linux下编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/16/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elf/">
+                     
+										    Elf文件格式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/elfremovesymbol/">
+                     
+										    剥离与导回符号表及调试信息
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/linux_compile/">
+                     
+										    编译、链接和装载
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/28/01%20OS/Linux/%E8%BF%9B%E7%A8%8B/status/">
+                     
+										    Linux进程状态：S 和D状态
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/01%20OS/%E6%9C%8D%E5%8A%A1%E5%99%A8BMC%E4%B8%8EIPMI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                     
+										    服务器BMC与IPMI基础知识
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02 CPU
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/SocketNodeDieCoreProcessor/">
+                     
+										    Socket/Node/Die/Core/Processor/Package
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/02%20CPU/%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95/">
+                     
+										    技术发展
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12 Python
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/12%20Python/Gunicorn_manual/">
+                     
+										    Gunicorn的使用手册
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										50 soft
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nodejs
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/14/50%20soft/Nodejs/npm/">
+                     
+										    Npm
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										gem5
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/Gem5%20O3%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                     
+										    Gem5 O3可视化
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/gem5%20Minor%20CPU%20model%20%E7%AE%80%E4%BB%8B/">
+                     
+										    Gem5 Minor CPU Model 简介
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/gem5%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%AE%80%E4%BB%8B/">
+                     
+										    Gem5模拟器简介
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2024/01/26/50%20soft/gem5/%E6%BA%90%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E4%BD%9C%E7%94%A8%E4%BB%8B%E7%BB%8D/">
+                     
+										    Gem5源代码文件架构作用介绍
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/%E7%BC%96%E8%AF%91/">
+                     
+										    Gem5编译
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										97 优化
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/CPU/">
+                     
+										    CPU
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98/">
+                     
+										    内存
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">
+                     
+										    应用程序
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%A3%81%E7%9B%98IO%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+                     
+										    磁盘IO和文件系统
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%BD%91%E7%BB%9CIO/">
+                     
+										    网络IO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										98 Other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/98%20Other/%E5%9B%BE%E7%81%B5%E6%9C%BA%E4%B8%8E%E5%9B%BE%E7%81%B5%E5%AE%8C%E5%A4%87/">
+                     
+										    图灵机与图灵完备
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										99 ebook
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux性能优化实战
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/00%20%E5%BC%80%E7%AF%87%E8%AF%8D/">
+                     
+										    开篇词
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/01%20%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0/">
+                     
+										    如何学习
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/02%20%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%E2%80%9C%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD%E2%80%9D/">
+                     
+										    怎么理解“评价负载”
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/03%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/">
+                     
+										    上下文切换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/04%20%E6%9F%90%E4%B8%AA%E5%BA%94%E7%94%A8%E7%9A%84CPU%E4%BD%BF%E7%94%A8%E7%8E%87%E5%B1%85%E7%84%B6%E8%BE%BE%E5%88%B0%E7%99%BE%E5%88%86%E7%99%BE/">
+                     
+										    CPU利用率达到100%
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/05%20%E7%B3%BB%E7%BB%9F%E7%9A%84%20CPU%20%E4%BD%BF%E7%94%A8%E7%8E%87%E5%BE%88%E9%AB%98%EF%BC%8C%E4%BD%86%E4%B8%BA%E5%95%A5%E5%8D%B4%E6%89%BE%E4%B8%8D%E5%88%B0%E9%AB%98%20CPU%20%E7%9A%84%E5%BA%94%E7%94%A8/">
+                     
+										    找不到高CPU的应用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/06%20%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F%E4%B8%8D%E5%8F%AF%E4%B8%AD%E6%96%AD%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/">
+                     
+										    不可中断进程和僵尸进程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/07%20Linux%E8%BD%AF%E4%B8%AD%E6%96%AD/">
+                     
+										    Linux软中断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/08%20%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BD%AF%E4%B8%AD%E6%96%ADCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E5%8D%87%E9%AB%98/">
+                     
+										    软中断CPU使用率升高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/09%20%E8%BF%85%E9%80%9F%E5%88%86%E6%9E%90%E5%87%BA%E7%B3%BB%E7%BB%9FCPU%E7%9A%84%E7%93%B6%E9%A2%88/">
+                     
+										    系统CPU的瓶颈
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/10%20CPU%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%9D%E8%B7%AF/">
+                     
+										    CPU性能优化思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/11%20%E6%97%A0%E6%B3%95%E6%A8%A1%E6%8B%9F%E5%87%BA%20RES%20%E4%B8%AD%E6%96%AD/">
+                     
+										    无法模拟出RES中断
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/12%20%E7%94%A8perf%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90Java%E7%A8%8B%E5%BA%8F/">
+                     
+										    用Perf分析java程序
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/13%20Linux%E5%86%85%E5%AD%98%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    内存工作原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/14%20%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84Buffer%E5%92%8CCache/">
+                     
+										    内存中的Buffer和Cache
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/15%20%E5%88%A9%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%BC%93%E5%AD%98%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87/">
+                     
+										    利用系统缓存优化程序的运行效率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/16%20%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">
+                     
+										    内存泄漏
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/17%20%E7%B3%BB%E7%BB%9F%E7%9A%84Swap%E5%8F%98%E9%AB%98/">
+                     
+										    系统的Swap变高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/18%20%E5%BF%AB%E5%87%86%E7%8B%A0%E6%89%BE%E5%88%B0%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E7%9A%84%E9%97%AE%E9%A2%98/">
+                     
+										    快准狠找到系统内存问题
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/19%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%A3%81%E7%9B%98%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                     
+										    文件系统与磁盘的区别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/20%20inux%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    文件系统怎么工作
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/21%20Linux%20%E7%A3%81%E7%9B%98IO%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+                     
+										    磁盘I/O是怎么工作的
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/22%20%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E7%8B%82%E6%89%93%E6%97%A5%E5%BF%97%E7%9A%84%E5%86%85%E9%AC%BC/">
+                     
+										    如何找出狂打日志的内鬼
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/23%20%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%9A%84%E7%A3%81%E7%9B%98IO%E5%BB%B6%E8%BF%9F%E5%BE%88%E9%AB%98/">
+                     
+										    磁盘IO延迟高
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/24%20SQL%E6%9F%A5%E8%AF%A2%E6%85%A2/">
+                     
+										    SQL查询慢
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/25%20Redis%E5%93%8D%E5%BA%94%E4%B8%A5%E9%87%8D%E5%BB%B6%E8%BF%9F/">
+                     
+										    Redis响应严重延迟
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/26%20%E5%A6%82%E4%BD%95%E8%BF%85%E9%80%9F%E5%88%86%E6%9E%90%E5%87%BA%E7%B3%BB%E7%BB%9FIO%E7%9A%84%E7%93%B6%E9%A2%88/">
+                     
+										    快速分析系统IO瓶颈
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/27%20%E7%A3%81%E7%9B%98%20IO%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%9D%E8%B7%AF/">
+                     
+										    磁盘I/O性能优化思路
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/28%20%E9%98%BB%E5%A1%9E%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E%20IO%20%E4%B8%8E%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%20IO%20%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E8%81%94%E7%B3%BB/">
+                     
+										    阻塞、非阻塞 I/O 与同步、异步 I/O 的区别和联系
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/29%20Linux%20%E7%BD%91%E7%BB%9C/">
+                     
+										    Linux网络
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/23/99%20ebook/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/30%20C10K%20%E5%92%8C%20C1000K%20%E5%9B%9E%E9%A1%BE/">
+                     
+										    C10K和C1000K回顾
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/10/13/99%20ebook/books/">
+                     
+										    99 Ebook
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+	<!-- 引入正文 -->
+	<div id="content">
+		<div id="local-search-result"></div>
+		<h1 id="article-title">
+	Gem5源代码文件架构作用介绍
+</h1>
+<div class="article-meta">
+	
+	<span>Leah Ge</span>
+	<span>2024-01-26 10:21:40</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<ul>
+<li><p><strong>AUTHORS</strong> - A list of people who have historically contributed to gem5.</p>
+</li>
+<li><p><strong>LICENSE</strong> - The license terms that apply to gem5 as a whole, unless overridden by a more specific license.</p>
+</li>
+<li><p><strong>README</strong> - Some very basic information introducing gem5 and explaining how to get started.</p>
+</li>
+<li><p><strong>SConstruct</strong> - A part of the build system, as is the build_opts directory.</p>
+</li>
+<li><p><strong>build_opts</strong> - holds files that define default settings for build different build configurations. These include X86_FS and MIPS_SE, for instance.</p>
+</li>
+<li><p><strong>configs</strong> - Simulation configuration scripts which are written in python, described in more detail later. The files in this directory help make writing configurations easier by providing some basic prepackaged functionality, and include a few examples which can be used directly or as a starting point for your own scripts.</p>
+</li>
+<li><p><strong>ext</strong> - Things gem5 depends on but which aren’t actually part of gem5. Specifically, dependencies that are harder to find, not likely to be available, or where a particular version is needed.</p>
+</li>
+<li><p><strong>src</strong> - gem5 source code.</p>
+<ul>
+<li><strong>arch</strong> - ISA implementations.<ul>
+<li><strong>generic</strong> - Common files for use in other ISAs.</li>
+<li><strong>isa_parser.py</strong> - Parser that interprets ISA descriptions.</li>
+<li><strong>ISA directories</strong> - The files associated with the given ISA.<ul>
+<li><strong>OS directories</strong> - Code for supporting an ISA&#x2F;OS combination, generally in SE mode.</li>
+<li><strong>isa</strong> - ISA description files.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>base</strong> - General data structures and facilities that could be useful for another project.<ul>
+<li><strong>loader</strong> - Code for loading binaries and reading symbol tables.</li>
+<li><strong>stats</strong> - Code for keeping statistics and writing the data to a file or a database.</li>
+<li><strong>vnc</strong> - VNC support.</li>
+</ul>
+</li>
+<li><strong>cpu</strong> - CPU models.</li>
+<li><strong>dev</strong> - Device models.<ul>
+<li><strong>ISA directories</strong> - Device models specific to the given ISA</li>
+</ul>
+</li>
+<li><strong>doxygen</strong> - Doxygen templates &amp; output</li>
+<li><strong>kern</strong> - Operating system specific but architecture independent code (e.g. types of data structures).<ul>
+<li><strong>OS directories</strong> - Code specific to the given simulated operating system.</li>
+</ul>
+</li>
+<li><strong>mem</strong> - Memory system models and infrastructure.<ul>
+<li><strong>cache</strong> - Code that implements a cache model in the classic memory system.</li>
+<li><strong>ruby</strong> - Code that implements the ruby memory model.</li>
+<li><strong>protocol</strong> - Ruby protocol definitions.</li>
+<li><strong>slicc</strong> - The slicc compiler.</li>
+</ul>
+</li>
+<li><strong>python</strong> - Python code for configuration and higher level functions.</li>
+<li><strong>sim</strong> - Code that implements basic, fundamental simulator functionality.</li>
+</ul>
+</li>
+<li><p><strong>system</strong> - Low level software like firmware or bootloaders for use in simulated systems.</p>
+<ul>
+<li><strong>alpha</strong> - Alpha console and palcode.</li>
+<li><strong>arm</strong> - A simple ARM bootloader.</li>
+</ul>
+</li>
+<li><p><strong>tests</strong> - Files related to gem5’s regression tests.</p>
+<ul>
+<li><strong>configs</strong> - General configurations used for the tests.</li>
+<li><strong>test-progs</strong> - “Hello world” binaries for each ISA, other binaries are downloaded separately.</li>
+<li><strong>quick, long</strong> - Quick and long regression inputs, reference outputs, and test specific configuration files, arranged per test.</li>
+</ul>
+</li>
+<li><p><strong>util</strong> - Utility scripts, programs and useful files which are not part of the gem5 binary but are generally useful when working on gem5.</p>
+</li>
+</ul>
+<p>Read the SConscript file before reading other files because this will give you an understanding of how </p>
+<p>the files are linked to each other.  </p>
+<h3 id="x2F-build-opts-x2F"><a href="#x2F-build-opts-x2F" class="headerlink" title=".&#x2F;build_opts&#x2F;"></a>.&#x2F;build_opts&#x2F;</h3><p>Few files which set some variables used when building gem5. There is a file each for each ISA and each memory model  </p>
+<h3 id="x2F-configs-x2F-boot-x2F"><a href="#x2F-configs-x2F-boot-x2F" class="headerlink" title=".&#x2F;configs&#x2F;boot&#x2F;"></a>.&#x2F;configs&#x2F;boot&#x2F;</h3><p>RCS scripts mainly used for running benchmarks in FS mode. It covers all the SPEC benchmarks  </p>
+<h3 id="x2F-configs-x2F-common-x2F"><a href="#x2F-configs-x2F-common-x2F" class="headerlink" title=".&#x2F;configs&#x2F;common&#x2F;"></a>.&#x2F;configs&#x2F;common&#x2F;</h3><p><strong>Benchmarks.py</strong> <br>Configuration script used for running benchmarks in FS mode. It will set the SysConfiguration. <br>SysConfig Class which contains scriptname, diskname and memsize. The disk containing benchmarks can be specified in this file for each ISA.  </p>
+<p>Benchmarks are defined as a key in a dict which is a list of SysConfigs <br>The first defined machine is the test system, the others are driving systems  </p>
+<p>Different SysConfigs are defined for different benchmarks - by setting the script, memsize <br>The scripts are located in .&#x2F;configs&#x2F;boot  </p>
+<p><strong>CacheConfig.py</strong><br>Configures the cache system for the system being simulated. Based on the command line <br>options given when gem5.opt is run, it creates the cache configuration to be used  </p>
+<p><strong>Caches.py</strong><br>Defines default parameters of L1, L2, IO, PageTableWalker Cache  </p>
+<p><strong>CPUConfig.py</strong><br>Builds the list of available CPU models and checks whether the option given on command line is an available CPU  </p>
+<p><strong>FSConfig.py</strong><br>Creates the different CPU models( MIPS, ALPHA, SPARC, etc.) for Full System simulation <br>Address Ports, Memory Busses etc.  </p>
+<p><strong>O3ARMv7a.py</strong><br>Defines the configuration parameters of ARMv7 CPU model. Various Functional Units, Branch Predictors, LSQs, caches, TLBs, etc. <br>All classes derive from generic clasess used in basic O3 model  </p>
+<p><strong>Options.py</strong><br>Defines all the command line options like –cpu-type, –cpu-number etc. system options, run duration options, checkpointing options, Fastforwarding and simpoint related materials, Benchmark options, FS options  </p>
+<p><strong>Simulation.py</strong><br>CPU models for restoring from checkpoint, initial fast-forwarding <br>Defines functions to set the simulation configuration like max time, fast-forward or detailed, creating checkpoints, restoring from checkpoints, <br>Switching CPUs, Actual Run after setting all these options, different types of switching are possible  </p>
+<p><strong>SysPaths.py</strong><br>Configures the paths for disks file, script file etc.  </p>
+<p><strong>cpu2000.py</strong><br>Configuration file for running SPEC2000 benchmarks  </p>
+<h3 id="x2F-config-x2F-examples"><a href="#x2F-config-x2F-examples" class="headerlink" title=".&#x2F;config&#x2F;examples"></a>.&#x2F;config&#x2F;examples</h3><p><strong>fs.py</strong><br>Script to run FS simulation. Takes command line options and retrieves required information. Imports files from .&#x2F;config&#x2F;common<br>Similar files for testing memory system, running in SE mode. All of these import the files present in .&#x2F;config&#x2F;common  </p>
+<h3 id="x2F-config-x2F-ruby"><a href="#x2F-config-x2F-ruby" class="headerlink" title=".&#x2F;config&#x2F;ruby"></a>.&#x2F;config&#x2F;ruby</h3><p>Scripts related to ruby memory system  </p>
+<h3 id="x2F-config-x2F-splash2"><a href="#x2F-config-x2F-splash2" class="headerlink" title=".&#x2F;config&#x2F;splash2"></a>.&#x2F;config&#x2F;splash2</h3><p><strong>cluster.py</strong><br>Configuration related to running splash2 parallel benchmarks <br>Defines a class for each splash2 benchmark which inherits from LiveProcess class <br>Each class contains info about executable, cmd, input variables <br>Defines cache structure, number and type of clusters and number of cpus in a cluster - all obtained from command-line options <br>Creates a system, adds system-wide objects, connects them. Picks the correct benchmark, assigns the workload ans runs the simulation  </p>
+<p><strong>run.py</strong><br>Same as cluster.py with minor changes - clusters are not present  </p>
+<h3 id="x2F-config-x2F-topologies"><a href="#x2F-config-x2F-topologies" class="headerlink" title=".&#x2F;config&#x2F;topologies"></a>.&#x2F;config&#x2F;topologies</h3><p>Topologies for memory controllers  </p>
+<h3 id="x2F-system"><a href="#x2F-system" class="headerlink" title=".&#x2F;system"></a>.&#x2F;system</h3><p>Low level software like firmware or bootloaders for use in simulated systems.  </p>
+<p>alpha - Alpha console and palcode. <br>arm - A simple ARM bootloader.  </p>
+<h2 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h2><h3 id="x2F-src-x2F-base-x2F"><a href="#x2F-src-x2F-base-x2F" class="headerlink" title=".&#x2F;src&#x2F;base&#x2F;"></a>.&#x2F;src&#x2F;base&#x2F;</h3><p><strong>types.hh</strong><br>Defines global host-dependent types: <br>Counter, Tick, and (indirectly) {int,uint}{8,16,32,64}_t. <br>Cycles class, Addr, MicroPC, MicroPC operations,  </p>
+<p><strong>flags.hh</strong><br>Defines flag class, functions for modifying flags like set, unset etc.  </p>
+<p><strong>output.hh</strong><br>Handles printing of data to an output stream  </p>
+<h3 id="x2F-src-x2F-base-x2F-stats-x2F"><a href="#x2F-src-x2F-base-x2F-stats-x2F" class="headerlink" title=".&#x2F;src&#x2F;base&#x2F;stats&#x2F;"></a>.&#x2F;src&#x2F;base&#x2F;stats&#x2F;</h3><p><strong>types.hh</strong><br>Namespace Stats- Defines some basic stats types like Counter, VCounter, Result  </p>
+<p><strong>info.hh</strong><br>Info class to store information about various types of Stat like name, desc. <br>For Distributions, 2d-Vectors etc. we store min_val, max_val etc.  </p>
+<p><strong>output.hh, text.hh, text.cc</strong><br>Printing of stats to output stream  </p>
+<h3 id="x2F-src-x2F-base-x2F-vnc-x2F"><a href="#x2F-src-x2F-base-x2F-vnc-x2F" class="headerlink" title=".&#x2F;src&#x2F;base&#x2F;vnc&#x2F;"></a>.&#x2F;src&#x2F;base&#x2F;vnc&#x2F;</h3><p><strong>Vnc.py</strong><br>VncInput class which derives from SimObject class <br>VncServer class which derives from VncInput  </p>
+<p>Some files related to handling input to vncserver and setting up a vncserver  </p>
+<h3 id="x2F-src-x2F-base-x2F-loader-x2F"><a href="#x2F-src-x2F-base-x2F-loader-x2F" class="headerlink" title=".&#x2F;src&#x2F;base&#x2F;loader&#x2F;"></a>.&#x2F;src&#x2F;base&#x2F;loader&#x2F;</h3><p><strong>object_file.hh</strong><br>Class Object File - Architecture, OS. Mainly deals with how to read data from an object file<br>All files in this folder provide some classes which can be used to read various types of object files  </p>
+<p><strong>refcnt.hh</strong><br>RefCounted and RefCountingPtr classes which enable a class to be reference counted and provide automatic reference counting respectively.  </p>
+<h2 id="ARCH"><a href="#ARCH" class="headerlink" title="ARCH"></a>ARCH</h2><h3 id="x2F-src-x2F-arch-x2F-generic-x2F"><a href="#x2F-src-x2F-arch-x2F-generic-x2F" class="headerlink" title=".&#x2F;src&#x2F;arch&#x2F;generic&#x2F;"></a>.&#x2F;src&#x2F;arch&#x2F;generic&#x2F;</h3><p>Generic classes which can be used to perform specific functions using any ISA like decode_cache, debug_fualts, memhelpers.hh  </p>
+<h3 id="x2F-src-x2F-arch-x2F-arm-x2F"><a href="#x2F-src-x2F-arch-x2F-arm-x2F" class="headerlink" title=".&#x2F;src&#x2F;arch&#x2F;arm&#x2F;"></a>.&#x2F;src&#x2F;arch&#x2F;arm&#x2F;</h3><p><strong>.&#x2F;insts</strong>  </p>
+<p>Classes which define what each instruction will do and to access information about instructions like branch, mem, misc, mult, etc.  </p>
+<p>**.&#x2F;isa  </p>
+<p>.&#x2F;decoder**<br>.isa files which define how to decode an arm.thumb instruction  </p>
+<p><strong>.&#x2F;formats</strong><br>.isa files which define various instruction formats like m5ops, branch, mem, etc.  </p>
+<p><strong>.&#x2F;insts</strong><br>Declarations of execution methods used for different types  </p>
+<h2 id="PYTHON-FOLDER"><a href="#PYTHON-FOLDER" class="headerlink" title="PYTHON FOLDER"></a>PYTHON FOLDER</h2><p>.&#x2F;m5&#x2F;util&#x2F;convert - Functions to convert a given string to numerical values related to memory size, clock period, network bandwidth etc.<br>.&#x2F;m5&#x2F;util&#x2F;attrdict - Modified Dict types with capability to add and delete attributes and a heirarchical structure<br>.&#x2F;m5&#x2F;util&#x2F;multidict - Dict of Dict and so on<br>.&#x2F;m5&#x2F;util&#x2F;orderdict - Ordered Dict<br>.&#x2F;m5&#x2F;util&#x2F;smartdict - Dictionary class that holds strings, but intelligently converts those strings to other types depending on their usage<br>.&#x2F;m5&#x2F;util&#x2F;sortedict -<br>.&#x2F;m5&#x2F;util&#x2F;region - Places data in regions and determines the type of overlap between two regions<br>.&#x2F;m5&#x2F;util&#x2F;init - Defines the error calls - panic, fatal, warn and inform. Several other utility functions<br>.&#x2F;m5&#x2F;internal&#x2F;params.py - A simple function to load all modules starting with m5.internal.params<br>.&#x2F;m5&#x2F;internal&#x2F;init - Imports some modules used in the simulator like core, event, stats, etc.<br>.&#x2F;m5&#x2F;objects&#x2F;init - Imports all modules starting with m5.objects<br>.&#x2F;m5&#x2F;config.py - Directory settings for m5<br>.&#x2F;m5&#x2F;debug.py - Extracting debug flags from m5 and printing them<br>.&#x2F;m5&#x2F;event.py - Defines Event and Progress Event classes and related functions<br>.&#x2F;m5&#x2F;main.py - The main script invoked when gem5 is run. Option parsing, gem5 interactive console , main function which prints info while gem5 is running<br>.&#x2F;m5&#x2F;options.py Option parser<br>.&#x2F;m5&#x2F;params.py - Parameter description classes. Each class has a _params dictionary which maps parameter names to Param objects. Functions which generate C++ code needed as a pre-requisite for declaring certain C++ objects. Defines several functions which deal with parameters<br>.&#x2F;m5&#x2F;proxy.py - Proxy object support<br>.&#x2F;m5&#x2F;ticks.py - Setting simulation accuracy and global frequency<br>.&#x2F;m5&#x2F;SimObject.py -<br>.&#x2F;m5&#x2F;simulate.py - Functions to instantiate Simobjects used in the system, create checkpoints, restore from checkpoints, switch cpus etc. In short, this script is responsible for starting and ending a simulation<br>.&#x2F;m5&#x2F;stats&#x2F;init - Initialization, resetting, dumping, et. of statistics<br>.&#x2F;swig Swig files for the main module defined in m5  </p>
+<h2 id="SIMULATION-FOLDER"><a href="#SIMULATION-FOLDER" class="headerlink" title="SIMULATION FOLDER"></a>SIMULATION FOLDER</h2><h3 id="x2F-src-x2F-sim"><a href="#x2F-src-x2F-sim" class="headerlink" title=".&#x2F;src&#x2F;sim"></a>.&#x2F;src&#x2F;sim</h3><p><strong>.&#x2F;arguments.hh</strong> <br>Class arguments which has a thread context, number, data and methods which change or compare number field  </p>
+<p><strong>.&#x2F;async.hh</strong> <br>Defines flags used to handle asynchronous simulator events  </p>
+<p><strong>.&#x2F;byteswap.hh</strong> <br>Provides endianness coversion utility functions  </p>
+<p><strong>.&#x2F;clocked_object.hh</strong> <br>The ClockedObject class extends the SimObject with a clock and accessor functions to relate ticks to the cycles of the object.  </p>
+<p><strong>.&#x2F;core.hh</strong> <br>Core simulator functionality such as time information, output directory and exit events. Few simple functions  </p>
+<p><strong>.&#x2F;eventq.hh</strong> <br>Class Event derives from Serializable and is a friend of class EventQueue. EventQueueManager  </p>
+<p><strong>.&#x2F;serialize.hh</strong> <br>Serialization interface declarations  </p>
+<p><strong>.&#x2F;debug.hh</strong> <br>Provides the definitions for some useful debugging functions. These are intended to be called from a debugger such as gdb  </p>
+<p><strong>.&#x2F;drain.hh</strong> <br>Coordinates draining of a system. Drainable class. Functions to perform draining  </p>
+<p><strong>.&#x2F;faults.hh</strong> <br>Various types of faults, their names and invoking functions.  </p>
+<p><strong>.&#x2F;init.hh</strong> <br>EmbeddedPython, EmbeddedSwig structs. Some initialization function and handler functions  </p>
+<p><strong>.&#x2F;insttracer.hh</strong> <br>Class InstRecord. Class InstTracer which mostly derives from SimObject  </p>
+<p><strong>.&#x2F;microcoderom.hh</strong> <br>Generic stub microcode ROM ISAs can use if they don’t need anything more  </p>
+<p><strong>.&#x2F;main.cc</strong><br>Sets up Python and then calls initM5Python which loads the various embedded python modules into the python environment and then starts things running by calling m5Main.  </p>
+<p><strong>.&#x2F;syscallreturn.hh</strong><br>Class SyscallReturn. Successful and retval fields  </p>
+<p><strong>.&#x2F;process.hh</strong><br>All the details that are related to a process running on a cpu <br>class Process deriving from SimObject <br>class LiveProcess deriving from Process  </p>
+<p><strong>.&#x2F;pseudo_inst.hh</strong><br>PseudoInst namespace which defines several functions which behave like instructions and <br>perform several operations on a ThreadContext  </p>
+<p><strong>.&#x2F;root.hh</strong> <br>The root SimObject in the simulation hierarchy  </p>
+<p><strong>serialize.hh</strong><br>Functions to create and restore from checkpoints <br>Serialize - create checkpoints Unserialize - Restore from checkpoints  </p>
+<p><strong>.&#x2F;sim_events.hh</strong> <br>Event to terminate simulation at a particular cycle&#x2F;instruction <br>CountedDrainEvent, CountedExitEvent <br>Used to terminate simulation after some special event  </p>
+<p><strong>.&#x2F;sim_exit.hh</strong> <br>Functions which return the control to python after ending simulation  </p>
+<p><strong>.&#x2F;sim_object.hh</strong><br>Abstract superclass for simulation objects. Represents things that correspond to physical components and can be specified via the config file (CPUs, caches, etc.).<br>Methods used in starting and running a simulation  </p>
+<p><strong>.&#x2F;simulate.hh</strong> <br>simulate method which returns SimLoopExitEvent  </p>
+<p><strong>.&#x2F;stat_control.hh</strong> <br>Events related to dumping, resetting and registering statistics  </p>
+<p><strong>.&#x2F;syscall_emul.hh</strong><br>Defines objects used to emulate syscalls from the target application on the host machine.  </p>
+<p><strong>.&#x2F;syscallreturn.hh</strong><br>SysCallReturn Class which decodes the return value of a system call  </p>
+<p><strong>.&#x2F;system.hh</strong><br>Classes which define the system, ports, connections between system components  </p>
+<p><strong>.&#x2F;tlb.hh</strong><br>BaseTLB and GenericTLB classes  </p>
+<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><h3 id="x2F-src-x2F-cpu-x2F"><a href="#x2F-src-x2F-cpu-x2F" class="headerlink" title=".&#x2F;src&#x2F;cpu&#x2F;"></a>.&#x2F;src&#x2F;cpu&#x2F;</h3><p><strong>timebuf.hh</strong><br>TimeBuffer and Wire classes. Friends of each other. Wire contains TimeBuffer used for sending data between two objects  </p>
+<p><strong>activity.hh</strong><br>Activity Recorder helper class that informs the CPU if it can switch over to being idle or not  </p>
+<p><strong>base.hh</strong><br>CPUProgressEvent deriving from Event <br>BaseCPU deriving from MemObject  </p>
+<p><strong>cpuevent.hh</strong><br>CpuEvent class- Helps form a global list of events which need a pointer to a ThreadContext  </p>
+<p><strong>decodecache.hh</strong><br>Cache of recent Virtual Memory decodings and retrieval mechanisms from cache  </p>
+<p><strong>exec_context.hh</strong><br>ExecContext - Not a usable class. Only to demonstrate how ISA accesses CPU state  </p>
+<p><strong>fudesc.hh</strong><br>FuDesc and OpDesc classes which define a functional unit and its operations.  </p>
+<p><strong>inst_seq.hh</strong><br>Used to order instructions in the ready list  </p>
+<p><strong>static_inst.hh</strong><br>StaticInst class - Machine Inst, Flags, OpClass, Num of Src, Dest regs, Flag Accessor Functions  </p>
+<p><strong>thread_context.hh</strong><br>ThreadContext Class Accessor and Modifier functions for all registers, memory ports and most of the architectural state of a CPU. It is a virtual class. <br>So, we make use of ProxyThreadContext class to prevent the overhead of virtual callprevent the overhead of virtual calls  </p>
+<p><strong>profile.hh</strong><br>ProfileNode and FunctionProfile classes  </p>
+<p><strong>thread_state.hh</strong><br>Struct for holding general thread state that is needed across CPU models. <br>Very similar to thread_context with minor changes<br>**<br>smt.hh**<br>Changing the thread state and priority for smt support  </p>
+<p><strong>translation.hh</strong><br>Captures the state of an address translation <br>WholeTranslationState and DataTranslation Classes  </p>
+<p><strong>exectrace.hh</strong> <br>ExeTraceRecord and ExeTracer classes  </p>
+<p><strong>simple_thread.hh</strong> <br>The SimpleThread object provides a combination of the ThreadState object and the ThreadContext interface  </p>
+<p><strong>quiesce_event.hh</strong> <br>EndQuiesceEvent for timing out a quiesce instruction  </p>
+<p><strong>intr_control.hh</strong> <br>Class to clear and post instructions of a particular CPU  </p>
+<p><strong>legiontrace.hh</strong> <br>LegionTraceRecord and LegionTrace  </p>
+<p><strong>pc_event.hh</strong> <br>PCEventQueue class which contains PCEvent class objects  </p>
+<p><strong>base_dyn_inst.hh</strong> <br>Defines a dynamic instruction context <br>All the functions and processes that happen in a simple processor are defined in this class. Including functions for writing, reading memory, starting and ending translation etc.  </p>
+<p><strong>Python Files</strong> <br>These files define the Python Objects, methods, files which point to the corresponding C++ object, using Cxx header and Cxx class variables  </p>
+<h2 id="CHECKER"><a href="#CHECKER" class="headerlink" title="CHECKER"></a>CHECKER</h2><h3 id="x2F-src-x2F-cpu-x2F-checker-x2F"><a href="#x2F-src-x2F-cpu-x2F-checker-x2F" class="headerlink" title=".&#x2F;src&#x2F;cpu&#x2F;checker&#x2F;"></a>.&#x2F;src&#x2F;cpu&#x2F;checker&#x2F;</h3><p><strong>thread_context.hh</strong> <br>Derived ThreadContext class for use with the Checker. The template parameter is the ThreadContext class used by the specific CPU being verified. This CheckerThreadContext is then used by the main CPU in place of its usual ThreadContext class. It handles updating the checker’s state any time state is updated externally through the ThreadContext.  </p>
+<p>CheckerThreadContext - Actual Thread Context, Checker Thread, Checker CPU  </p>
+<p><strong>cpu.hh</strong> <br>CheckerCPU class derives from BaseCPU class. BaseCPU is an abstract class. So CheckerCPU has most of the methods and members replicated <br>Templated Checker Class deriving from CheckerCPU which handles the checking&#x2F;verifying functions  </p>
+<p><strong>cpu_impl.hh</strong>  </p>
+<h2 id="SIMPLE"><a href="#SIMPLE" class="headerlink" title="SIMPLE"></a>SIMPLE</h2><h3 id="x2F-src-x2F-cpu-x2F-simple"><a href="#x2F-src-x2F-cpu-x2F-simple" class="headerlink" title=".&#x2F;src&#x2F;cpu&#x2F;simple"></a>.&#x2F;src&#x2F;cpu&#x2F;simple</h3><p><strong>base.hh</strong> <br>BaseSimpleCPU derives from BaseCPU <br>CheckPcEventQueue - Seems to be the main function which moves instructions forward <br>Lots of stats variables  </p>
+<p><strong>atomic.hh</strong> <br>AtomicSimpleCPU derives from BaseSimpleCPU <br>TickEvent Struct containing a CPU, TickEvent, Process methods <br>Main simulation loop - tick method  </p>
+<p><strong>timing.hh</strong> <br>Class SplitMainSenderState to split memory access into two fragments <br>It has some TLB and memory access functions in addition to atomic functionality  </p>
+<h2 id="PREDICTOR"><a href="#PREDICTOR" class="headerlink" title="PREDICTOR"></a>PREDICTOR</h2><h3 id="x2F-src-x2F-cpu-x2F-pred"><a href="#x2F-src-x2F-cpu-x2F-pred" class="headerlink" title=".&#x2F;src&#x2F;cpu&#x2F;pred"></a>.&#x2F;src&#x2F;cpu&#x2F;pred</h3><p><strong>btb.hh</strong> <br>DefaultTLB class <br>Very simple and straight forward implementation of BTB  </p>
+<p><strong>ras.hh</strong> <br>ReturnAddrStack class  </p>
+<p><strong>sat_counter.hh</strong> <br>Private counter class for the internal saturating counters. <br>Implements an n bit saturating counter and provides methods to increment, decrement, and read it  </p>
+<p><strong>bpred_unit.hh</strong> <br>Wrapper class to hold both the Branch Predictor and BTB <br>Predictor Histroy Struct to maintain information required to update BTB, RAS etc.  </p>
+<p><strong>tournament.hh</strong> <br>Implements a tournament branch predictor <br>TournamentBP inherits from BPredUnit  </p>
+<p><strong>2bit_local.hh</strong> <br>Implements a local predictor that uses the PC to index into a table of <br>counters. Contains a list of saturating counters.  </p>
+<h2 id="OUT-OF-ORDER"><a href="#OUT-OF-ORDER" class="headerlink" title="OUT OF ORDER"></a>OUT OF ORDER</h2><h3 id="x2F-src-x2F-cpu-x2F-o3-x2F"><a href="#x2F-src-x2F-cpu-x2F-o3-x2F" class="headerlink" title=".&#x2F;src&#x2F;cpu&#x2F;o3&#x2F;"></a>.&#x2F;src&#x2F;cpu&#x2F;o3&#x2F;</h3><p><strong>base_dyn_inst.cc</strong> <br>Makes an explicit instantiation of BaseDynInst templated class with O3CPUImpl  </p>
+<p><strong>checker.hh</strong> <br>Specific non-templated O3Checker derived class used for SimObject configuration.  </p>
+<p><strong>comm.hh</strong> <br>Structures that define the information passed on from one stage to another stage of a superscalar pipeline <br>Each struct contains a list of DynInstPtr <br>Per thread variable like branchmisPredict, branchTaken etc. <br>A special structure which defines all backward communication - TimeBufStruct  </p>
+<p><strong>commit.hh</strong> <br>Templated DefaultCommit Class <br>Has pointers to all the important structures and stages in the CPU <br>All the important architectural updates are handled  </p>
+<p><strong>decode.hh</strong> <br>Because instructions are actually decoded when the StaticInst is created, this stage does not do much other than check any PC-relative branches <br>DefaultDecode - Very similar to DefaultCommit class  </p>
+<p><strong>dep_graph.hh</strong> <br>Array of linked list that maintains the dependencies between producing instructions and consuming instructions  </p>
+<p><strong>dyn_inst.hh</strong> <br>BaseO3DynInst deriving from BaseDynInst  </p>
+<p><strong>fetch.hh</strong> <br>DefaultFetch Class  </p>
+<p><strong>free_list.hh</strong> <br>SimpleFreeList class that simply holds the list of free integer and floating point registers.  </p>
+<p><strong>fu_pool.hh</strong> <br>FUPool class which maintains a list of arrays of FUunits with a specific Capability  </p>
+<p><strong>impl.hh</strong> <br>Implementation specific struct that defines several key types to the CPU, the stages within the CPU, the time buffers, and the DynInst.  </p>
+<p><strong>inst_queue.hh</strong> <br>Instruction Queue which holds and schedules intructions <br>Gets information from FUs and MemUnit to track dependencies and resource availability  </p>
+<p><strong>lsq_unit.hh</strong> <br>LSQUnit Class which implements Load and Store Queues  </p>
+<p><strong>lsq.hh</strong> <br>LSQ class Templated with Impl  </p>
+<p><strong>mem_dep_unit.hh</strong> <br>Memory Dependency Predictor  </p>
+<p><strong>regfile.hh</strong> <br>Simple physical register file class. <br>Methods to set and read int and fp registers  </p>
+<p><strong>scoreboard.hh</strong> <br>Implements a simple scoreboard to track which registers are ready  </p>
+<p><strong>rob.hh</strong> <br>ROB class. The ROB is largely what drives squashing.  </p>
+<p><strong>rename.hh</strong> <br>DefaultRename Class which handles both single threaded and SMT rename  </p>
+<p><strong>thread_context.hh</strong> <br>Derived ThreadContext for use with O3CPU  </p>
+<p><strong>thread_state.hh</strong> <br>O3ThreadState class that has various thread state, such as the status, the current instruction being processed, whether or not the thread has a trap pending or is being externally updated, the ThreadContext pointer, etc.  </p>
+<p><strong>store_set.hh</strong> <br>Implements a store set predictor for determining if memory insts are dependent on each other  </p>
+<p><strong>deriv.hh</strong> <br>DeriveO3CPU derived from templated FullO3CPU  </p>
+<p><strong>iew.hh</strong> <br>DefaultIEW class which implements the iew stage of the pipeline  </p>
+<p><strong>cpu_policy.hh</strong> <br>SimpleCPUPolicy Struct that defines the key classes to be used by the CPU. <br>All classes use the typedefs defined here to determine what are the classes of the other stages and communication buffers.  </p>
+<p><strong>cpu.hh</strong> <br>BaseO3CPU deriving from BaseCPU <br>FullO3CPU deriving from BaseO3CPU <br>FullO3CPU class has each of the stages (fetch through commit) <br>within it, as well as all of the time buffers between stages.</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2024/01/26/50%20soft/gem5/%E7%BC%96%E8%AF%91/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Gem5编译
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2024/01/26/50%20soft/gem5/gem5%20Minor%20CPU%20model%20%E7%AE%80%E4%BB%8B/">
+                Gem5 Minor CPU Model 简介
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©2022-<span id="footerYear"></span> 
+	<a href="/">Leah Ge</a> 
+	
+	
+	<br>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -980,6 +980,72 @@ var _hmt = _hmt || [];
 								
 							</ul>
 			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										gem5
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/Gem5%20O3%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                     
+										    Gem5 O3可视化
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/gem5%20Minor%20CPU%20model%20%E7%AE%80%E4%BB%8B/">
+                     
+										    Gem5 Minor CPU Model 简介
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/gem5%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%AE%80%E4%BB%8B/">
+                     
+										    Gem5模拟器简介
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/%E6%BA%90%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E4%BD%9C%E7%94%A8%E4%BB%8B%E7%BB%8D/">
+                     
+										    Gem5源代码文件架构作用介绍
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/01/26/50%20soft/gem5/%E7%BC%96%E8%AF%91/">
+                     
+										    Gem5编译
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -1455,6 +1521,125 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
+			<a href="/2024/01/23/01%20OS/Linux/%E6%8C%87%E4%BB%A4/taskset/">
+				<h2 class="index-title">
+					Taskset
+				</h2>
+				<div class="index-brief">
+					taskset命令安装1yum install util-linux -y
+
+命令格式123456语法格式：taskset [options] -p [mask] pid参数选项：-a, --all-tasks 操作所有的任务线程-p, --pid 操作已存在的pid-c, --cpu-list 通
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2024-01-23</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/CPU/">
+				<h2 class="index-title">
+					CPU
+				</h2>
+				<div class="index-brief">
+					概述CPU驱动了所有软件的运行,通常是系统性能分析的首要目标。调优策略主要如下：1.降低CPU利用率2.提高CPU IPC，提升指令流水3.降低上下文切换4.提高缓存命中率
+监控分析工具
+
+
+工具
+说明
+
+
+
+top
+用CPU百分比和ASCII条行直方图显示消耗CPU最多的任务。
+
+
+uptime
+
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2024-01-23</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%A3%81%E7%9B%98IO%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
+				<h2 class="index-title">
+					磁盘IO和文件系统
+				</h2>
+				<div class="index-brief">
+					概述CPU的Cache、内存和磁盘之间的访问速度差异很大，当CPU计算所需要的数据并没有及时加载到内存或Cache中时，CPU将会浪费很多时间等待磁盘的读取。高负载下，磁盘成为平静，CPU持续空闲以等待磁盘I&#x2F;O结束，发现并消除这些瓶颈能让性能和应用程序吞吐量提升几个数量。计算机系统通过c
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2024-01-23</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E7%BD%91%E7%BB%9CIO/">
+				<h2 class="index-title">
+					网络IO
+				</h2>
+				<div class="index-brief">
+					概述网络处理的流程最复杂，跟前面讲到的进程调度、中断处理、内存管理以及 I&#x2F;O 等都密不可分。我们通常用带宽、吞吐量、延时、PPS（Packet Per Second）等指标衡量网络的性能。  
+
+带宽，表示链路的最大传输速率，单位通常为 b&#x2F;s （比特 &#x2F; 秒）。
+吞
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2024-01-23</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2024/01/23/97%20%E4%BC%98%E5%8C%96/%E5%86%85%E5%AD%98/">
+				<h2 class="index-title">
+					内存
+				</h2>
+				<div class="index-brief">
+					概述同 CPU 管理一样，内存管理也是操作系统最核心的功能之一。内存主要用来存储系统和应用程序的指令、数据、缓存等。1.提高命中率2.降低伪共享3.多路处理器架构中，连接到CPU本地内存相对于远程CPU访存时延更低，因此内存本地性也是个重要因素
+监控分析工具
+
+
+工具
+说明
+
+
+
+free
+系统已用
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2024-01-23</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/2022/10/31/01%20OS/Linux/network/napi/">
 				<h2 class="index-title">
 					Linux协议栈--NAPI机制
@@ -1547,106 +1732,6 @@ CPU-migrations：处理器迁移次数。Linux为了维持
 			</a>
                 <div class="article-meta">
 				    <span>2022-10-28</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/%E6%8C%87%E4%BB%A4/sar/">
-				<h2 class="index-title">
-					Sar
-				</h2>
-				<div class="index-brief">
-					Linux sar命令详解：分析系统性能sar 命令很强大，是分析系统性能的重要工具之一，通过该命令可以全面地获取系统的 CPU、运行队列、磁盘读写（I&#x2F;O）、分区（交换区）、内存、CPU 中断和网络等性能数据。
-sar 命令的基本格式如下：
-[root@localhost ~]# sar
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/network/irq/">
-				<h2 class="index-title">
-					网卡多队列配置和中断绑定
-				</h2>
-				<div class="index-brief">
-					网卡多队列配置处理步骤以下步骤云服务器默认主网卡为 eth0，网卡队列个数为2。
-
-执行以下命令，查看当前网卡队列个数。
-1ethtool -l eth0
-
-返回如下结果，表示当前队列个数设置小于最大网卡队列个数，设置不合理，需进行修复。
-1234567891011Channel parameter
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/Shell/stringcut/">
-				<h2 class="index-title">
-					Shell字符串截取
-				</h2>
-				<div class="index-brief">
-					Shell 截取字符串通常有两种方式：从指定位置开始截取和从指定字符（子字符串）开始截取。
-从指定位置开始截取这种方式需要两个参数：除了指定起始位置，还需要截取长度，才能最终确定要截取的字符串。
-既然需要指定起始位置，那么就涉及到计数方向的问题，到底是从字符串左边开始计数，还是从字符串右边开始计数。
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/27/01%20OS/Linux/%E7%BC%96%E8%AF%91%E3%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E8%A3%85%E8%BD%BD/compile_Link/">
-				<h2 class="index-title">
-					Linux下编译、链接和装载
-				</h2>
-				<div class="index-brief">
-					Linux下编译、链接和装载编译过程在Linux下使用GCC将源码编译成可执行文件的过程可以分解为4个步骤，分别是预处理（Prepressing）、编译（Compilation）、汇编（Assembly）和链接（Linking）。一个简单的hello word程序编译过程如下：1. 预处理首先源代码
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2022/10/16/01%20OS/Linux/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/brk/">
-				<h2 class="index-title">
-					Brk
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-10-16</span>
                     
                             
                     
