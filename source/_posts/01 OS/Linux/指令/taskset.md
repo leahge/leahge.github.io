@@ -3,18 +3,18 @@ title: taskset
 date: 2024-01-23 12:23:34
 tags:
 ---
-# taskset
+
 命令安装
 ----
 
-```text-plain
+```shell
 yum install util-linux -y
 ```
 
 命令格式
 ----
 
-```text-plain
+```shell
 语法格式：taskset [options] -p [mask] pid
 参数选项：
 -a, --all-tasks 操作所有的任务线程
