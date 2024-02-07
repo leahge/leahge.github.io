@@ -1,8 +1,10 @@
----
+***
+
 title: fio
 date: 2024-01-23 12:28:06
 tags:
----
+-----
+
 # fio简介：  
 
 fio是一个IO测试工具，可以运行在Linux、Windows等多种系统之上，可以用来测试本地磁盘、网络存储等的性能。
@@ -31,7 +33,7 @@ fio可以指定要测试的I/O的类型，读/写，顺序/随机，最基本的
 
 ### I/O深度（I/O depth）
 
-   
+ \
 简单的理解就是一次提交要提交多少个I/O请求，不过这个只对异步I/O引擎有用，因为同步I/O总是会等待提交的I/O请求返回了再提交下一个I/O请求，所以iodepth总是1。
 
 随着iodepth的增大在一定范围内，带宽、io延时会增加，超过一定范围后带宽增加缓慢，延时继续会增加。延时增加的原因是因为随着iodepth增加都需花更多的时间等待请求io数量达到iodepth数值后，才会真正把io请求发送给存储，所以平均每一个io的延时都会增大了。
@@ -42,19 +44,24 @@ fio可以指定要测试的I/O的类型，读/写，顺序/随机，最基本的
 
 测试任务中要开启多少个进程／线程
 
-fio常用参数： 
----------
+## fio常用参数： 
 
 ### ioengine=str
 
 定义job向文件发起IO的方式，不同的引擎使用不同的函数和实现对测试文件发起访问。有很多（在安装了fio的系统上可以通过fio --enghelp查看有哪些ioengine，并且通过fio --enghelp=“引擎名字”查看对应引擎的帮助），就不一一介绍了。常用的几个有：
 
-*   libaio     Linux专有的异步IO，异步引擎。（需要注意的是如果你是编译安装的fio，则需要在fio编译前安装libaio的相关库，否则编译出来的fio是没有这个引擎的）
-*   windowsaio 如果在windows下运行fio则需要使用这个引擎
+*   `libaio`     Linux专有的异步IO，异步引擎。（需要注意的是如果你是编译安装的fio，则需要在fio编译前安装libaio的相关库，否则编译出来的fio是没有这个引擎的）
+
+*   `windowsaio` 如果在windows下运行fio则需要使用这个引擎
+
 *   `sync`：同步 I/O，每次操作都会等待 IO 完成后再进行下一次操作。适用于简单的 IO 测试，但是性能较差。
+
 *   `psync`：同步 I/O，与 sync 类似，但是预提交缓存模式。该模式在 IO 操作时会先将数据存放在内存中的缓存区中，然后定期（或者每次 I/O 操作后）将缓存区的内容提交到磁盘中，以此提高磁盘 I/O 的性能。
+
 *   `pvsync`：同步 I/O，类似 psync，但能够更好地利用预提交缓存机制，通常会有更好的性能表现。适用于需要测试高并发 I/O 性能的场景，如云计算、虚拟化等环境。
+
 *   `io_uring`：使用 io\_uring 实现异步 I/O，相比 libaio 和 posixaio（这里均未列出），具有更高的性能和更少的上下文切换。
+
 *   `mmap`：同步 I/O，内存映射模式，将数据文件映射到内存中，以便快速访问文件内容。适用于对顺序读写的测试，可以实现很高的 IOPS。
 
 ### filename=str
@@ -121,13 +128,13 @@ fio启动几秒后再启动job。只有在job文件包含几个jobs时才有效�
 
 使用 threads 在一定程度上可以节省系统开销
 
-### blocksize=int\[,int\], bs=int\[,int\]
+### blocksize=int\[,int], bs=int\[,int]
 
 指定一个变化的i/o块，i/o的大小总是最小i/o的整数倍（除非设置了blocksize\_unaligned参数），如果只设置了一个变化区间，这项设置将会同时作用于读和写。但是可以使用逗号分开指定（读和写），例如（bsrange=1k-4k,2k-8k），（其它的见blocksize项）
 
 bs可以指定特定大小的i/o块大小，bsrange则可以指定一个变化的i/o块大小，再性能测试中，这个参数可以模拟一个更真实的i/o请求。
 
-### blocksize\_range=irange\[,irange\]\[,irange\], bsrange=irange\[,irange\]\[,irange\]
+### blocksize\_range=irange\[,irange]\[,irange], bsrange=irange\[,irange]\[,irange]
 
 指定一个IO块范围，除非设置了blocksize\_unaligned参数，否则生成的IO块大小将是最小的IO的整数倍。使用逗号分隔读写的区间描述，如:
 
@@ -205,21 +212,20 @@ job运行完毕后会删除运行过程中产生的测试文件。但可能会�
 
 按照组展示结果, 而不是每个 job, 这样在设置里可 numjobs > 1 的时候很有用, 没有此参数每个 numjobs 都会单独输出结果. 使用此参数后同一任务的多个线程/进程 会汇总输出结果
 
-其它参数 
------
+## 其它参数 
 
 这些是fio的一些配置参数，一般不写在job文件中，如果使用命令行，一般也写在命令行最后。
 
-### \--output=filename
+### --output=filename
 
 将测试结果输出到文件中，
 
 如果指定了这个参数，屏幕上就不会有输出了。
 
-### \--output-format=format
+### --output-format=format
 
 设置fio输出结果的格式，一般用到的有normal（默认就是它），json（写程序处理比较方便）
 
-### \--showcmd=jobfile
+### --showcmd=jobfile
 
 将job文件的内容转换为命令行参数

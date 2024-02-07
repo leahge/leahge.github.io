@@ -1817,8 +1817,8 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h1 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h1><p>1.命令简介</p>
-<p>shutdown 指令可以关闭所有程序，并依用户的需要，进行重启或关机操作。</p>
+	<p>–</p>
+<h2 id="1-命令简介"><a href="#1-命令简介" class="headerlink" title="1.  命令简介"></a>1.  命令简介</h2><p>shutdown 指令可以关闭所有程序，并依用户的需要，进行重启或关机操作。</p>
 <p>使用 shutdown 命令时，在系统关机前，可以通知所有登录者系统将要关闭。此时 login 指令会被冻结，新用户将不能再登录，这是推荐使用的安全关机方式。关机之前，所有进程都会受到 shutdown 指令所发送的关闭进程信号，然后向 init 程序发送信号，要求它改变运行等级（runlevel）。</p>
 <p>Linux 系统有 7 个运行级别：<br>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动；<br>运行级别1：单用户工作状态，root 权限，用于系统维护，禁止远程登录；<br>运行级别2：多用户状态（没有 NFS）；<br>运行级别3：完全的多用户状态（有 NFS），登录后进入控制台命令行模式；<br>运行级别4：系统未使用，保留；<br>运行级别5：X11 控制台，登录后进入图形 GUI 模式；<br>运行级别6：系统正常关闭并重启，默认运行级别不能设为 6，否则不能正常启动。</p>
 <h2 id="2-命令格式"><a href="#2-命令格式" class="headerlink" title="2.命令格式"></a>2.命令格式</h2><p>shutdown [选项] [参数]  </p>
@@ -1837,7 +1837,7 @@ var _hmt = _hmt || [];
 <p>shutdown -P now<br>&#x2F;&#x2F;或<br>poweroff</p>
 <p>（7）恶作剧，仅发出警告，什么都不会发生。</p>
 <p>shutdown +10 -k ‘10分钟后关机’</p>
-<p>5.常见问题<br>（1）shutdown -h、shutdown -H和shutdown -P的区别?<br>shutdown -H是关机操作，停止系统运行，但并未关闭电源，shutdown -P是关闭电源操作。shutdown -h则根据系统的默认设置来选择是否关闭电源 。关闭电源会送出 ACPI 指令通知PSU（Power Supply Unit）电源。</p>
+<h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5.常见问题\"></a>5.常见问题\</h2><p>（1）shutdown -h、shutdown -H和shutdown -P的区别?<br>shutdown -H是关机操作，停止系统运行，但并未关闭电源，shutdown -P是关闭电源操作。shutdown -h则根据系统的默认设置来选择是否关闭电源 。关闭电源会送出 ACPI 指令通知PSU（Power Supply Unit）电源。</p>
 <p>（2）shutdown默认操作进入单用户维护模式。</p>
 <p>&#x2F;&#x2F;十分钟后进入单用户维护模式<br>shutdown +10</p>
 

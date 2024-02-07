@@ -1,9 +1,12 @@
----
+***
+
 title: ln
 date: 2024-01-23 12:25:42
 tags:
----
+-----
+
 # ln
+
 软连接是linux中一个常用命令，它的功能是为某一个文件在另外一个位置建立一个同不的链接。
 
 具体用法是：`ln -s 源文件 目标文件`。
@@ -12,14 +15,13 @@ tags:
 
 例如：
 
-```text-plain
+```bash
 ln -s /usr/local/mysql/bin/mysql /usr/bin
 ```
 
 这样我们就对/usr/bin目录下的mysql命令创建了软连接
 
-**软链接和硬连接**
------------
+## **软链接和硬连接**
 
 ### **硬连接**
 
@@ -29,8 +31,7 @@ ln -s /usr/local/mysql/bin/mysql /usr/bin
 
 另外一种连接称之为符号连接（Symbolic Link），也叫软连接。软链接文件有类似于Windows的快捷方式。它实际上是一个特殊的文件。在符号连接中，文件实际上是一个文本文件，其中包含的有另一文件的位置信息。
 
-**使用方式**
---------
+## **使用方式**
 
 ### **创建软链接**
 
@@ -40,13 +41,13 @@ ln -s /usr/local/mysql/bin/mysql /usr/bin
 
 当前路径创建`test` 引向`/var/www/test` 文件夹 :
 
-```text-plain
+```bash
 ln –s  /var/www/test  test
 ```
 
 创建`/var/test` 引向`/var/www/test` 文件夹
 
-```text-plain
+```bash
 ln –s /var/www/test  /var/test
 ```
 
@@ -58,7 +59,7 @@ ln –s /var/www/test  /var/test
 
 删除test
 
-```text-plain
+```bash
 rm –rf test
 ```
 
@@ -72,19 +73,19 @@ rm –rf test
 
 创建一个软链接
 
-```text-plain
+```bash
 ln –s  /var/www/test   /var/test
 ```
 
 修改指向的新路径
 
-```text-plain
+```bash
 ln –snf  /var/www/test1   /var/test
 ```
 
 **常用参数：**
 
-```text-plain
+```bash
 　　-f : 链结时先将与 dist 同档名的档案删除
 　　-d : 允许系统管理者硬链结自己的目录
 　　-i : 在删除与 dist 同档名的档案时先进行询问
@@ -97,3 +98,4 @@ ln –snf  /var/www/test1   /var/test
 　　--help : 显示辅助说明
 　　--version : 显示版本
 ```
+
