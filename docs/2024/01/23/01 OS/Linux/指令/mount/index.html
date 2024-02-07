@@ -1821,31 +1821,56 @@ var _hmt = _hmt || [];
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a><strong>语法</strong></h3><p>mount [-hV] mount -a [-fFnrsvw] [-t vfstype] mount [-fnrsvw] [-o options [,…]] device | dir mount [-fnrsvw] [-t vfstype] [-o options] device dir</p>
 <p><strong>参数说明：</strong></p>
 <ul>
-<li>-V：显示程序版本</li>
-<li>-h：显示辅助讯息</li>
-<li>-v：显示较讯息，通常和 -f 用来除错。</li>
-<li>-a：将 &#x2F;etc&#x2F;fstab 中定义的所有档案系统挂上。</li>
-<li>-F：这个命令通常和 -a 一起使用，它会为每一个 mount 的动作产生一个行程负责执行。在系统需要挂上大量 NFS 档案系统时可以加快挂上的动作。</li>
-<li>-f：通常用在除错的用途。它会使 mount 并不执行实际挂上的动作，而是模拟整个挂上的过程。通常会和 -v 一起使用。</li>
-<li>-n：一般而言，mount 在挂上后会在 &#x2F;etc&#x2F;mtab 中写入一笔资料。但在系统中没有可写入档案系统存在的情况下可以用这个选项取消这个动作。</li>
-<li>-s-r：等于 -o ro</li>
-<li>-w：等于 -o rw</li>
-<li>-L：将含有特定标签的硬盘分割挂上。</li>
-<li>-U：将档案分割序号为 的档案系统挂下。-L 和 -U 必须在&#x2F;proc&#x2F;partition 这种档案存在时才有意义。</li>
-<li>-t：指定档案系统的型态，通常不必指定。mount 会自动选择正确的型态。</li>
-<li>-o async：打开非同步模式，所有的档案读写动作都会用非同步模式执行。</li>
-<li>-o sync：在同步模式下执行。</li>
-<li>-o atime、-o noatime：当 atime 打开时，系统会在每次读取档案时更新档案的『上一次调用时间』。当我们使用 flash 档案系统时可能会选项把这个选项关闭以减少写入的次数。</li>
-<li>-o auto、-o noauto：打开&#x2F;关闭自动挂上模式。</li>
-<li>-o defaults:使用预设的选项 rw, suid, dev, exec, auto, nouser, and async.</li>
-<li>-o dev、-o nodev-o exec、-o noexec允许执行档被执行。</li>
-<li>-o suid、-o nosuid：</li>
-<li>允许执行档在 root 权限下执行。</li>
-<li>-o user、-o nouser：使用者可以执行 mount&#x2F;umount 的动作。</li>
-<li>-o remount：将一个已经挂下的档案系统重新用不同的方式挂上。例如原先是唯读的系统，现在用可读写的模式重新挂上。</li>
-<li>-o ro：用唯读模式挂上。</li>
-<li>-o rw：用可读写模式挂上。</li>
-<li>-o loop&#x3D;：使用 loop 模式用来将一个档案当成硬盘分割挂上系统。</li>
+<li><p>-V：显示程序版本</p>
+</li>
+<li><p>-h：显示辅助讯息</p>
+</li>
+<li><p>-v：显示较讯息，通常和 -f 用来除错。</p>
+</li>
+<li><p>-a：将 &#x2F;etc&#x2F;fstab 中定义的所有档案系统挂上。</p>
+</li>
+<li><p>-F：这个命令通常和 -a 一起使用，它会为每一个 mount 的动作产生一个行程负责执行。在系统需要挂上大量 NFS 档案系统时可以加快挂上的动作。</p>
+</li>
+<li><p>-f：通常用在除错的用途。它会使 mount 并不执行实际挂上的动作，而是模拟整个挂上的过程。通常会和 -v 一起使用。</p>
+</li>
+<li><p>-n：一般而言，mount 在挂上后会在 &#x2F;etc&#x2F;mtab 中写入一笔资料。但在系统中没有可写入档案系统存在的情况下可以用这个选项取消这个动作。</p>
+</li>
+<li><p>-s-r：等于 -o ro</p>
+</li>
+<li><p>-w：等于 -o rw</p>
+</li>
+<li><p>-L：将含有特定标签的硬盘分割挂上。</p>
+</li>
+<li><p>-U：将档案分割序号为 的档案系统挂下。-L 和 -U 必须在&#x2F;proc&#x2F;partition 这种档案存在时才有意义。</p>
+</li>
+<li><p>-t：指定档案系统的型态，通常不必指定。mount 会自动选择正确的型态。</p>
+</li>
+<li><p>-o async：打开非同步模式，所有的档案读写动作都会用非同步模式执行。</p>
+</li>
+<li><p>-o sync：在同步模式下执行。</p>
+</li>
+<li><p>-o atime、-o noatime：当 atime 打开时，系统会在每次读取档案时更新档案的『上一次调用时间』。当我们使用 flash 档案系统时可能会选项把这个选项关闭以减少写入的次数。</p>
+</li>
+<li><p>-o auto、-o noauto：打开&#x2F;关闭自动挂上模式。</p>
+</li>
+<li><p>-o defaults:使用预设的选项 rw, suid, dev, exec, auto, nouser, and async.</p>
+</li>
+<li><p>-o dev、-o nodev-o exec、-o noexec允许执行档被执行。</p>
+</li>
+<li><p>-o suid、-o nosuid：</p>
+</li>
+<li><p>允许执行档在 root 权限下执行。</p>
+</li>
+<li><p>-o user、-o nouser：使用者可以执行 mount&#x2F;umount 的动作。</p>
+</li>
+<li><p>-o remount：将一个已经挂下的档案系统重新用不同的方式挂上。例如原先是唯读的系统，现在用可读写的模式重新挂上。</p>
+</li>
+<li><p>-o ro：用唯读模式挂上。</p>
+</li>
+<li><p>-o rw：用可读写模式挂上。</p>
+</li>
+<li><p>-o loop&#x3D;：使用 loop 模式用来将一个档案当成硬盘分割挂上系统。</p>
+</li>
 </ul>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h3><p>将 &#x2F;dev&#x2F;hda1 挂在 &#x2F;mnt 之下。</p>
 <p>#mount &#x2F;dev&#x2F;hda1 &#x2F;mnt</p>
